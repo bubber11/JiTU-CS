@@ -73,6 +73,10 @@
       <DependentUpon>GeneralUI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserBoundary.resx">
       <DependentUpon>UserBoundary.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +93,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UI\LoginPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserBoundary.cs">
       <SubType>UserControl</SubType>

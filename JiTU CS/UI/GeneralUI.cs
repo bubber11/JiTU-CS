@@ -19,22 +19,10 @@ namespace JiTU_CS.UI
             InitializeComponent();
         }
 
-        private void GeneralUI_Resize(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            panel2.Location = new Point((panel1.Width - panel2.Width) / 2, (panel1.Height - panel2.Height) / 2);
+            Close();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            GeneralUI_Resize(sender, e);
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            UserData userData;
-            UserController userController = new UserController();
-
-            userData = userController.getUser(txtUserName.Text);
-        }
     }
 }
