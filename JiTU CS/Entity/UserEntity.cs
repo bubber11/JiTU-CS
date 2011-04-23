@@ -81,7 +81,7 @@ namespace JiTU_CS.Entity
             try
             {
 
-                this.SQL = "SELECT * `users` u WHERE u.`user_name` = \"" + userName + ";";
+                this.SQL = "SELECT * FROM `users` u WHERE u.`user_name` = \"" + userName + "\";";
                 this.InitializeCommand();
                 this.OpenConnection();
 
@@ -89,6 +89,7 @@ namespace JiTU_CS.Entity
 
                 if (this.DataReader.HasRows)
                 {
+                    this.DataReader.Read();
                     newUser = new UserData(this.DataReader.GetInt32("user_id"));
                     newUser.FullName = this.DataReader.GetString("full_name");
                     newUser.Password = this.DataReader.GetString("password");
@@ -117,7 +118,7 @@ namespace JiTU_CS.Entity
             try
             {
 
-                this.SQL = "SELECT * `users` u WHERE u.`user_id` = \"" + userID + ";";
+                this.SQL = "SELECT * FROM `users` u WHERE u.`user_id` = \"" + userID + ";";
                 this.InitializeCommand();
                 this.OpenConnection();
 

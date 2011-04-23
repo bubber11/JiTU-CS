@@ -59,6 +59,9 @@
     <Compile Include="UI\GeneralUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\GeneralUI.Designer.cs">
+      <DependentUpon>GeneralUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
