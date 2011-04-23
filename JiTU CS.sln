@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiTU CS", "JiTU CS\JiTU CS.csproj", "{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
