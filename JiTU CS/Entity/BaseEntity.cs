@@ -16,6 +16,7 @@ namespace JiTU_CS.Entity
         public MySqlConnection Connection;
         public MySqlCommand Command;
         public MySqlDataAdapter DataAdapter;
+        public MySqlDataReader DataReader;
 
         #endregion
 
@@ -217,7 +218,7 @@ namespace JiTU_CS.Entity
 
         public BaseEntity()
         {
-            Connection = new MySqlConnection("server=;Uid=;Pwd=;database=;Pooling=False");
+            Connection = new MySqlConnection("server=97.74.31.73;Uid=jituasu;Pwd=eap3THui;database=jituasu;Pooling=False");
         }
 
         ~BaseEntity()
