@@ -48,7 +48,7 @@
             this.btnTakeQuiz.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnTakeQuiz.Location = new System.Drawing.Point(0, 0);
             this.btnTakeQuiz.Name = "btnTakeQuiz";
-            this.btnTakeQuiz.Size = new System.Drawing.Size(165, 50);
+            this.btnTakeQuiz.Size = new System.Drawing.Size(163, 50);
             this.btnTakeQuiz.TabIndex = 1;
             this.btnTakeQuiz.Text = "Take Quiz";
             this.btnTakeQuiz.UseVisualStyleBackColor = true;
@@ -57,6 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "StudentScreen";
+            this.Load += new System.EventHandler(this.StudentScreen_Load);
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.ResumeLayout(false);
             this.ResumeLayout(false);

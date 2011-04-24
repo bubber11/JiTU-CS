@@ -50,7 +50,7 @@ namespace JiTU_CS.UI
                         GlobalData.currentUser = userData;
 
                         //remove this screen
-                        ((frmMain)this.Parent).login();
+                        ((GeneralUI)this.Parent).login();
                         this.Dispose();
 
                     }

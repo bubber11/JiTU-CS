@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.scMain = new System.Windows.Forms.SplitContainer();
-            this.welcomeScreen = new JiTU_CS.UI.Screens.WelcomeScreen();
-            this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,19 +50,10 @@
             // scMain.Panel2
             // 
             this.scMain.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.scMain.Panel2.Controls.Add(this.welcomeScreen);
             this.scMain.Size = new System.Drawing.Size(667, 468);
             this.scMain.SplitterDistance = 165;
             this.scMain.SplitterWidth = 2;
             this.scMain.TabIndex = 0;
-            // 
-            // welcomeScreen
-            // 
-            this.welcomeScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.welcomeScreen.Location = new System.Drawing.Point(0, 0);
-            this.welcomeScreen.Name = "welcomeScreen";
-            this.welcomeScreen.Size = new System.Drawing.Size(498, 466);
-            this.welcomeScreen.TabIndex = 0;
             // 
             // UserScreen
             // 
@@ -73,7 +62,6 @@
             this.Controls.Add(this.scMain);
             this.Name = "UserScreen";
             this.Size = new System.Drawing.Size(667, 468);
-            this.scMain.Panel2.ResumeLayout(false);
             this.scMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -82,6 +70,5 @@
         #endregion
 
         protected System.Windows.Forms.SplitContainer scMain;
-        private WelcomeScreen welcomeScreen;
     }
 }

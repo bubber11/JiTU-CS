@@ -216,9 +216,17 @@ namespace JiTU_CS.Entity
 
         #region Constructors/Destructors
 
+        /// <summary>
+        /// sets up connection to database
+        /// </summary>
         public BaseEntity()
         {
-            Connection = new MySqlConnection("server=97.74.31.73;Uid=jituasu;Pwd=eap3THui;database=jituasu;Pooling=False");
+            Connection = new MySqlConnection(
+                "server=97.74.31.73;" +
+                "Uid=jituasu;" +
+                "Pwd=eap3THui;" +
+                "database=jituasu;" +
+                "Pooling=False");
         }
 
         ~BaseEntity()

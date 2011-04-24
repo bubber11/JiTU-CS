@@ -4,21 +4,26 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace JiTU_CS.UI.Screens
 {
     public partial class StudentScreen : UserScreen
     {
+        WelcomeScreen welcomeScreen;
+
         public StudentScreen()
         {
             InitializeComponent();
         }
 
-        public StudentScreen(IContainer container)
+        private void StudentScreen_Load(object sender, EventArgs e)
         {
-            container.Add(this);
+            welcomeScreen = new WelcomeScreen();
+            welcomeScreen.Dock = DockStyle.Fill;
 
-            InitializeComponent();
+            scMain.Panel2.Controls.Add(welcomeScreen);
         }
+
     }
 }

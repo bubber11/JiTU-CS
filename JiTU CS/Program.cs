@@ -15,7 +15,7 @@ namespace JiTU_CS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.frmMain());
+            Application.Run(new UI.GeneralUI());
         }
     }
 }

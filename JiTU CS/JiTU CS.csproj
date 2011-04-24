@@ -58,11 +58,11 @@
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
-    <Compile Include="UI\frmMain.cs">
+    <Compile Include="UI\GeneralUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="UI\GeneralUI.Designer.cs">
+      <DependentUpon>GeneralUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,8 +71,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="UI\GeneralUI.resx">
+      <DependentUpon>GeneralUI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Screens\InstructorScreen.resx">
@@ -87,15 +87,16 @@
       <DependentUpon>StudentScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserBoundary.resx">
       <DependentUpon>UserBoundary.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Screens\UserScreen.resx">
       <DependentUpon>UserScreen.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\WelcomeScreen.resx">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -130,6 +131,12 @@
     <Compile Include="UI\Screens\StudentScreen.Designer.cs">
       <DependentUpon>StudentScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Screens\WelcomeScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\WelcomeScreen.Designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserBoundary.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,12 +148,6 @@
     </Compile>
     <Compile Include="UI\Screens\UserScreen.Designer.cs">
       <DependentUpon>UserScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Screens\WelcomeScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Screens\WelcomeScreen.Designer.cs">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

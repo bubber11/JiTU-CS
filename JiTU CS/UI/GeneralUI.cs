@@ -12,9 +12,9 @@ using JiTU_CS.Controller;
 
 namespace JiTU_CS.UI
 {
-    public partial class frmMain : Form
+    public partial class GeneralUI : Form
     {
-        public frmMain()
+        public GeneralUI()
         {
             InitializeComponent();
         }

@@ -34,11 +34,11 @@
             // lblWelcome
             // 
             this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWelcome.Font = new System.Drawing.Font("Lucida Console", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.Location = new System.Drawing.Point(0, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(527, 169);
-            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Size = new System.Drawing.Size(601, 112);
+            this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -48,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblWelcome);
             this.Name = "WelcomeScreen";
-            this.Size = new System.Drawing.Size(527, 403);
+            this.Size = new System.Drawing.Size(601, 385);
             this.Load += new System.EventHandler(this.WelcomeScreen_Load);
             this.ResumeLayout(false);
 
@@ -56,6 +56,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblWelcome;
+        public System.Windows.Forms.Label lblWelcome;
+
     }
 }

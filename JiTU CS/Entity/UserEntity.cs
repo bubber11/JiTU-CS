@@ -9,6 +9,8 @@ namespace JiTU_CS.Entity
 {
     class UserEntity : BaseEntity
     {
+        #region Methods
+
         public void addUser (UserData userData)
         {
             try
@@ -147,6 +149,6 @@ namespace JiTU_CS.Entity
             return newUser;
         }
 
-         
+        #endregion
     }
 }

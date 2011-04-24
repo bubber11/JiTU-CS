@@ -11,12 +11,25 @@ namespace JiTU_CS.Controller
 {
     class UserController
     {
+        #region Methods
+
+        /// <summary>
+        /// returns a user based on user name
+        /// </summary>
+        /// <param name="UserName">the user name to search for</param>
+        /// <returns>user found in database with the specified user name</returns>
         public UserData getUser(string UserName)
         {
             UserEntity userEntity = new UserEntity();
             return userEntity.getUser(UserName);
         }
 
+        /// <summary>
+        /// Checks to see if the user has inputed a password matching the user
+        /// </summary>
+        /// <param name="theUser">the user trying to log in</param>
+        /// <param name="Password">the password of the user</param>
+        /// <returns></returns>
         public bool AuthenticateUser(UserData theUser, string Password)
         {
             SHA1 MyHasher = new SHA1CryptoServiceProvider();
@@ -30,6 +43,10 @@ namespace JiTU_CS.Controller
             return (HexString.ToString().ToUpper() == theUser.Password.ToUpper());
         }
 
+        /// <summary>
+        /// Saves a user
+        /// </summary>
+        /// <param name="theUser">User to be saved</param>
         public void SaveUser(UserData theUser)
         {
             UserEntity userEntity = new UserEntity();
@@ -39,5 +56,7 @@ namespace JiTU_CS.Controller
             else
                 userEntity.updateUser(theUser);
         }
+
+        #endregion
     }
 }

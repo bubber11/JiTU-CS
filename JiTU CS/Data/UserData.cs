@@ -81,7 +81,7 @@ namespace JiTU_CS.Data
 
         #endregion
 
-        #region Methods
+        #region Constructors/Destructors
 
         /// <summary>
         /// Creates UserData with ID = 0
