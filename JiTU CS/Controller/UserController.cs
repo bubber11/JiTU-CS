@@ -29,5 +29,15 @@ namespace JiTU_CS.Controller
 
             return (HexString.ToString().ToUpper() == theUser.Password.ToUpper());
         }
+
+        public void SaveUser(UserData theUser)
+        {
+            UserEntity userEntity = new UserEntity();
+
+            if (theUser.ID > 0)
+                userEntity.addUser(theUser);
+            else
+                userEntity.updateUser(theUser);
+        }
     }
 }

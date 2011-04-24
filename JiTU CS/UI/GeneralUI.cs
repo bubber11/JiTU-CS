@@ -24,5 +24,10 @@ namespace JiTU_CS.UI
             Close();
         }
 
+        private void tsmLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

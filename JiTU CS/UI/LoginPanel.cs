@@ -54,7 +54,7 @@ namespace JiTU_CS.UI
                         MessageBox.Show("The User name or password is incorrect.");
                 }
             }
-            catch (System.Exception ex)
+            catch
             {
                 MessageBox.Show("The User name or password is incorrect.");
             }
