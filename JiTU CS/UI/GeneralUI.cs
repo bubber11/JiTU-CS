@@ -31,7 +31,6 @@ namespace JiTU_CS.UI
                     oControl.Dispose();
 
             LoginPanel newLogin = new LoginPanel();
-            newLogin.Dock = DockStyle.Fill;
             this.Controls.Add(newLogin);
             this.tsmLogout.Visible = false;
             newLogin.BringToFront();

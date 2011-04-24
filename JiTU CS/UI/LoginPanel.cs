@@ -16,6 +16,7 @@ namespace JiTU_CS.UI
     {
         public LoginPanel()
         {
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 
