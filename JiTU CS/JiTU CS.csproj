@@ -57,11 +57,12 @@
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
-    <Compile Include="UI\GeneralUI.cs">
+    <Compile Include="GlobalData.cs" />
+    <Compile Include="UI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\GeneralUI.Designer.cs">
-      <DependentUpon>GeneralUI.cs</DependentUpon>
+    <Compile Include="UI\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,19 +71,31 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\GeneralUI.resx">
-      <DependentUpon>GeneralUI.cs</DependentUpon>
+    <EmbeddedResource Include="UI\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\InstructorScreen.resx">
+      <DependentUpon>InstructorScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\StudentScreen.resx">
+      <DependentUpon>StudentScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserBoundary.resx">
       <DependentUpon>UserBoundary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserScreen.resx">
+    <EmbeddedResource Include="UI\Screens\UserScreen.resx">
       <DependentUpon>UserScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -99,11 +112,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UI\Screens\InstructorScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\InstructorScreen.Designer.cs">
+      <DependentUpon>InstructorScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Screens\StudentScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\StudentScreen.Designer.cs">
+      <DependentUpon>StudentScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserBoundary.cs">
       <SubType>UserControl</SubType>
@@ -111,11 +136,17 @@
     <Compile Include="UI\UserBoundary.Designer.cs">
       <DependentUpon>UserBoundary.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserScreen.cs">
+    <Compile Include="UI\Screens\UserScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\UserScreen.Designer.cs">
+    <Compile Include="UI\Screens\UserScreen.Designer.cs">
       <DependentUpon>UserScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Screens\WelcomeScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\WelcomeScreen.Designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

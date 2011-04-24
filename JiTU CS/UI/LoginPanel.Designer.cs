@@ -118,7 +118,7 @@
             // lblJiTU
             // 
             this.lblJiTU.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblJiTU.Font = new System.Drawing.Font("Lucida Sans Unicode", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJiTU.Font = new System.Drawing.Font("Lucida Handwriting", 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblJiTU.Location = new System.Drawing.Point(0, 0);
             this.lblJiTU.Name = "lblJiTU";
             this.lblJiTU.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);

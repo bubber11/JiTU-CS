@@ -1,8 +1,8 @@
-﻿namespace JiTU_CS.UI
+﻿namespace JiTU_CS.UI.Screens
 {
-    partial class UserScreen
+    partial class StudentScreen
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -22,13 +22,12 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.scMain = new System.Windows.Forms.SplitContainer();
             this.btnTakeQuiz = new System.Windows.Forms.Button();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.SuspendLayout();
@@ -36,18 +35,10 @@
             // 
             // scMain
             // 
-            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
             // 
-            this.scMain.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(108)))), ((int)(((byte)(78)))));
-            this.scMain.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.scMain.Panel1.Controls.Add(this.btnTakeQuiz);
-            this.scMain.Size = new System.Drawing.Size(667, 468);
-            this.scMain.SplitterDistance = 165;
-            this.scMain.TabIndex = 0;
             // 
             // btnTakeQuiz
             // 
@@ -58,17 +49,14 @@
             this.btnTakeQuiz.Location = new System.Drawing.Point(0, 0);
             this.btnTakeQuiz.Name = "btnTakeQuiz";
             this.btnTakeQuiz.Size = new System.Drawing.Size(165, 50);
-            this.btnTakeQuiz.TabIndex = 0;
+            this.btnTakeQuiz.TabIndex = 1;
             this.btnTakeQuiz.Text = "Take Quiz";
             this.btnTakeQuiz.UseVisualStyleBackColor = true;
             // 
-            // UserScreen
+            // StudentScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.scMain);
-            this.Name = "UserScreen";
-            this.Size = new System.Drawing.Size(667, 468);
+            this.Name = "StudentScreen";
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -77,7 +65,7 @@
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer scMain;
-        private System.Windows.Forms.Button btnTakeQuiz;
+        protected System.Windows.Forms.Button btnTakeQuiz;
+
     }
 }

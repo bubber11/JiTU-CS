@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JiTU_CS.UI
+namespace JiTU_CS.UI.Screens
 {
     public partial class UserScreen : UserControl
     {

@@ -14,9 +14,10 @@ namespace JiTU_CS.UI
 {
     public partial class LoginPanel : UserControl
     {
+        #region Methods
+
         public LoginPanel()
         {
-            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 
@@ -28,6 +29,7 @@ namespace JiTU_CS.UI
         private void LoginPanel_Load(object sender, EventArgs e)
         {
             LoginPanel_Resize(sender, e);
+            txtUserName.Focus();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,30 +46,12 @@ namespace JiTU_CS.UI
                 {
                     if (userController.AuthenticateUser(userData, txtPassword.Text))
                     {
-                        if (userData.Role == UserData.Roles.Instructor)
-                            //Navigate to the instructor's screen
-                            MessageBox.Show("Instructor Validated");
-                        else
-                        {
-                            //Navigate to the student's screen
-                            try
-                            {
-                                GeneralUI MyParent = (GeneralUI)this.Parent;
+                        //user exists, now copy to static user
+                        GlobalData.currentUser = userData;
 
-                                UserScreen newScreen = new UserScreen();
-                                newScreen.Dock = DockStyle.Fill;
-
-                                MyParent.Controls.Add(newScreen);
-                                newScreen.BringToFront();
-                                MyParent.tsmLogout.Visible = true;
-
-                                this.Dispose();
-                            }
-                            catch (System.Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                        }
+                        //remove this screen
+                        ((frmMain)this.Parent).login();
+                        this.Dispose();
 
                     }
                     else
@@ -91,6 +75,6 @@ namespace JiTU_CS.UI
                 btnLogin_Click(sender, e);
         }
 
-
+        #endregion
     }
 }
