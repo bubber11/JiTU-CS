@@ -26,7 +26,20 @@ namespace JiTU_CS.UI
 
         private void tsmLogout_Click(object sender, EventArgs e)
         {
+            foreach (Control oControl in this.Controls)
+                if (oControl is UserControl)
+                    oControl.Dispose();
 
+            LoginPanel newLogin = new LoginPanel();
+            newLogin.Dock = DockStyle.Fill;
+            this.Controls.Add(newLogin);
+            this.tsmLogout.Visible = false;
+            newLogin.BringToFront();
+        }
+
+        private void tsmLogout_VisibleChanged(object sender, EventArgs e)
+        {
+            this.tss_0.Visible = this.tsmLogout.Visible;
         }
 
     }

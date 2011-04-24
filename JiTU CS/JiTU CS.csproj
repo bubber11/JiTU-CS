@@ -34,6 +34,7 @@
     <Reference Include="MySql.Data, Version=6.2.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MySql.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -80,6 +81,10 @@
     <EmbeddedResource Include="UI\UserBoundary.resx">
       <DependentUpon>UserBoundary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserScreen.resx">
+      <DependentUpon>UserScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -105,6 +110,12 @@
     </Compile>
     <Compile Include="UI\UserBoundary.Designer.cs">
       <DependentUpon>UserBoundary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserScreen.Designer.cs">
+      <DependentUpon>UserScreen.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

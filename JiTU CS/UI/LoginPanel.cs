@@ -47,8 +47,27 @@ namespace JiTU_CS.UI
                             //Navigate to the instructor's screen
                             MessageBox.Show("Instructor Validated");
                         else
+                        {
                             //Navigate to the student's screen
-                            MessageBox.Show("Student Student Validated");
+                            try
+                            {
+                                GeneralUI MyParent = (GeneralUI)this.Parent;
+
+                                UserScreen newScreen = new UserScreen();
+                                newScreen.Dock = DockStyle.Fill;
+
+                                MyParent.Controls.Add(newScreen);
+                                newScreen.BringToFront();
+                                MyParent.tsmLogout.Visible = true;
+
+                                this.Dispose();
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+
                     }
                     else
                         MessageBox.Show("The User name or password is incorrect.");
@@ -58,6 +77,17 @@ namespace JiTU_CS.UI
             {
                 MessageBox.Show("The User name or password is incorrect.");
             }
+        }
+
+        /// <summary>
+        /// Enables the user to simply press "Enter" after providing a user name and password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnLogin_Click(sender, e);
         }
 
 

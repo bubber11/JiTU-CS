@@ -34,9 +34,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginPanel = new JiTU_CS.UI.LoginPanel();
             this.tss_0 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginPanel = new JiTU_CS.UI.LoginPanel();
             tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,9 @@
             // tsmExit
             // 
             tsmExit.Name = "tsmExit";
-            tsmExit.Size = new System.Drawing.Size(152, 22);
+            tsmExit.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
+                        | System.Windows.Forms.Keys.E)));
+            tsmExit.Size = new System.Drawing.Size(175, 22);
             tsmExit.Text = "Exit";
             tsmExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -81,8 +83,25 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // tss_0
+            // 
+            this.tss_0.Name = "tss_0";
+            this.tss_0.Size = new System.Drawing.Size(172, 6);
+            this.tss_0.Visible = false;
+            // 
+            // tsmLogout
+            // 
+            this.tsmLogout.Name = "tsmLogout";
+            this.tsmLogout.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
+                        | System.Windows.Forms.Keys.L)));
+            this.tsmLogout.Size = new System.Drawing.Size(175, 22);
+            this.tsmLogout.Text = "Logout";
+            this.tsmLogout.Visible = false;
+            this.tsmLogout.VisibleChanged += new System.EventHandler(this.tsmLogout_VisibleChanged);
+            this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
             // 
             // loginPanel
             // 
@@ -91,18 +110,6 @@
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(838, 571);
             this.loginPanel.TabIndex = 0;
-            // 
-            // tss_0
-            // 
-            this.tss_0.Name = "tss_0";
-            this.tss_0.Size = new System.Drawing.Size(149, 6);
-            // 
-            // tsmLogout
-            // 
-            this.tsmLogout.Name = "tsmLogout";
-            this.tsmLogout.Size = new System.Drawing.Size(152, 22);
-            this.tsmLogout.Text = "Logout";
-            this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
             // 
             // GeneralUI
             // 
@@ -130,7 +137,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator tss_0;
-        private System.Windows.Forms.ToolStripMenuItem tsmLogout;
+        public System.Windows.Forms.ToolStripMenuItem tsmLogout;
 
     }
 }
