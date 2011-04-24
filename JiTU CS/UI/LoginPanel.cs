@@ -31,10 +31,33 @@ namespace JiTU_CS.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            UserData userData;
-            UserController userController = new UserController();
+            try
+            {
+                UserData userData;
+                UserController userController = new UserController();
 
-            userData = userController.getUser(txtUserName.Text);
+                userData = userController.getUser(txtUserName.Text);
+
+                //Before considering the password, the user must exist in the database
+                if (userData != null)
+                {
+                    if (userController.AuthenticateUser(userData, txtPassword.Text))
+                    {
+                        if (userData.Role == UserData.Roles.Instructor)
+                            //Navigate to the instructor's screen
+                            MessageBox.Show("Instructor Validated");
+                        else
+                            //Navigate to the student's screen
+                            MessageBox.Show("Student Student Validated");
+                    }
+                    else
+                        MessageBox.Show("The User name or password is incorrect.");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("The User name or password is incorrect.");
+            }
         }
 
 
