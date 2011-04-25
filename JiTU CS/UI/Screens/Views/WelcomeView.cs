@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JiTU_CS.UI.Screens
+namespace JiTU_CS.UI.Screens.Views
 {
-    public partial class WelcomeScreen : UserControl
+    public partial class WelcomeView : BaseView
     {
-        public WelcomeScreen()
+        public WelcomeView()
         {
             InitializeComponent();
         }
 
-        private void WelcomeScreen_Load(object sender, EventArgs e)
+        private void WelcomeView_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome " + GlobalData.currentUser.FullName + "!";
+            lblMessage.Text = "Welcome " + GlobalData.currentUser.FullName;
         }
     }
 }

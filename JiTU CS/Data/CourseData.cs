@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JiTU_CS.Data
 {
-    class CourseData {
+    public class CourseData {
 
         public CourseData(int idIn) {
             id = idIn;

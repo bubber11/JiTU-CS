@@ -26,7 +26,7 @@ namespace JiTU_CS.Entity {
         /// Get a Course from corresponding ID
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>the course found with that ID</returns>
         public CourseData getCourse(int id) {
              CourseData return_value = null;
              this.SQL = "SELECT * FROM courses c WHERE c.course_id = \"" + id + "\";";
@@ -57,9 +57,9 @@ namespace JiTU_CS.Entity {
          }
 
          /// <summary>
-        /// 
+        /// gets a course
         /// </summary>
-        /// <param name="courseName"></param>
+        /// <param name="courseName">the name of the course</param>
         /// <returns></returns>
         public CourseData getCourse(String courseName) {
              CourseData return_value = null;
@@ -105,6 +105,9 @@ namespace JiTU_CS.Entity {
                     return_value.Add(temp);
                 }
             }
+
+            CloseConnection();
+
             return return_value;
         }
 

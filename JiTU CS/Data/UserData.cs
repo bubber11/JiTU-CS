@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JiTU_CS.Data
 {
-    class UserData
+    public class UserData
     {
         public enum Roles{Instructor = 1, Student = 2};
 

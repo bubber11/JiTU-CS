@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JiTU_CS.UI.Screens
+namespace JiTU_CS.UI.Screens.Views
 {
-    public partial class UserScreen : UserControl
+    public partial class BaseView : UserControl
     {
-        public UserScreen()
+        public BaseView()
         {
             InitializeComponent();
         }

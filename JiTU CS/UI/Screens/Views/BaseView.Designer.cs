@@ -1,6 +1,6 @@
-﻿namespace JiTU_CS.UI.Screens
+﻿namespace JiTU_CS.UI.Screens.Views
 {
-    partial class WelcomeScreen
+    partial class BaseView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblWelcome = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lblWelcome
+            // lblMessage
             // 
-            this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWelcome.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(0, 0);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(601, 112);
-            this.lblWelcome.TabIndex = 1;
-            this.lblWelcome.Text = "Welcome";
-            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(0, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(674, 74);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Message";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // WelcomeScreen
+            // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblWelcome);
-            this.Name = "WelcomeScreen";
-            this.Size = new System.Drawing.Size(601, 385);
-            this.Load += new System.EventHandler(this.WelcomeScreen_Load);
+            this.Controls.Add(this.lblMessage);
+            this.Name = "BaseView";
+            this.Size = new System.Drawing.Size(674, 562);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.Label lblWelcome;
+        protected System.Windows.Forms.Label lblMessage;
 
     }
 }

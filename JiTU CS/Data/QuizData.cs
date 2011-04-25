@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace JiTU_CS.Data {
-    class QuizData {
+    public class QuizData {
 
         public QuizData(int id) {
             id_internal = 0;

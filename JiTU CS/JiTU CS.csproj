@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CourseController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Data\AnswerData.cs" />
     <Compile Include="Data\CourseData.cs" />
@@ -96,16 +97,24 @@
       <DependentUpon>StudentScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\WelcomeScreen.resx">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Screens\Views\ClassesView.resx">
+      <DependentUpon>ClassesView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\Views\BaseView.resx">
+      <DependentUpon>BaseView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\Views\WelcomeView.resx">
+      <DependentUpon>WelcomeView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserBoundary.resx">
       <DependentUpon>UserBoundary.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\UserScreen.resx">
-      <DependentUpon>UserScreen.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Screens\BaseScreen.resx">
+      <DependentUpon>BaseScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -140,11 +149,23 @@
     <Compile Include="UI\Screens\StudentScreen.Designer.cs">
       <DependentUpon>StudentScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\WelcomeScreen.cs">
+    <Compile Include="UI\Screens\Views\ClassesView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\WelcomeScreen.Designer.cs">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <Compile Include="UI\Screens\Views\ClassesView.Designer.cs">
+      <DependentUpon>ClassesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Screens\Views\BaseView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\Views\BaseView.Designer.cs">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Screens\Views\WelcomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\Views\WelcomeView.Designer.cs">
+      <DependentUpon>WelcomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserBoundary.cs">
       <SubType>UserControl</SubType>
@@ -152,11 +173,11 @@
     <Compile Include="UI\UserBoundary.Designer.cs">
       <DependentUpon>UserBoundary.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\UserScreen.cs">
+    <Compile Include="UI\Screens\BaseScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\UserScreen.Designer.cs">
-      <DependentUpon>UserScreen.cs</DependentUpon>
+    <Compile Include="UI\Screens\BaseScreen.Designer.cs">
+      <DependentUpon>BaseScreen.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

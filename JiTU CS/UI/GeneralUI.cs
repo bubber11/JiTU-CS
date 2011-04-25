@@ -36,6 +36,7 @@ namespace JiTU_CS.UI
 
             //display login panel
             LoginPanel newLogin = new LoginPanel();
+            newLogin.Disposed += new EventHandler(loginPanel_Disposed);
             newLogin.Dock = DockStyle.Fill;
             this.Controls.Add(newLogin);
             newLogin.BringToFront();
@@ -50,6 +51,13 @@ namespace JiTU_CS.UI
         private void tsmLogout_VisibleChanged(object sender, EventArgs e)
         {
             this.tss_0.Visible = this.tsmLogout.Visible;
+        }
+
+        void loginPanel_Disposed(object sender, System.EventArgs e)
+        {
+            GlobalData.currentUser = ((LoginPanel)sender).UserLogedIn;
+            if (GlobalData.currentUser != null)
+                login();
         }
 
         public void login()

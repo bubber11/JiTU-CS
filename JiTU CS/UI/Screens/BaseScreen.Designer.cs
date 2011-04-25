@@ -1,6 +1,6 @@
 ﻿namespace JiTU_CS.UI.Screens
 {
-    partial class UserScreen
+    partial class BaseScreen
     {
         /// <summary> 
         /// Required designer variable.
