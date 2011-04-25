@@ -63,6 +63,7 @@
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\CourseEntity.cs" />
+    <Compile Include="Entity\QuestionEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="UI\GeneralUI.cs">
