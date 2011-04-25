@@ -30,34 +30,34 @@ namespace JiTU_CS.Entity
             }
             finally
             {
-                this.CloseConnectioin();
+                this.CloseConnection();
             }
         }
 
         public void updateUser(UserData userData)
         {
-            try
-            {
-                this.SQL = "UPDATE `users` u SET " +
-                    "u.`user_name` = \"" + userData.UserName + "\", " +
-                    "u.`full_name` = \"" + userData.FullName + "\", " +
-                    "u.`role_id` = \"" + userData.Role + "\", " +
-                    "u.`password` = \"" + userData.Password + "\" " +
-                    "WHERE u.`user_id` = " + userData.ID + ";";
+            
+           
+            DataReader.Close();
+            this.SQL = "UPDATE `users` u SET " +
+                "u.`user_name` = \"" + userData.UserName + "\", " +
+                "u.`full_name` = \"" + userData.FullName + "\", " +
+                "u.`role_id` = \"" + userData.Role + "\", " +
+                "u.`password` = \"" + userData.Password + "\" " +
+                "WHERE u.`user_id` = " + userData.ID + ";";
 
+            InitializeCommand();
+            OpenConnection();
 
-                if (this.ExecuteStoredProcedure() == 0)
-                    throw new Exception("Unable to update the user's data.");
+            int result = ExecuteStoredProcedure();
 
-            }
-            catch (System.Exception e)
-            {
-                throw new System.Exception(e.Message, e.InnerException);
-            }
-            finally
-            {
-                this.CloseConnectioin();
-            }
+            CloseConnection();
+            DataReader.Close();
+
+            if (result == 0)
+                throw new Exception("Unable to update User Data");
+
+  
         }
 
         public void deleteUser(UserData userData)
@@ -72,7 +72,7 @@ namespace JiTU_CS.Entity
             }
             finally
             {
-                this.CloseConnectioin();
+                this.CloseConnection();
             }
         }
 
@@ -83,7 +83,7 @@ namespace JiTU_CS.Entity
             try
             {
 
-                this.SQL = "SELECT * FROM `users` u WHERE u.`user_name` = \"" + userName + "\";";
+                this.SQL = "SELECT * FROM users u WHERE u.user_name = \"" + userName + "\";";
                 this.InitializeCommand();
                 this.OpenConnection();
 
@@ -107,7 +107,7 @@ namespace JiTU_CS.Entity
             }
             finally
             {
-                this.CloseConnectioin();
+                this.CloseConnection();
             }
 
             return newUser;
@@ -120,7 +120,7 @@ namespace JiTU_CS.Entity
             try
             {
 
-                this.SQL = "SELECT * FROM `users` u WHERE u.`user_id` = \"" + userID + ";";
+                this.SQL = "SELECT * FROM users u WHERE u.user_id = \"" + userID + "\";";
                 this.InitializeCommand();
                 this.OpenConnection();
 
@@ -128,6 +128,7 @@ namespace JiTU_CS.Entity
 
                 if (this.DataReader.HasRows)
                 {
+                    DataReader.Read();
                     newUser = new UserData(this.DataReader.GetInt32("user_id"));
                     newUser.FullName = this.DataReader.GetString("full_name");
                     newUser.Password = this.DataReader.GetString("password");
@@ -143,7 +144,7 @@ namespace JiTU_CS.Entity
             }
             finally
             {
-                this.CloseConnectioin();
+                this.CloseConnection();
             }
 
             return newUser;

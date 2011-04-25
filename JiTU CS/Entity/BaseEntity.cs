@@ -45,10 +45,12 @@ namespace JiTU_CS.Entity
         /// <summary>
         /// Closes the connection to the MySQL server
         /// </summary>
-        public virtual void CloseConnectioin()
+        public void CloseConnection()
         {
             Connection.Close();
             MySqlConnection.ClearAllPools();
+            DataReader.Close();
+
         }
 
         /// <summary>
@@ -173,7 +175,7 @@ namespace JiTU_CS.Entity
         /// </summary>
         public void InitializeCommand()
         {
-            if (Command == null)
+            if (true)
             {
                 try
                 {
