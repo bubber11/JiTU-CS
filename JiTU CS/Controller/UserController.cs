@@ -60,6 +60,25 @@ namespace JiTU_CS.Controller
                 userEntity.updateUser(theUser);
         }
 
+        /// <summary>
+        /// gets the list of all students in the database
+        /// </summary>
+        /// <returns>list of all students</returns>
+        public static List<UserData> getStudents()
+        {
+            return userEntity.getAllStudents();
+        }
+
+        /// <summary>
+        /// gets the list of all students in a specified course
+        /// </summary>
+        /// <param name="course">the course to search in</param>
+        /// <returns>list of student in the course</returns>
+        public static List<UserData> getStudents(CourseData course)
+        {
+            return userEntity.GetStudentsByCourse(course.id);
+        }
+
         #endregion
     }
 }
