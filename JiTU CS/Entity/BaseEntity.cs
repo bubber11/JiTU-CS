@@ -45,7 +45,7 @@ namespace JiTU_CS.Entity
         /// <summary>
         /// Closes the connection to the MySQL server
         /// </summary>
-        public void CloseConnectioin()
+        public virtual void CloseConnectioin()
         {
             Connection.Close();
             MySqlConnection.ClearAllPools();
