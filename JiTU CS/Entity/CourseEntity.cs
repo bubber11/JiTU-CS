@@ -5,8 +5,8 @@ using System.Text;
 using JiTU_CS.Data;
 
 namespace JiTU_CS.Entity {
-    class CourseEntity : BaseEntity {
 
+    class CourseEntity : BaseEntity {
 
         #region constructor
         public CourseEntity() {

@@ -10,6 +10,8 @@ namespace JiTU_CS
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
         [STAThread]
         static void Main()
         {
@@ -17,6 +19,9 @@ namespace JiTU_CS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UI.GeneralUI());
             //Console.WriteLine("Hello World");
+
+            Entity.QuestionEntity temp = new Entity.QuestionEntity();
+
         }
     }
 }
