@@ -36,6 +36,9 @@ namespace JiTU_CS.Entity {
                 return_value = new QuestionData(DataReader.GetUInt16("question_id"));
                 return_value.Text = DataReader.GetString("question");
             }
+            List<AnswerData> temp = getAnswers(return_value);
+            for (int i = 0; i < temp.Count; i++)
+                return_value.addAnswer(temp[i]);
 
             return return_value;
         }
@@ -52,7 +55,7 @@ namespace JiTU_CS.Entity {
             if (DataReader.HasRows) {
                 while (DataReader.Read()) {
                     AnswerData temp = new AnswerData(DataReader.GetUInt16("answer_id"));
-                    temp.correct = false;
+                    temp.correct = DataReader.GetBoolean("is_correct");
                     temp.text = DataReader.GetString("text");
                     return_value.Add(temp);
                 }

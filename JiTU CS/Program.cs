@@ -20,6 +20,13 @@ namespace JiTU_CS
             //Application.Run(new UI.GeneralUI());
 
             Entity.QuestionEntity temp = new Entity.QuestionEntity();
+            Data.QuestionData temp1 = temp.getQuestion(1);
+
+            Console.WriteLine(temp1.Text);
+
+            for (int i = 0; i < temp1.answers.Count; i++)
+                Console.WriteLine(i + ". " + temp1.answers[i].text);
+
 
         }
     }
