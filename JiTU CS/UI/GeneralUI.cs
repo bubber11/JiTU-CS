@@ -56,7 +56,8 @@ namespace JiTU_CS.UI
         void loginPanel_Disposed(object sender, System.EventArgs e)
         {
             GlobalData.currentUser = ((LoginPanel)sender).UserLogedIn;
-            login();
+            if (GlobalData.currentUser != null)
+                login();
         }
 
         public void login()

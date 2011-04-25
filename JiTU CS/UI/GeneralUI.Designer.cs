@@ -32,14 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralUI));
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tss_0 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tss_0 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.loginPanel = new JiTU_CS.UI.LoginPanel();
             tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tsmExit
+            // 
+            tsmExit.Name = "tsmExit";
+            tsmExit.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
+                        | System.Windows.Forms.Keys.E)));
+            tsmExit.Size = new System.Drawing.Size(175, 22);
+            tsmExit.Text = "Exit";
+            tsmExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // mnuMain
             // 
@@ -63,14 +72,22 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // tsmExit
+            // tsmLogout
             // 
-            tsmExit.Name = "tsmExit";
-            tsmExit.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
-                        | System.Windows.Forms.Keys.E)));
-            tsmExit.Size = new System.Drawing.Size(175, 22);
-            tsmExit.Text = "Exit";
-            tsmExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.tsmLogout.Name = "tsmLogout";
+            this.tsmLogout.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
+                        | System.Windows.Forms.Keys.L)));
+            this.tsmLogout.Size = new System.Drawing.Size(175, 22);
+            this.tsmLogout.Text = "Logout";
+            this.tsmLogout.Visible = false;
+            this.tsmLogout.VisibleChanged += new System.EventHandler(this.tsmLogout_VisibleChanged);
+            this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
+            // 
+            // tss_0
+            // 
+            this.tss_0.Name = "tss_0";
+            this.tss_0.Size = new System.Drawing.Size(172, 6);
+            this.tss_0.Visible = false;
             // 
             // helpToolStripMenuItem
             // 
@@ -86,23 +103,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // tss_0
-            // 
-            this.tss_0.Name = "tss_0";
-            this.tss_0.Size = new System.Drawing.Size(172, 6);
-            this.tss_0.Visible = false;
-            // 
-            // tsmLogout
-            // 
-            this.tsmLogout.Name = "tsmLogout";
-            this.tsmLogout.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
-                        | System.Windows.Forms.Keys.L)));
-            this.tsmLogout.Size = new System.Drawing.Size(175, 22);
-            this.tsmLogout.Text = "Logout";
-            this.tsmLogout.Visible = false;
-            this.tsmLogout.VisibleChanged += new System.EventHandler(this.tsmLogout_VisibleChanged);
-            this.tsmLogout.Click += new System.EventHandler(this.tsmLogout_Click);
-            // 
             // loginPanel
             // 
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -110,7 +110,7 @@
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(838, 571);
             this.loginPanel.TabIndex = 0;
-            this.loginPanel.Disposed += new System.EventHandler(loginPanel_Disposed);
+            this.loginPanel.Disposed += new System.EventHandler(this.loginPanel_Disposed);
             // 
             // GeneralUI
             // 

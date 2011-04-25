@@ -68,7 +68,6 @@
             this.Controls.Add(this.lvwCourses);
             this.Name = "ClassesView";
             this.Size = new System.Drawing.Size(751, 494);
-            this.Load += new System.EventHandler(this.ClassesView_Load);
             this.Controls.SetChildIndex(this.lblMessage, 0);
             this.Controls.SetChildIndex(this.lvwCourses, 0);
             this.ResumeLayout(false);

@@ -33,11 +33,12 @@
             // 
             // lblMessage
             // 
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.Location = new System.Drawing.Point(0, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(418, 74);
+            this.lblMessage.Size = new System.Drawing.Size(674, 74);
             this.lblMessage.TabIndex = 1;
             this.lblMessage.Text = "Message";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -48,7 +49,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblMessage);
             this.Name = "BaseView";
-            this.Size = new System.Drawing.Size(418, 311);
+            this.Size = new System.Drawing.Size(674, 562);
             this.ResumeLayout(false);
 
         }

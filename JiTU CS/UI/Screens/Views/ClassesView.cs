@@ -30,10 +30,7 @@ namespace JiTU_CS.UI.Screens.Views
         public ClassesView()
         {
             InitializeComponent();
-        }
 
-        private void ClassesView_Load(object sender, EventArgs e)
-        {
             lvwCourses.Items.Clear();
             List<CourseData> myCourses;
 
@@ -43,7 +40,6 @@ namespace JiTU_CS.UI.Screens.Views
             {
                 lvwCourses.Items.Add(course.name, "class.png");
             }
-            
         }
 
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
