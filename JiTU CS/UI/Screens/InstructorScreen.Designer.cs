@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnViewResults = new System.Windows.Forms.Button();
+            this.btnManageStudents = new System.Windows.Forms.Button();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.SuspendLayout();
             this.SuspendLayout();
@@ -38,21 +38,22 @@
             // 
             // scMain.Panel1
             // 
-            this.scMain.Panel1.Controls.Add(this.btnViewResults);
+            this.scMain.Panel1.Controls.Add(this.btnManageStudents);
             this.scMain.Size = new System.Drawing.Size(757, 501);
             // 
-            // btnViewResults
+            // btnManageStudents
             // 
-            this.btnViewResults.BackgroundImage = global::JiTU_CS.Properties.Resources.button_back;
-            this.btnViewResults.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnViewResults.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnViewResults.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnViewResults.Location = new System.Drawing.Point(0, 0);
-            this.btnViewResults.Name = "btnViewResults";
-            this.btnViewResults.Size = new System.Drawing.Size(163, 50);
-            this.btnViewResults.TabIndex = 2;
-            this.btnViewResults.Text = "View Results";
-            this.btnViewResults.UseVisualStyleBackColor = true;
+            this.btnManageStudents.BackgroundImage = global::JiTU_CS.Properties.Resources.button_back;
+            this.btnManageStudents.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageStudents.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnManageStudents.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnManageStudents.Location = new System.Drawing.Point(0, 0);
+            this.btnManageStudents.Name = "btnManageStudents";
+            this.btnManageStudents.Size = new System.Drawing.Size(163, 50);
+            this.btnManageStudents.TabIndex = 2;
+            this.btnManageStudents.Text = "Manage Students";
+            this.btnManageStudents.UseVisualStyleBackColor = true;
+            this.btnManageStudents.Click += new System.EventHandler(this.btnManageStudents_Click);
             // 
             // InstructorScreen
             // 
@@ -69,6 +70,6 @@
 
         #endregion
 
-        protected System.Windows.Forms.Button btnViewResults;
+        protected System.Windows.Forms.Button btnManageStudents;
     }
 }

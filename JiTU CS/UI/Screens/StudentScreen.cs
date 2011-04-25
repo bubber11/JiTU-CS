@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace JiTU_CS.UI.Screens
 {
-    public partial class StudentScreen : UserScreen
+    public partial class StudentScreen : BaseScreen
     {
-        WelcomeScreen welcomeScreen;
-
         public StudentScreen()
         {
             InitializeComponent();
@@ -19,10 +17,12 @@ namespace JiTU_CS.UI.Screens
 
         private void StudentScreen_Load(object sender, EventArgs e)
         {
-            welcomeScreen = new WelcomeScreen();
-            welcomeScreen.Dock = DockStyle.Fill;
+            DisplayView(new Views.WelcomeView());
+        }
 
-            scMain.Panel2.Controls.Add(welcomeScreen);
+        private void btnTakeQuiz_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

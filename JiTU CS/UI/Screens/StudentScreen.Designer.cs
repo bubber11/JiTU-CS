@@ -52,6 +52,7 @@
             this.btnTakeQuiz.TabIndex = 1;
             this.btnTakeQuiz.Text = "Take Quiz";
             this.btnTakeQuiz.UseVisualStyleBackColor = true;
+            this.btnTakeQuiz.Click += new System.EventHandler(this.btnTakeQuiz_Click);
             // 
             // StudentScreen
             // 
