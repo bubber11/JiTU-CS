@@ -18,7 +18,7 @@ namespace JiTU_CS.UI.Screens.Views
 
         private void WelcomeView_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome " + GlobalData.currentUser.FullName;
+            lblMessage.Text = "Welcome " + GlobalData.currentUser.FullName;
         }
     }
 }

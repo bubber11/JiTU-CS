@@ -28,25 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlMain
-            // 
-            this.pnlMain.Controls.Add(this.lblWelcome);
-            this.pnlMain.Size = new System.Drawing.Size(633, 451);
-            // 
-            // lblWelcome
-            // 
-            this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWelcome.Font = new System.Drawing.Font("Lucida Sans Unicode", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(0, 0);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(633, 85);
-            this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Welcome";
-            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WelcomeView
             // 
@@ -55,13 +37,12 @@
             this.Name = "WelcomeView";
             this.Size = new System.Drawing.Size(633, 451);
             this.Load += new System.EventHandler(this.WelcomeView_Load);
-            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblWelcome;
+
     }
 }

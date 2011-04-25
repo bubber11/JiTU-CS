@@ -28,37 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView = new System.Windows.Forms.ListView();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("CSE325");
+            this.lvwCourses = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // pnlMain
+            // lblMessage
             // 
-            this.pnlMain.Size = new System.Drawing.Size(684, 405);
+            this.lblMessage.Size = new System.Drawing.Size(751, 74);
+            this.lblMessage.Text = "Select a Course";
             // 
-            // listView
+            // lvwCourses
             // 
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.Location = new System.Drawing.Point(0, 0);
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(684, 405);
-            this.listView.TabIndex = 1;
-            this.listView.UseCompatibleStateImageBehavior = false;
+            this.lvwCourses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwCourses.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.lvwCourses.Location = new System.Drawing.Point(0, 74);
+            this.lvwCourses.MultiSelect = false;
+            this.lvwCourses.Name = "lvwCourses";
+            this.lvwCourses.Size = new System.Drawing.Size(751, 420);
+            this.lvwCourses.TabIndex = 2;
+            this.lvwCourses.UseCompatibleStateImageBehavior = false;
             // 
             // ClassesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView);
+            this.Controls.Add(this.lvwCourses);
             this.Name = "ClassesView";
-            this.Size = new System.Drawing.Size(684, 405);
-            this.Controls.SetChildIndex(this.listView, 0);
-            this.Controls.SetChildIndex(this.pnlMain, 0);
+            this.Size = new System.Drawing.Size(751, 494);
+            this.Controls.SetChildIndex(this.lblMessage, 0);
+            this.Controls.SetChildIndex(this.lvwCourses, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView;
+        private System.Windows.Forms.ListView lvwCourses;
+
+
+
     }
 }

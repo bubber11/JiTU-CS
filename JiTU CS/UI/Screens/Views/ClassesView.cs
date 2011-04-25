@@ -15,5 +15,6 @@ namespace JiTU_CS.UI.Screens.Views
         {
             InitializeComponent();
         }
+
     }
 }

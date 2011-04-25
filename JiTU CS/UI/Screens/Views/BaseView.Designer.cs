@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlMain = new System.Windows.Forms.Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // pnlMain
+            // lblMessage
             // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(418, 311);
-            this.pnlMain.TabIndex = 0;
+            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(0, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(418, 74);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Message";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ViewBase
+            // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlMain);
-            this.Name = "ViewBase";
+            this.Controls.Add(this.lblMessage);
+            this.Name = "BaseView";
             this.Size = new System.Drawing.Size(418, 311);
             this.ResumeLayout(false);
 
@@ -52,6 +55,7 @@
 
         #endregion
 
-        protected System.Windows.Forms.Panel pnlMain;
+        protected System.Windows.Forms.Label lblMessage;
+
     }
 }
