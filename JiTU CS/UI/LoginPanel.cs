@@ -14,6 +14,21 @@ namespace JiTU_CS.UI
 {
     public partial class LoginPanel : UserControl
     {
+        #region Members
+
+        private UserData myUser;
+
+        #endregion
+
+        #region Properties
+
+        public UserData UserLogedIn
+        {
+            get { return myUser; }
+        }
+
+        #endregion
+
         #region Methods
 
         public LoginPanel()
@@ -36,23 +51,14 @@ namespace JiTU_CS.UI
         {
             try
             {
-                UserData userData;
-                UserController userController = new UserController();
-
-                userData = userController.getUser(txtUserName.Text);
+                myUser = UserController.getUser(txtUserName.Text);
 
                 //Before considering the password, the user must exist in the database
-                if (userData != null)
+                if (myUser != null)
                 {
-                    if (userController.AuthenticateUser(userData, txtPassword.Text))
+                    if (UserController.AuthenticateUser(myUser, txtPassword.Text))
                     {
-                        //user exists, now copy to static user
-                        GlobalData.currentUser = userData;
-
-                        //remove this screen
-                        ((GeneralUI)this.Parent).login();
                         this.Dispose();
-
                     }
                     else
                         MessageBox.Show("The User name or password is incorrect.");

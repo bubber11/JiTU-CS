@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnTakeQuiz = new System.Windows.Forms.Button();
+            this.btnViewResults = new System.Windows.Forms.Button();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.SuspendLayout();
             this.SuspendLayout();
@@ -38,6 +39,7 @@
             // 
             // scMain.Panel1
             // 
+            this.scMain.Panel1.Controls.Add(this.btnViewResults);
             this.scMain.Panel1.Controls.Add(this.btnTakeQuiz);
             // 
             // btnTakeQuiz
@@ -54,6 +56,20 @@
             this.btnTakeQuiz.UseVisualStyleBackColor = true;
             this.btnTakeQuiz.Click += new System.EventHandler(this.btnTakeQuiz_Click);
             // 
+            // btnViewResults
+            // 
+            this.btnViewResults.BackgroundImage = global::JiTU_CS.Properties.Resources.button_back;
+            this.btnViewResults.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnViewResults.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewResults.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnViewResults.Location = new System.Drawing.Point(0, 50);
+            this.btnViewResults.Name = "btnViewResults";
+            this.btnViewResults.Size = new System.Drawing.Size(163, 50);
+            this.btnViewResults.TabIndex = 2;
+            this.btnViewResults.Text = "Results";
+            this.btnViewResults.UseVisualStyleBackColor = true;
+            this.btnViewResults.Click += new System.EventHandler(this.btnViewResults_Click);
+            // 
             // StudentScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -68,6 +84,7 @@
         #endregion
 
         protected System.Windows.Forms.Button btnTakeQuiz;
+        protected System.Windows.Forms.Button btnViewResults;
 
     }
 }

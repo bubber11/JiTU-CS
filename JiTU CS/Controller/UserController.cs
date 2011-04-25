@@ -9,8 +9,14 @@ using JiTU_CS.Data;
 
 namespace JiTU_CS.Controller
 {
-    class UserController
+    static class UserController
     {
+        #region Members
+
+        static UserEntity userEntity = new UserEntity();
+
+        #endregion
+
         #region Methods
 
         /// <summary>
@@ -18,9 +24,8 @@ namespace JiTU_CS.Controller
         /// </summary>
         /// <param name="UserName">the user name to search for</param>
         /// <returns>user found in database with the specified user name</returns>
-        public UserData getUser(string UserName)
+        public static UserData getUser(string UserName)
         {
-            UserEntity userEntity = new UserEntity();
             return userEntity.getUser(UserName);
         }
 
@@ -30,7 +35,7 @@ namespace JiTU_CS.Controller
         /// <param name="theUser">the user trying to log in</param>
         /// <param name="Password">the password of the user</param>
         /// <returns></returns>
-        public bool AuthenticateUser(UserData theUser, string Password)
+        public static bool AuthenticateUser(UserData theUser, string Password)
         {
             SHA1 MyHasher = new SHA1CryptoServiceProvider();
             byte[] result = MyHasher.ComputeHash(Encoding.Default.GetBytes(Password));
@@ -47,10 +52,8 @@ namespace JiTU_CS.Controller
         /// Saves a user
         /// </summary>
         /// <param name="theUser">User to be saved</param>
-        public void SaveUser(UserData theUser)
+        public static void SaveUser(UserData theUser)
         {
-            UserEntity userEntity = new UserEntity();
-
             if (theUser.ID > 0)
                 userEntity.addUser(theUser);
             else

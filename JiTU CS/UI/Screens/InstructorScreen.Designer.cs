@@ -71,6 +71,7 @@
             this.btnQuizes.TabIndex = 3;
             this.btnQuizes.Text = "Quizes";
             this.btnQuizes.UseVisualStyleBackColor = true;
+            this.btnQuizes.Click += new System.EventHandler(this.btnQuizes_Click);
             // 
             // btnResults
             // 
@@ -84,6 +85,7 @@
             this.btnResults.TabIndex = 4;
             this.btnResults.Text = "Results";
             this.btnResults.UseVisualStyleBackColor = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // InstructorScreen
             // 

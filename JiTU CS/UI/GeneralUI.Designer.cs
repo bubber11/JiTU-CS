@@ -110,6 +110,7 @@
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(838, 571);
             this.loginPanel.TabIndex = 0;
+            this.loginPanel.Disposed += new System.EventHandler(loginPanel_Disposed);
             // 
             // GeneralUI
             // 
