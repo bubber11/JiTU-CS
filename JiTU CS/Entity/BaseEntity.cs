@@ -49,7 +49,6 @@ namespace JiTU_CS.Entity
         {
             Connection.Close();
             MySqlConnection.ClearAllPools();
-            DataReader.Close();
 
         }
 
