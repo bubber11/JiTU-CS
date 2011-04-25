@@ -13,9 +13,10 @@ namespace JiTU_CS
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.GeneralUI());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new UI.GeneralUI());
+            Console.WriteLine("Hello World");
         }
     }
 }
