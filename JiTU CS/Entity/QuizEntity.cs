@@ -18,6 +18,11 @@ namespace JiTU_CS.Entity {
         }
         #endregion
 
+        public void addQuiz(QuizData value) {
+
+
+        }
+
         public QuizData getQuiz(int id) {
             QuizData return_value = null;
 

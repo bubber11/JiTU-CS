@@ -48,6 +48,7 @@ namespace JiTU_CS.Entity {
         }
 
         public QuestionData getQuestion(String text) {
+            
             QuestionData return_value = null;
 
             if (DataReader != null)
@@ -148,6 +149,7 @@ namespace JiTU_CS.Entity {
         }
 
         public void addAnswer(QuestionData theQuestion, AnswerData theAnswer) {
+           
             if (DataReader != null)
                 DataReader.Close();
 
@@ -162,6 +164,26 @@ namespace JiTU_CS.Entity {
             if (result == 0)
                 throw new Exception("Unable to create realtionship between Question " + theQuestion.id + " and Answer " + theAnswer.id + ".");
 
+        }
+
+        public int getNextId() {
+            int return_value = 0;
+
+            if (DataReader != null)
+                DataReader.Read();
+
+            SQL = "SELECT MAX(q.question_id) FROM questions q;";
+            InitializeCommand();
+            OpenConnection();
+            DataReader = Command.ExecuteReader();
+
+            if (DataReader.HasRows) {
+                DataReader.Read();
+                return_value = DataReader.GetUInt16("MAX(q.question_id)");
+            }
+            return_value++;
+
+            return return_value;
         }
 
         #endregion

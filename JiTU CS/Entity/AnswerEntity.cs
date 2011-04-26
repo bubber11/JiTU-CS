@@ -20,7 +20,7 @@ namespace JiTU_CS.Entity {
 
         #endregion
 
-        public AnswerData getAnswer(int id) {
+        public AnswerData GetAnswer(int id) {
 
             AnswerData return_value = null;
 
@@ -40,7 +40,7 @@ namespace JiTU_CS.Entity {
             return return_value;
         }
 
-        public AnswerData getAnswer(String text) {
+        public AnswerData GetAnswer(String text) {
             AnswerData return_value = null;
 
             if (DataReader != null)
@@ -70,9 +70,13 @@ namespace JiTU_CS.Entity {
             return return_value;
         }
 
-        public void addAnswer(AnswerData theAnswer) {
+        public void AddAnswer(AnswerData theAnswer) {
+            
+            theAnswer.id = GetNewId();
+
             if (DataReader != null)
                 DataReader.Close();
+            
 
             SQL = "INSERT INTO answers (text, is_correct) VALUES (\"" + theAnswer.text + "\", \"" + theAnswer.correct + "\");";
             InitializeCommand();
@@ -87,7 +91,7 @@ namespace JiTU_CS.Entity {
 
         }
 
-        public void updateAnswer(AnswerData theAnswer) {
+        public void UpdateAnswer(AnswerData theAnswer) {
 
             if (DataReader != null)
                 DataReader.Close();
@@ -106,8 +110,7 @@ namespace JiTU_CS.Entity {
 
         }
 
-
-        public void deleteAnswer(AnswerData theAnswer) {
+        public void DeleteAnswer(AnswerData theAnswer) {
 
             if (DataReader != null)
                 DataReader.Close();
@@ -125,7 +128,31 @@ namespace JiTU_CS.Entity {
 
         }
 
+        public int GetNewId() {
+            int return_value = 0;
 
+            if (DataReader != null)
+                DataReader.Close();
+
+            SQL = "SELECT MAX(a.answer_id) FROM answers a;";
+
+            InitializeCommand();
+
+            OpenConnection();
+
+            DataReader = Command.ExecuteReader();
+
+            if (DataReader.HasRows) {
+                DataReader.Read();
+                return_value = DataReader.GetUInt16("MAX(a.answer_id)");
+            }
+
+            CloseConnection();
+
+            return_value++;
+
+            return return_value;
+        }
 
 
     }
