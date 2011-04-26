@@ -7,6 +7,15 @@ namespace JiTU_CS.Data {
     public class QuizData {   
         
         #region properties
+        public string Name {
+            get {
+                return name_internal;
+            }
+            set {
+                name_internal = value;
+            }
+        }
+
         public int id {
             get {
                 return id_internal;
@@ -56,6 +65,7 @@ namespace JiTU_CS.Data {
         #endregion
 
         #region members
+        private string name_internal;
         private int id_internal;
         private List<QuestionData> questions_internal;
 
