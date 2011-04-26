@@ -72,6 +72,7 @@ namespace JiTU_CS.Entity {
         }
 
         public List<AnswerData> getAnswers(QuestionData theQuestion) {
+           
             List<AnswerData> return_value = new List<AnswerData>();
 
             if (DataReader != null)
@@ -89,8 +90,9 @@ namespace JiTU_CS.Entity {
                     temp.text = DataReader.GetString("text");
                     return_value.Add(temp);
                 }
-            } else
-                throw new Exception("The question does not have any answers");
+            }
+
+            CloseConnection();
 
             return return_value;
         }

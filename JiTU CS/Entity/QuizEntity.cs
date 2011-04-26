@@ -60,12 +60,10 @@ namespace JiTU_CS.Entity {
             if (DataReader != null)
                 DataReader.Close();
 
-            SQL = "SELECT * FROM rel_quizzes_questions r WHERE r.question_id = \"" + quizIn.id + "\";";
+            SQL = "SELECT r.question_id FROM rel_quizzes_questions r where r.quiz_id =\"" + quizIn.id + "\";";
 
             InitializeCommand();
-
             OpenConnection();
-
             DataReader = Command.ExecuteReader();
 
             if (DataReader.HasRows) {
@@ -74,8 +72,6 @@ namespace JiTU_CS.Entity {
                     return_value.Add(temp.getQuestion(DataReader.GetUInt16("question_id")));
                 }
             }
-            else
-                throw new Exception("The quiz has no questions");
 
 
             return return_value;
