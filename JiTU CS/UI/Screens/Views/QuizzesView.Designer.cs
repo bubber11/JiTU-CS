@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Quiz 1", 0);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Quiz 1", 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuizzesView));
             this.lvwQuizzes = new System.Windows.Forms.ListView();
             this.imlquizzes = new System.Windows.Forms.ImageList(this.components);
@@ -49,13 +49,14 @@
             // 
             this.lvwQuizzes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwQuizzes.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.lvwQuizzes.LargeImageList = this.imlquizzes;
             this.lvwQuizzes.Location = new System.Drawing.Point(0, 95);
             this.lvwQuizzes.Name = "lvwQuizzes";
             this.lvwQuizzes.Size = new System.Drawing.Size(674, 467);
             this.lvwQuizzes.TabIndex = 2;
             this.lvwQuizzes.UseCompatibleStateImageBehavior = false;
+            this.lvwQuizzes.SelectedIndexChanged += new System.EventHandler(this.lvwQuizzes_SelectedIndexChanged);
             // 
             // imlquizzes
             // 
@@ -87,6 +88,7 @@
             // 
             // removeToolStripMenuItem
             // 
+            this.removeToolStripMenuItem.Enabled = false;
             this.removeToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.remove;
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
@@ -95,6 +97,7 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.Enabled = false;
             this.editToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.edit;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
@@ -103,6 +106,7 @@
             // 
             // submitToolStripMenuItem
             // 
+            this.submitToolStripMenuItem.Enabled = false;
             this.submitToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.accept;
             this.submitToolStripMenuItem.Name = "submitToolStripMenuItem";
             this.submitToolStripMenuItem.Size = new System.Drawing.Size(44, 36);

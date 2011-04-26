@@ -35,11 +35,14 @@ namespace JiTU_CS.UI.Screens.Views
         private QuizData GetSelectedQuiz()
         {
             //find the quiz weve selected from text
-            foreach (QuizData quiz in quizzes)
+            if (lvwQuizzes.SelectedItems.Count != 0)
             {
-                if (quiz.Name == lvwQuizzes.SelectedItems[0].Text)
+                foreach (QuizData quiz in quizzes)
                 {
-                    return quiz;
+                    if (quiz.Name == lvwQuizzes.SelectedItems[0].Text)
+                    {
+                        return quiz;
+                    }
                 }
             }
 
@@ -49,17 +52,13 @@ namespace JiTU_CS.UI.Screens.Views
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuizData quizToRemove = null;
+            QuizData quizToRemove;
+            quizToRemove = GetSelectedQuiz();
 
-            if (lvwQuizzes.SelectedItems.Count == 0) //is no quiz selected
-                MessageBox.Show("Please select a quiz to delete", "", MessageBoxButtons.OK);
-            else //a quiz is slected
+            if (quizToRemove != null)
             {
-                quizToRemove = GetSelectedQuiz();
-                
-
                 //prompt user if they want to delete it
-                var result = MessageBox.Show("Are you sure you want to permanently delete " + quizToRemove.Name + "?","", MessageBoxButtons.YesNo);
+                var result = MessageBox.Show("Are you sure you want to permanently delete " + quizToRemove.Name + "?", "", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     //remove quiz from list
@@ -96,13 +95,33 @@ namespace JiTU_CS.UI.Screens.Views
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            QuizData selectedQuiz;
+            selectedQuiz = GetSelectedQuiz();
 
-            ((BaseScreen)this.Parent.Parent.Parent).DisplayView(new QuizView(GetSelectedQuiz()));
+            if (selectedQuiz != null)
+                ((BaseScreen)this.Parent.Parent.Parent).DisplayView(new QuizView(selectedQuiz));
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void lvwQuizzes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvwQuizzes.SelectedItems.Count == 0)
+            {
+                submitToolStripMenuItem.Enabled = false;
+                editToolStripMenuItem.Enabled = false;
+                removeToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                submitToolStripMenuItem.Enabled = true;
+                editToolStripMenuItem.Enabled = true;
+                removeToolStripMenuItem.Enabled = true;
+            }
+        }
+
     }
 }
