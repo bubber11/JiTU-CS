@@ -28,10 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.AutoScroll = true;
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(0, 55);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(674, 507);
+            this.pnlMain.TabIndex = 2;
+            // 
+            // QuizView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlMain);
+            this.Name = "QuizView";
+            this.Controls.SetChildIndex(this.lblMessage, 0);
+            this.Controls.SetChildIndex(this.pnlMain, 0);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlMain;
+
     }
 }

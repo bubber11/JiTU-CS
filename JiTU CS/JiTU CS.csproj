@@ -107,6 +107,10 @@
       <DependentUpon>BaseView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Screens\Views\QuizView.resx">
+      <DependentUpon>QuizView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Screens\Views\QuizzesView.resx">
       <DependentUpon>QuizzesView.cs</DependentUpon>
       <SubType>Designer</SubType>
