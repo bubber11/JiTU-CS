@@ -26,11 +26,11 @@ namespace JiTU_CS.UI.Screens
         {
             //create a new view, tell it where to return, then display it
             ClassesView classesView = new ClassesView();
-            classesView.Disposed += new EventHandler(gotoQuizesView);
+            classesView.Disposed += new EventHandler(gotoquizzesView);
             DisplayView(classesView);
         }
 
-        private void gotoQuizesView(object sender, EventArgs e)
+        private void gotoquizzesView(object sender, EventArgs e)
         {
             //make sure a class was selected
             if (((ClassesView)sender).SelectedCourse != null)

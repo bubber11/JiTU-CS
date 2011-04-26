@@ -52,8 +52,15 @@ namespace JiTU_CS.Data {
         #endregion
 
         #region functions
-        public QuizData(int id) {
+        public QuizData() {
             id_internal = 0;
+            questions_internal = new List<QuestionData>();
+            added_internal = new DateTime();
+            due_internal = new DateTime();
+        }
+
+        public QuizData(int id) {
+            id_internal = id;
             questions_internal = new List<QuestionData>();
             added_internal = new DateTime();
             due_internal = new DateTime();

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnStudents = new System.Windows.Forms.Button();
-            this.btnQuizes = new System.Windows.Forms.Button();
+            this.btnQuizzes = new System.Windows.Forms.Button();
             this.btnResults = new System.Windows.Forms.Button();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.SuspendLayout();
@@ -41,7 +41,7 @@
             // scMain.Panel1
             // 
             this.scMain.Panel1.Controls.Add(this.btnResults);
-            this.scMain.Panel1.Controls.Add(this.btnQuizes);
+            this.scMain.Panel1.Controls.Add(this.btnQuizzes);
             this.scMain.Panel1.Controls.Add(this.btnStudents);
             this.scMain.Size = new System.Drawing.Size(757, 501);
             // 
@@ -59,19 +59,19 @@
             this.btnStudents.UseVisualStyleBackColor = true;
             this.btnStudents.Click += new System.EventHandler(this.btnStudents_Click);
             // 
-            // btnQuizes
+            // btnQuizzes
             // 
-            this.btnQuizes.BackgroundImage = global::JiTU_CS.Properties.Resources.button_back;
-            this.btnQuizes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQuizes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnQuizes.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btnQuizes.Location = new System.Drawing.Point(0, 50);
-            this.btnQuizes.Name = "btnQuizes";
-            this.btnQuizes.Size = new System.Drawing.Size(163, 50);
-            this.btnQuizes.TabIndex = 3;
-            this.btnQuizes.Text = "Quizes";
-            this.btnQuizes.UseVisualStyleBackColor = true;
-            this.btnQuizes.Click += new System.EventHandler(this.btnQuizes_Click);
+            this.btnQuizzes.BackgroundImage = global::JiTU_CS.Properties.Resources.button_back;
+            this.btnQuizzes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQuizzes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnQuizzes.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnQuizzes.Location = new System.Drawing.Point(0, 50);
+            this.btnQuizzes.Name = "btnQuizzes";
+            this.btnQuizzes.Size = new System.Drawing.Size(163, 50);
+            this.btnQuizzes.TabIndex = 3;
+            this.btnQuizzes.Text = "Quizzes";
+            this.btnQuizzes.UseVisualStyleBackColor = true;
+            this.btnQuizzes.Click += new System.EventHandler(this.btnquizzes_Click);
             // 
             // btnResults
             // 
@@ -103,7 +103,7 @@
         #endregion
 
         protected System.Windows.Forms.Button btnStudents;
-        protected System.Windows.Forms.Button btnQuizes;
+        protected System.Windows.Forms.Button btnQuizzes;
         protected System.Windows.Forms.Button btnResults;
     }
 }

@@ -43,20 +43,22 @@ namespace JiTU_CS.UI.Screens
             }
         }
 
-        private void btnQuizes_Click(object sender, EventArgs e)
+        private void btnquizzes_Click(object sender, EventArgs e)
         {
             //create a new view, tell it where to return, then display it
             ClassesView classesView = new ClassesView();
-            classesView.Disposed += new EventHandler(gotoQuizesView);
+            classesView.Disposed += new EventHandler(gotoQuizzesView);
             DisplayView(classesView);
         }
 
-        void gotoQuizesView(object sender, EventArgs e)
+        void gotoQuizzesView(object sender, EventArgs e)
         {
-            //make sure a class was selected
-            if (((ClassesView)sender).SelectedCourse != null)
-            {
+            CourseData selectedCourse = ((ClassesView)sender).SelectedCourse;
 
+            //make sure a class was selected
+            if (selectedCourse != null)
+            {
+                DisplayView(new QuizzesView(selectedCourse));
             }
         }
 

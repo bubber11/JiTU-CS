@@ -117,15 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="imlQuizes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="imlquizzes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="imlQuizes.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="imlquizzes.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        JQAAAk1TRnQBSQFMAwEBAAEIAQABCAEAAUABAAFAAQAE/wERAQAI/wFCAU0BNgcAATYDAAEoBAABAQIA
+        JQAAAk1TRnQBSQFMAwEBAAFQAQABUAEAAUABAAFAAQAE/wERAQAI/wFCAU0BNgcAATYDAAEoBAABAQIA
         AUADAAEBAQABEAYAAYD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8ANgAB/wF/Ad4BewHeAXsB3gF7
         Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7
         Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7Ad4BewHeAXsB3gF7
@@ -287,4 +287,7 @@
         AX8C/xgAAf8B4AMAA/8YAAH/AeACAAEBA/8YAAj/GAAI/xgACP8YAAj/GAAI/xgACP8YAAs=
 </value>
   </data>
+  <metadata name="mnsMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>125, 17</value>
+  </metadata>
 </root>
