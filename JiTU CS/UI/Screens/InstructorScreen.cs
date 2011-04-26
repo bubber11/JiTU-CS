@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using JiTU_CS.UI.Screens.Views;
+using JiTU_CS.Data;
 
 namespace JiTU_CS.UI.Screens
 {
@@ -33,10 +34,12 @@ namespace JiTU_CS.UI.Screens
 
         void gotoStudentView(object sender, EventArgs e)
         {
-            //make sure a class was selected
-            if (((ClassesView)sender).SelectedCourse != null)
-            {
+            CourseData selectedCourse = ((ClassesView)sender).SelectedCourse;
 
+            //make sure a class was selected
+            if (selectedCourse != null)
+            {
+                DisplayView(new StudentsView(selectedCourse));
             }
         }
 

@@ -24,9 +24,9 @@ namespace JiTU_CS.Controller
         /// </summary>
         /// <param name="UserName">the user name to search for</param>
         /// <returns>user found in database with the specified user name</returns>
-        public static UserData getUser(string UserName)
+        public static UserData GetUser(string userName)
         {
-            return userEntity.getUser(UserName);
+            return userEntity.getUser(userName);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace JiTU_CS.Controller
         /// gets the list of all students in the database
         /// </summary>
         /// <returns>list of all students</returns>
-        public static List<UserData> getStudents()
+        public static List<UserData> GetStudents()
         {
-            return userEntity.getAllStudents();
+            return userEntity.GetStudents();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace JiTU_CS.Controller
         /// </summary>
         /// <param name="course">the course to search in</param>
         /// <returns>list of student in the course</returns>
-        public static List<UserData> getStudents(CourseData course)
+        public static List<UserData> GetStudents(CourseData course)
         {
             return userEntity.GetStudentsByCourse(course.id);
         }

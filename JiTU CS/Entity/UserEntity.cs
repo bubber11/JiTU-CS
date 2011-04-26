@@ -183,7 +183,7 @@ namespace JiTU_CS.Entity
 
             try
             {
-                this.SQL = "SELECT * FROM `users WHERE u.`role_id` = 2;";
+                this.SQL = "SELECT * FROM `users` u WHERE u.role_id = 2;";
                 this.InitializeCommand();
                 this.OpenConnection();
 

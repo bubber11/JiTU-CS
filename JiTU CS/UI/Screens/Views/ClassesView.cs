@@ -23,10 +23,6 @@ namespace JiTU_CS.UI.Screens.Views
             }
         }
 
-        /// <summary>
-        /// creates the UI object
-        /// </summary>
-        /// <param name="course">course to become the selected one</param>
         public ClassesView()
         {
             InitializeComponent();

@@ -51,7 +51,7 @@ namespace JiTU_CS.UI
         {
             try
             {
-                myUser = UserController.getUser(txtUserName.Text);
+                myUser = UserController.GetUser(txtUserName.Text);
 
                 //Before considering the password, the user must exist in the database
                 if (myUser != null)
