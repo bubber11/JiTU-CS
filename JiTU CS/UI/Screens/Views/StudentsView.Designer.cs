@@ -36,7 +36,7 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.Size = new System.Drawing.Size(675, 74);
+            this.lblMessage.Size = new System.Drawing.Size(675, 55);
             this.lblMessage.Text = "Students";
             // 
             // lvwStudentsInCourse
@@ -44,9 +44,9 @@
             this.lvwStudentsInCourse.Dock = System.Windows.Forms.DockStyle.Left;
             this.lvwStudentsInCourse.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.lvwStudentsInCourse.Location = new System.Drawing.Point(0, 74);
+            this.lvwStudentsInCourse.Location = new System.Drawing.Point(0, 55);
             this.lvwStudentsInCourse.Name = "lvwStudentsInCourse";
-            this.lvwStudentsInCourse.Size = new System.Drawing.Size(283, 488);
+            this.lvwStudentsInCourse.Size = new System.Drawing.Size(283, 507);
             this.lvwStudentsInCourse.TabIndex = 2;
             this.lvwStudentsInCourse.UseCompatibleStateImageBehavior = false;
             this.lvwStudentsInCourse.View = System.Windows.Forms.View.List;
@@ -56,9 +56,9 @@
             this.lvwAllStudents.Dock = System.Windows.Forms.DockStyle.Right;
             this.lvwAllStudents.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem2});
-            this.lvwAllStudents.Location = new System.Drawing.Point(360, 74);
+            this.lvwAllStudents.Location = new System.Drawing.Point(360, 55);
             this.lvwAllStudents.Name = "lvwAllStudents";
-            this.lvwAllStudents.Size = new System.Drawing.Size(315, 488);
+            this.lvwAllStudents.Size = new System.Drawing.Size(315, 507);
             this.lvwAllStudents.TabIndex = 3;
             this.lvwAllStudents.UseCompatibleStateImageBehavior = false;
             this.lvwAllStudents.View = System.Windows.Forms.View.List;

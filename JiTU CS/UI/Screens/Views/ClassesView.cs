@@ -27,14 +27,17 @@ namespace JiTU_CS.UI.Screens.Views
         {
             InitializeComponent();
 
+            //clear list
             lvwCourses.Items.Clear();
             List<CourseData> myCourses;
 
+            //get all logged in users classes
             myCourses = CourseController.getCourses(GlobalData.currentUser);
 
+            //add each class to the list
             foreach (CourseData course in myCourses)
             {
-                lvwCourses.Items.Add(course.name, "class.png");
+                lvwCourses.Items.Add(course.name, 0);
             }
         }
 

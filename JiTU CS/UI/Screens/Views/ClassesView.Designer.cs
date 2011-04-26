@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("CSE325", "class.png");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("CSE325", 0);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassesView));
             this.lvwCourses = new System.Windows.Forms.ListView();
             this.imlMain = new System.Windows.Forms.ImageList(this.components);
@@ -37,7 +37,7 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.Size = new System.Drawing.Size(751, 74);
+            this.lblMessage.Size = new System.Drawing.Size(751, 55);
             this.lblMessage.Text = "Select a Course";
             // 
             // lvwCourses
@@ -47,10 +47,10 @@
             this.lvwCourses.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwCourses.LargeImageList = this.imlMain;
-            this.lvwCourses.Location = new System.Drawing.Point(0, 74);
+            this.lvwCourses.Location = new System.Drawing.Point(0, 55);
             this.lvwCourses.MultiSelect = false;
             this.lvwCourses.Name = "lvwCourses";
-            this.lvwCourses.Size = new System.Drawing.Size(751, 420);
+            this.lvwCourses.Size = new System.Drawing.Size(751, 439);
             this.lvwCourses.TabIndex = 2;
             this.lvwCourses.UseCompatibleStateImageBehavior = false;
             this.lvwCourses.ItemActivate += new System.EventHandler(this.lvwCourses_ItemActivate);

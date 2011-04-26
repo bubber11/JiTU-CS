@@ -30,11 +30,6 @@
         {
             this.SuspendLayout();
             // 
-            // lblMessage
-            // 
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblMessage.Size = new System.Drawing.Size(633, 74);
-            // 
             // WelcomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
