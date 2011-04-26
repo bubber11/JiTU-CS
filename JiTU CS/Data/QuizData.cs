@@ -66,9 +66,6 @@ namespace JiTU_CS.Data {
             due_internal = new DateTime();
         }
 
-        public void addQuestion(QuestionData dataIn) {
-            questions_internal.Add(dataIn);
-        }
         #endregion
 
         #region members

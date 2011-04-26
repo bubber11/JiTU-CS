@@ -32,6 +32,21 @@ namespace JiTU_CS.UI.Screens.Views
             }
         }
 
+        private QuizData GetSelectedQuiz()
+        {
+            //find the quiz weve selected from text
+            foreach (QuizData quiz in quizzes)
+            {
+                if (quiz.Name == lvwQuizzes.SelectedItems[0].Text)
+                {
+                    return quiz;
+                }
+            }
+
+            //no quiz is selected
+            return null;
+        }
+
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuizData quizToRemove = null;
@@ -40,15 +55,8 @@ namespace JiTU_CS.UI.Screens.Views
                 MessageBox.Show("Please select a quiz to delete", "", MessageBoxButtons.OK);
             else //a quiz is slected
             {
-                //find the quiz weve selected from text
-                foreach (QuizData quiz in quizzes)
-                {
-                    if (quiz.Name == lvwQuizzes.SelectedItems[0].Text)
-                    {
-                        quizToRemove = quiz;
-                        break;
-                    }
-                }
+                quizToRemove = GetSelectedQuiz();
+                
 
                 //prompt user if they want to delete it
                 var result = MessageBox.Show("Are you sure you want to permanently delete " + quizToRemove.Name + "?","", MessageBoxButtons.YesNo);
@@ -89,6 +97,7 @@ namespace JiTU_CS.UI.Screens.Views
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            ((BaseScreen)this.Parent.Parent.Parent).DisplayView(new QuizView(GetSelectedQuiz()));
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)

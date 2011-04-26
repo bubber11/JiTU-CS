@@ -42,7 +42,7 @@ namespace JiTU_CS.Entity {
 
                 List<QuestionData> temp = getQuestions(return_value);
                 for (int i = 0; i < temp.Count; i++)
-                    return_value.addQuestion(temp[i]);
+                    return_value.questions.Add(temp[i]);
 
             }
             else {

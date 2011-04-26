@@ -172,6 +172,12 @@
     <Compile Include="UI\Screens\Views\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Screens\Views\QuizView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Screens\Views\QuizView.Designer.cs">
+      <DependentUpon>QuizView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Screens\Views\QuizzesView.cs">
       <SubType>UserControl</SubType>
     </Compile>
