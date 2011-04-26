@@ -4,15 +4,9 @@ using System.Linq;
 using System.Text;
 
 namespace JiTU_CS.Data {
-    public class QuizData {
-
-        public QuizData(int id) {
-            id_internal = 0;
-            questions_internal = new List<QuestionData>();
-            added_internal = 0;
-            due_internal = 0;
-        }
-
+    public class QuizData {   
+        
+        #region properties
         public int id {
             get {
                 return id_internal;
@@ -22,13 +16,14 @@ namespace JiTU_CS.Data {
             }
         }
 
+        
         public List<QuestionData> questions {
             get {
                 return questions_internal;
             }
         }
 
-        public int DateAdded {
+        public DateTime Added {
             get {
                 return added_internal;
             }
@@ -37,7 +32,7 @@ namespace JiTU_CS.Data {
             }
         }
 
-        public int DueDate {
+        public DateTime Due {
             get {
                 return due_internal;
             }
@@ -45,15 +40,28 @@ namespace JiTU_CS.Data {
                 due_internal = value;
             }
         }
+        #endregion
+
+        #region functions
+        public QuizData(int id) {
+            id_internal = 0;
+            questions_internal = new List<QuestionData>();
+            added_internal = new DateTime();
+            due_internal = new DateTime();
+        }
 
         public void addQuestion(QuestionData dataIn) {
             questions_internal.Add(dataIn);
         }
+        #endregion
 
+        #region members
         private int id_internal;
         private List<QuestionData> questions_internal;
-        private int added_internal;
-        private int due_internal;
-        
+
+        private DateTime added_internal;
+        private DateTime due_internal;
+        #endregion
+
     }
 }
