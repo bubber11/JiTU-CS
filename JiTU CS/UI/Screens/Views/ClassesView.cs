@@ -34,7 +34,7 @@ namespace JiTU_CS.UI.Screens.Views
 
             foreach (CourseData course in myCourses)
             {
-                lvwCourses.Items.Add(course.name, "class.png");
+                lvwCourses.Items.Add(course.Name, "class.png");
             }
         }
 

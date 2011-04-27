@@ -54,7 +54,7 @@ namespace JiTU_CS.Controller
         /// <param name="theUser">User to be saved</param>
         public static void SaveUser(UserData theUser)
         {
-            if (theUser.ID > 0)
+            if (theUser.Id > 0)
                 userEntity.addUser(theUser);
             else
                 userEntity.updateUser(theUser);
@@ -76,7 +76,7 @@ namespace JiTU_CS.Controller
         /// <returns>list of student in the course</returns>
         public static List<UserData> GetStudents(CourseData course)
         {
-            return userEntity.GetStudentsByCourse(course.id);
+            return userEntity.GetStudentsByCourse(course.Id);
         }
 
         #endregion

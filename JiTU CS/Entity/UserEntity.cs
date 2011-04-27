@@ -52,7 +52,7 @@ namespace JiTU_CS.Entity
                 "u.`full_name` = \"" + userData.FullName + "\", " +
                 "u.`role_id` = \"" + userData.Role + "\", " +
                 "u.`password` = \"" + userData.Password + "\" " +
-                "WHERE u.`user_id` = " + userData.ID + ";";
+                "WHERE u.`user_id` = " + userData.Id + ";";
 
             InitializeCommand();
             OpenConnection();
@@ -76,7 +76,7 @@ namespace JiTU_CS.Entity
         {
             try
             {
-                this.SQL = "DELETE FROM `users` WHERE `user_id` = " + userData.ID + ";";
+                this.SQL = "DELETE FROM `users` WHERE `user_id` = " + userData.Id + ";";
             }
             catch (System.Exception e)
             {

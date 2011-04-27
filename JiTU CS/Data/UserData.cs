@@ -22,7 +22,7 @@ namespace JiTU_CS.Data
 
         #region Properties
         
-        public int ID
+        public int Id
         {
             get
             {

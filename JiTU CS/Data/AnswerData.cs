@@ -12,7 +12,7 @@ namespace JiTU_CS.Data {
             text_internal = String.Empty;
         }
 
-        public bool correct {
+        public bool Correct {
             get {
                 return correct_internal;
             }
@@ -21,7 +21,7 @@ namespace JiTU_CS.Data {
             }
         }
 
-        public int id {
+        public int Id {
             get {
                 return id_internal;
             }
@@ -30,7 +30,7 @@ namespace JiTU_CS.Data {
             }
         }
 
-        public String text {
+        public String Text {
             get {
                 return text_internal;
             }
@@ -43,5 +43,5 @@ namespace JiTU_CS.Data {
         private int id_internal;
         private bool correct_internal;
 
-    }
+    }       
 }
