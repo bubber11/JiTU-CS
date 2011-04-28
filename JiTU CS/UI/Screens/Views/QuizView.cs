@@ -23,9 +23,9 @@ namespace JiTU_CS.UI.Screens.Views
             //get questions, and display them
             QuizController.GetQuestions(quiz);
 
-            for (int i = quiz.questions.Count - 1; i >= 0; i--)
+            for (int i = quiz.Questions.Count - 1; i >= 0; i--)
             {
-                QuestionBox questionBox = new QuestionBox(quiz.questions[i], i + 1);
+                QuestionBox questionBox = new QuestionBox(quiz.Questions[i], i + 1);
                 questionBox.Dock = DockStyle.Top;
                 pnlMain.Controls.Add(questionBox);
             }
@@ -45,11 +45,11 @@ namespace JiTU_CS.UI.Screens.Views
                 //
                 // rbtnAnswers
                 //
-                rbtnAnswers = new RadioButton[question.answers.Count];
-                for (int i = question.answers.Count - 1; i >= 0; i--)
+                rbtnAnswers = new RadioButton[question.Answers.Count];
+                for (int i = question.Answers.Count - 1; i >= 0; i--)
                 {
                     rbtnAnswers[i] = new RadioButton();
-                    rbtnAnswers[i].Text = question.answers[i].text;
+                    rbtnAnswers[i].Text = question.Answers[i].Text;
                     rbtnAnswers[i].Dock = DockStyle.Top;
                     rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
                     Controls.Add(rbtnAnswers[i]);

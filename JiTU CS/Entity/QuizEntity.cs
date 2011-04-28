@@ -89,13 +89,8 @@ namespace JiTU_CS.Entity {
                 return_value.Due = DataReader.GetDateTime("due_date");
             }
 
-<<<<<<< HEAD
-                List<QuestionData> temp = getQuestions(return_value);
-                for (int i = 0; i < temp.Count; i++)
-                    return_value.questions.Add(temp[i]);
-=======
+
             CloseConnection();
->>>>>>> ad2c1822270d51646278606c155a0708ac4bc184
 
             QuestionEntity temp = new QuestionEntity();
 

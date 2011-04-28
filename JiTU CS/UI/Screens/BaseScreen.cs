@@ -20,7 +20,7 @@ namespace JiTU_CS.UI.Screens
         /// Displays a view
         /// </summary>
         /// <param name="view">The view to show</param>
-        public void DisplayView(Views.BaseView view)
+        protected void DisplayView(Views.BaseView view)
         {
             //remove all user controls
             foreach (Control oControl in this.scMain.Panel2.Controls)

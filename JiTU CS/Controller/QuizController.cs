@@ -17,7 +17,7 @@ namespace JiTU_CS.Controller
             // TODO replace with entity retrieving
 
             List<QuizData> quizzes = new List<QuizData>();
-            QuizData quiz = new QuizData();
+            QuizData quiz = new QuizData(0);
             quiz.Name = "My New Quiz";
 
             quizzes.Add(quiz);
@@ -39,25 +39,25 @@ namespace JiTU_CS.Controller
         {
             //TODO replace code to get questions from database
 
-            quiz.questions.Clear();
+            quiz.Questions.Clear();
 
             QuestionData newQuestion = new QuestionData(0);
             AnswerData correctAnswer = new AnswerData(0);
             AnswerData wrongAnswer = new AnswerData(0);
-            correctAnswer.correct = true;
-            correctAnswer.text = "This is the correct answer";
-            wrongAnswer.text = "This is a wrong answer";
+            correctAnswer.Correct = true;
+            correctAnswer.Text = "This is the correct answer";
+            wrongAnswer.Text = "This is a wrong answer";
 
             newQuestion.Text = "This is a question";
 
-            newQuestion.answers.Add(correctAnswer);
-            newQuestion.answers.Add(wrongAnswer);
-            newQuestion.answers.Add(wrongAnswer);
-            newQuestion.answers.Add(wrongAnswer);
+            newQuestion.Answers.Add(correctAnswer);
+            newQuestion.Answers.Add(wrongAnswer);
+            newQuestion.Answers.Add(wrongAnswer);
+            newQuestion.Answers.Add(wrongAnswer);
 
             for (int i = 0; i < 10; i++)
             {
-                quiz.questions.Add(newQuestion);
+                quiz.Questions.Add(newQuestion);
             }
         }
 

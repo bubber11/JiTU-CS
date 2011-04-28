@@ -84,7 +84,7 @@ namespace JiTU_CS.UI.Screens.Views
                 lvwQuizzes.Items.Add(quizName, 0);
 
                 //add to database
-                QuizData quizToAdd = new QuizData();
+                QuizData quizToAdd = new QuizData(0);
                 quizToAdd.Name = quizName;
                 QuizController.SaveQuiz(quizToAdd);
                 
@@ -97,9 +97,6 @@ namespace JiTU_CS.UI.Screens.Views
         {
             QuizData selectedQuiz;
             selectedQuiz = GetSelectedQuiz();
-
-            if (selectedQuiz != null)
-                ((BaseScreen)this.Parent.Parent.Parent).DisplayView(new QuizView(selectedQuiz));
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
