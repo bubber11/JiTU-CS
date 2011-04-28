@@ -7,11 +7,11 @@ namespace JiTU_CS.Data
     public class CourseData {
 
         public CourseData(int idIn) {
-            id = idIn;
+            id_internal = idIn;
             name_internal = String.Empty;
         }
 
-        public int id {
+        public int Id {
             get {
                 return id_internal;
             }
@@ -20,7 +20,7 @@ namespace JiTU_CS.Data
             }
         }
 
-        public String name {
+        public String Name {
             get {
                 return name_internal;
             }

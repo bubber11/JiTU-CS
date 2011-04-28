@@ -37,7 +37,11 @@ namespace JiTU_CS.UI.Screens.Views
             //add each class to the list
             foreach (CourseData course in myCourses)
             {
+<<<<<<< HEAD
                 lvwCourses.Items.Add(course.name, 0);
+=======
+                lvwCourses.Items.Add(course.Name, "class.png");
+>>>>>>> ad2c1822270d51646278606c155a0708ac4bc184
             }
         }
 

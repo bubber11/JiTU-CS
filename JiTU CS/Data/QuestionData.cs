@@ -21,13 +21,13 @@ namespace JiTU_CS.Data {
             }
         }
 
-        public List<AnswerData> answers {
+        public List<AnswerData> Answers {
             get {
                 return answers_internal;
             }
         }
 
-        public int id {
+        public int Id {
             get {
                 return id_internal;
             }
@@ -37,7 +37,7 @@ namespace JiTU_CS.Data {
         }
 
 
-        public void addAnswer(AnswerData answerIn) {
+        public void AddAnswer(AnswerData answerIn) {
             answers_internal.Add(answerIn);
         }
 

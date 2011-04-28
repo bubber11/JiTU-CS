@@ -7,6 +7,7 @@ namespace JiTU_CS.Data {
     public class QuizData {   
         
         #region properties
+<<<<<<< HEAD
         public string Name {
             get {
                 return name_internal;
@@ -17,6 +18,9 @@ namespace JiTU_CS.Data {
         }
 
         public int id {
+=======
+        public int Id {
+>>>>>>> ad2c1822270d51646278606c155a0708ac4bc184
             get {
                 return id_internal;
             }
@@ -26,7 +30,7 @@ namespace JiTU_CS.Data {
         }
 
         
-        public List<QuestionData> questions {
+        public List<QuestionData> Questions {
             get {
                 return questions_internal;
             }
@@ -49,6 +53,16 @@ namespace JiTU_CS.Data {
                 due_internal = value;
             }
         }
+
+        public string Name {
+            get {
+                return name_internal;
+            }
+            set {
+                name_internal = value;
+            }
+        }
+
         #endregion
 
         #region functions
@@ -71,6 +85,7 @@ namespace JiTU_CS.Data {
         #region members
         private string name_internal;
         private int id_internal;
+        private string name_internal;
         private List<QuestionData> questions_internal;
 
         private DateTime added_internal;

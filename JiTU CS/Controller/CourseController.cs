@@ -14,13 +14,13 @@ namespace JiTU_CS.Controller
 
         public static List<CourseData> getCourses(UserData user)
         {
-            return courseEntity.getCourses(user);
+            return courseEntity.ReadCourses(user);
 
         }
 
         public static CourseData getCourse(string courseName)
         {
-            return courseEntity.getCourse(courseName);
+            return courseEntity.ReadCourse(0);
         }
     }
 }
