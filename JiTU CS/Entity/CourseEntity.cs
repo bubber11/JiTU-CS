@@ -148,8 +148,8 @@ namespace JiTU_CS.Entity {
 
             if (DataReader.HasRows) {
                 DataReader.Read();
-                return_data = new CourseData(DataReader.GetUInt16("`course_id`"));
-                return_data.Name = DataReader.GetString("`name`");
+                return_data = new CourseData(DataReader.GetUInt16("course_id"));
+                return_data.Name = DataReader.GetString("name");
             }
 
             CloseConnection();
@@ -178,8 +178,8 @@ namespace JiTU_CS.Entity {
 
             if (DataReader.HasRows) {
                 while (DataReader.Read()) {
-                    CourseData temp = new CourseData(DataReader.GetUInt16("`course_id`"));
-                    temp.Name = DataReader.GetString("`name`");
+                    CourseData temp = new CourseData(DataReader.GetUInt16("course_id"));
+                    temp.Name = DataReader.GetString("name");
                     return_data.Add(temp);
                 }
             }
