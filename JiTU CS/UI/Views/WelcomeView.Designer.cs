@@ -32,7 +32,6 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblMessage.Size = new System.Drawing.Size(633, 74);
             // 
             // WelcomeView
@@ -47,6 +46,7 @@
         }
 
         #endregion
+
 
 
     }

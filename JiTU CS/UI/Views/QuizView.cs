@@ -26,9 +26,6 @@ namespace JiTU_CS.UI.Views
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
 
-            //get questions, and display them
-            QuizController.GetQuestions(GlobalData.currentQuiz);
-
             questionBoxes = new List<QuestionBox>();
 
             for (int i = 0; i < GlobalData.currentQuiz.Questions.Count; i++)

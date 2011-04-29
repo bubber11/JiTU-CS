@@ -55,12 +55,12 @@
             this.scMain.SplitterWidth = 2;
             this.scMain.TabIndex = 0;
             // 
-            // UserScreen
+            // BaseScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.scMain);
-            this.Name = "UserScreen";
+            this.Name = "BaseScreen";
             this.Size = new System.Drawing.Size(667, 468);
             this.scMain.ResumeLayout(false);
             this.ResumeLayout(false);
