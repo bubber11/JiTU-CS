@@ -1,6 +1,6 @@
-﻿namespace JiTU_CS.UI.Screens.Views
+﻿namespace JiTU_CS.UI.Views
 {
-    partial class BaseView
+    partial class QuizView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // lblMessage
+            // pnlMain
             // 
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(0, 0);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(674, 74);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Message";
-            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnlMain.AutoScroll = true;
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(0, 55);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(674, 507);
+            this.pnlMain.TabIndex = 2;
             // 
-            // BaseView
+            // QuizView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblMessage);
-            this.Name = "BaseView";
-            this.Size = new System.Drawing.Size(674, 562);
+            this.Controls.Add(this.pnlMain);
+            this.Name = "QuizView";
+            this.Controls.SetChildIndex(this.lblMessage, 0);
+            this.Controls.SetChildIndex(this.pnlMain, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        protected System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Panel pnlMain;
 
     }
 }

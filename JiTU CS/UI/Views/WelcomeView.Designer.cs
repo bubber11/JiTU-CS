@@ -1,6 +1,6 @@
-﻿namespace JiTU_CS.UI.Screens.Views
+﻿namespace JiTU_CS.UI.Views
 {
-    partial class QuizView
+    partial class WelcomeView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,34 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // pnlMain
+            // lblMessage
             // 
-            this.pnlMain.AutoScroll = true;
-            this.pnlMain.BackColor = System.Drawing.Color.White;
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 55);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(674, 507);
-            this.pnlMain.TabIndex = 2;
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblMessage.Size = new System.Drawing.Size(633, 74);
             // 
-            // QuizView
+            // WelcomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlMain);
-            this.Name = "QuizView";
-            this.Controls.SetChildIndex(this.lblMessage, 0);
-            this.Controls.SetChildIndex(this.pnlMain, 0);
+            this.Name = "WelcomeView";
+            this.Size = new System.Drawing.Size(633, 451);
+            this.Load += new System.EventHandler(this.WelcomeView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlMain;
 
     }
 }

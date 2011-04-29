@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JiTU_CS.UI.Screens.Views
+namespace JiTU_CS.UI.Views
 {
     public partial class BaseView : UserControl
     {

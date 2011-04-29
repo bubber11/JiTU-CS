@@ -1,6 +1,6 @@
-﻿namespace JiTU_CS.UI.Screens.Views
+﻿namespace JiTU_CS.UI.Views
 {
-    partial class WelcomeView
+    partial class BaseView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,26 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblMessage
             // 
-            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblMessage.Size = new System.Drawing.Size(633, 74);
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(0, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(674, 74);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Message";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // WelcomeView
+            // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "WelcomeView";
-            this.Size = new System.Drawing.Size(633, 451);
-            this.Load += new System.EventHandler(this.WelcomeView_Load);
+            this.Controls.Add(this.lblMessage);
+            this.Name = "BaseView";
+            this.Size = new System.Drawing.Size(674, 562);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        protected System.Windows.Forms.Label lblMessage;
 
     }
 }

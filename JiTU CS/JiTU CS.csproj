@@ -99,27 +99,27 @@
       <DependentUpon>StudentScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\ClassesView.resx">
+    <EmbeddedResource Include="UI\Views\ClassesView.resx">
       <DependentUpon>ClassesView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\BaseView.resx">
+    <EmbeddedResource Include="UI\Views\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\QuizView.resx">
+    <EmbeddedResource Include="UI\Views\QuizView.resx">
       <DependentUpon>QuizView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\QuizzesView.resx">
+    <EmbeddedResource Include="UI\Views\QuizzesView.resx">
       <DependentUpon>QuizzesView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\StudentsView.resx">
+    <EmbeddedResource Include="UI\Views\StudentsView.resx">
       <DependentUpon>StudentsView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Screens\Views\WelcomeView.resx">
+    <EmbeddedResource Include="UI\Views\WelcomeView.resx">
       <DependentUpon>WelcomeView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -145,7 +145,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UI\Helper.cs" />
+    <Compile Include="UI\HelperUI.cs" />
     <Compile Include="UI\Screens\InstructorScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -164,40 +164,40 @@
     <Compile Include="UI\Screens\StudentScreen.Designer.cs">
       <DependentUpon>StudentScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\ClassesView.cs">
+    <Compile Include="UI\Views\ClassesView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\ClassesView.Designer.cs">
+    <Compile Include="UI\Views\ClassesView.Designer.cs">
       <DependentUpon>ClassesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\BaseView.cs">
+    <Compile Include="UI\Views\BaseView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\BaseView.Designer.cs">
+    <Compile Include="UI\Views\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\QuizView.cs">
+    <Compile Include="UI\Views\QuizView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\QuizView.Designer.cs">
+    <Compile Include="UI\Views\QuizView.Designer.cs">
       <DependentUpon>QuizView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\QuizzesView.cs">
+    <Compile Include="UI\Views\QuizzesView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\QuizzesView.Designer.cs">
+    <Compile Include="UI\Views\QuizzesView.Designer.cs">
       <DependentUpon>QuizzesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\StudentsView.cs">
+    <Compile Include="UI\Views\StudentsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\StudentsView.Designer.cs">
+    <Compile Include="UI\Views\StudentsView.Designer.cs">
       <DependentUpon>StudentsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Screens\Views\WelcomeView.cs">
+    <Compile Include="UI\Views\WelcomeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Screens\Views\WelcomeView.Designer.cs">
+    <Compile Include="UI\Views\WelcomeView.Designer.cs">
       <DependentUpon>WelcomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserBoundary.cs">

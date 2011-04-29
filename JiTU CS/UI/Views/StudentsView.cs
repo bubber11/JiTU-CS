@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using JiTU_CS.Data;
 using JiTU_CS.Controller;
 
-namespace JiTU_CS.UI.Screens.Views
+namespace JiTU_CS.UI.Views
 {
     public partial class StudentsView : BaseView
     {

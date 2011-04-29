@@ -11,7 +11,7 @@ using JiTU_CS.Data;
 using JiTU_CS.Controller;
 using JiTU_CS.UI;
 
-namespace JiTU_CS.UI.Screens.Views
+namespace JiTU_CS.UI.Views
 {
     public partial class QuizzesView : BaseView
     {
@@ -76,7 +76,7 @@ namespace JiTU_CS.UI.Screens.Views
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string quizName = "";
-            var result = Helper.InputBox("", "Enter name of quiz", ref quizName);
+            var result = HelperUI.InputBox("", "Enter name of quiz", ref quizName);
 
             if (result != DialogResult.Cancel)
             {
@@ -97,6 +97,8 @@ namespace JiTU_CS.UI.Screens.Views
         {
             QuizData selectedQuiz;
             selectedQuiz = GetSelectedQuiz();
+            
+            
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)

@@ -12,15 +12,15 @@ namespace JiTU_CS.Controller
     {
         static CourseEntity courseEntity = new CourseEntity();
 
-        public static List<CourseData> getCourses(UserData user)
+        public static List<CourseData> GetCourses(UserData user)
         {
             return courseEntity.ReadCourses(user);
 
         }
 
-        public static CourseData getCourse(string courseName)
+        public static CourseData GetCourse(string courseName)
         {
-            return courseEntity.ReadCourse(0);
+            return courseEntity.ReadCourse(courseName);
         }
     }
 }

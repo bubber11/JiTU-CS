@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace JiTU_CS.UI
 {
-    static class Helper
+    static class HelperUI
     {
 
         public static DialogResult InputBox(string title, string promptText, ref string value)

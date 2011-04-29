@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using JiTU_CS.Data;
 using JiTU_CS.Controller;
 
-namespace JiTU_CS.UI.Screens.Views
+namespace JiTU_CS.UI.Views
 {
     public partial class ClassesView : BaseView
     {
@@ -32,7 +32,7 @@ namespace JiTU_CS.UI.Screens.Views
             List<CourseData> myCourses;
 
             //get all logged in users classes
-            myCourses = CourseController.getCourses(GlobalData.currentUser);
+            myCourses = CourseController.GetCourses(GlobalData.currentUser);
 
             //add each class to the list
             foreach (CourseData course in myCourses)
@@ -43,7 +43,7 @@ namespace JiTU_CS.UI.Screens.Views
 
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
         {
-            mySelectedCourse = CourseController.getCourse(lvwCourses.SelectedItems[0].Text);
+            mySelectedCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
 
             this.Dispose();
         }

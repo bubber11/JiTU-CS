@@ -1,4 +1,4 @@
-﻿namespace JiTU_CS.UI.Screens.Views
+﻿namespace JiTU_CS.UI.Views
 {
     partial class QuizzesView
     {

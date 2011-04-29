@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using JiTU_CS.UI.Screens.Views;
+using JiTU_CS.UI.Views;
 
 namespace JiTU_CS.UI.Screens
 {
