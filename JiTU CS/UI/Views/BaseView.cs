@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 namespace JiTU_CS.UI.Views
 {
+    public enum NextView { Quizzes, Students };
+
     public partial class BaseView : UserControl
     {
         public BaseView()

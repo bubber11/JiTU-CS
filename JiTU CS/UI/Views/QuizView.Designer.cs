@@ -34,11 +34,12 @@
             // pnlMain
             // 
             this.pnlMain.AutoScroll = true;
-            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BackColor = System.Drawing.SystemColors.Control;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 55);
+            this.pnlMain.Location = new System.Drawing.Point(0, 74);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(674, 507);
+            this.pnlMain.Padding = new System.Windows.Forms.Padding(10);
+            this.pnlMain.Size = new System.Drawing.Size(674, 488);
             this.pnlMain.TabIndex = 2;
             // 
             // QuizView

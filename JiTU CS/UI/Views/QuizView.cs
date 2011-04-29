@@ -14,21 +14,40 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizView : BaseView
     {
+        private List<QuestionBox> questionBoxes;
+
+
         public QuizView()
         {
             InitializeComponent();
+
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
 
             //get questions, and display them
             QuizController.GetQuestions(GlobalData.currentQuiz);
 
-            for (int i = GlobalData.currentQuiz.Questions.Count - 1; i >= 0; i--)
+            questionBoxes = new List<QuestionBox>();
+
+            for (int i = 0; i < GlobalData.currentQuiz.Questions.Count; i++)
             {
                 QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1);
-                questionBox.Dock = DockStyle.Top;
-                pnlMain.Controls.Add(questionBox);
+                questionBox.Left = 7;
+                questionBox.Width = this.Width - 35;
+                if (i == 0)
+                {
+                    questionBox.Top = 5;
+                }
+                else
+                {
+                    questionBox.Top = questionBoxes[i - 1].Bottom + 5;
+                }
+
+                questionBoxes.Add(questionBox);
+              
             }
+
+            pnlMain.Controls.AddRange(questionBoxes.ToArray());
             
 
             
@@ -79,8 +98,8 @@ namespace JiTU_CS.UI.Views
                 // QuestionBox
                 //
                 this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
-
-
+                this.BackColor = Color.White;
+                this.BorderStyle = BorderStyle.FixedSingle;
             }
         }
     }

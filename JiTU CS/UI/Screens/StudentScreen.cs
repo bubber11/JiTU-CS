@@ -24,10 +24,7 @@ namespace JiTU_CS.UI.Screens
 
         private void btnTakeQuiz_Click(object sender, EventArgs e)
         {
-            //create a new view, tell it where to return, then display it
-            ClassesView classesView = new ClassesView();
-            classesView.Disposed += new EventHandler(gotoQuizesView);
-            DisplayView(classesView);
+
         }
 
         private void gotoQuizesView(object sender, EventArgs e)
@@ -37,10 +34,7 @@ namespace JiTU_CS.UI.Screens
 
         private void btnViewResults_Click(object sender, EventArgs e)
         {
-            //create a new view, tell it where to return, then display it
-            ClassesView classesView = new ClassesView();
-            classesView.Disposed += new EventHandler(gotoResultsView);
-            DisplayView(classesView);
+
         }
 
         private void gotoResultsView(object sender, EventArgs e)

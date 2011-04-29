@@ -93,7 +93,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "InstructorScreen";
             this.Size = new System.Drawing.Size(757, 501);
-            this.Load += new System.EventHandler(this.InstructorScreen_Load);
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.ResumeLayout(false);
             this.ResumeLayout(false);

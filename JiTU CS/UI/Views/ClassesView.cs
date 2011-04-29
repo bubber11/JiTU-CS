@@ -12,10 +12,16 @@ using JiTU_CS.Controller;
 namespace JiTU_CS.UI.Views
 {
     public partial class ClassesView : BaseView
-    {
-        public ClassesView()
+    {        
+        private NextView myNextView;
+
+
+        public ClassesView(NextView nextView)
         {
             InitializeComponent();
+
+            //copy nextview
+            myNextView = nextView;
 
             //clear global variable
             GlobalData.currentCourse = null;
@@ -37,6 +43,11 @@ namespace JiTU_CS.UI.Views
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
         {
             GlobalData.currentCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
+
+            if (myNextView == NextView.Quizzes)
+            {
+                GlobalData.currentScreen.DisplayView(new QuizzesView());
+            }
 
             this.Dispose();
         }
