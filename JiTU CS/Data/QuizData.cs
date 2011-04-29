@@ -55,8 +55,23 @@ namespace JiTU_CS.Data {
         #endregion
 
         #region functions
+
+        /// <summary>
+        /// creates a quiz with a known id
+        /// </summary>
+        /// <param name="id">the id</param>
         public QuizData(int id) {
             id_internal = id;
+            questions_internal = new List<QuestionData>();
+            added_internal = new DateTime();
+            due_internal = new DateTime();
+        }
+
+        /// <summary>
+        /// creates a brand new quiz
+        /// </summary>
+        public QuizData() {
+            id_internal = 0;
             questions_internal = new List<QuestionData>();
             added_internal = new DateTime();
             due_internal = new DateTime();

@@ -34,13 +34,6 @@ namespace JiTU_CS.UI.Screens
 
         void gotoStudentView(object sender, EventArgs e)
         {
-            CourseData selectedCourse = ((ClassesView)sender).SelectedCourse;
-
-            //make sure a class was selected
-            if (selectedCourse != null)
-            {
-                DisplayView(new StudentsView(selectedCourse));
-            }
         }
 
         private void btnQuizes_Click(object sender, EventArgs e)
@@ -52,13 +45,12 @@ namespace JiTU_CS.UI.Screens
         }
 
         void gotoQuizesView(object sender, EventArgs e)
-        {
-            CourseData selectedCourse = ((ClassesView)sender).SelectedCourse;
-            
+        {           
             //make sure a class was selected
-            if (selectedCourse != null)
+
+            if (GlobalData.currentCourse != null)
             {
-                DisplayView(new QuizzesView(selectedCourse));
+                DisplayView(new QuizzesView());
             }
         }
 
@@ -72,11 +64,7 @@ namespace JiTU_CS.UI.Screens
 
         void gotoResultsView(object sender, EventArgs e)
         {
-            //make sure a class was selected
-            if (((ClassesView)sender).SelectedCourse != null)
-            {
 
-            }
         }
     }
 }

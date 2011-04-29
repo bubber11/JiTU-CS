@@ -15,23 +15,33 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizzesView : BaseView
     {
-        List<QuizData> quizzes;
+        List<QuizData> quizzes; //list of quizzes that show up in the list view
 
-        public QuizzesView(CourseData course)
+        /// <summary>
+        /// contstructor
+        /// </summary>
+        public QuizzesView()
         {
             InitializeComponent();
+
+            //clear global variable
+            GlobalData.currentQuiz = null;
 
             //erase all items in list
             lvwQuizzes.Items.Clear();
 
             //add items in the course to the list
-            quizzes = QuizController.GetQuizzes(course);
+            quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
             foreach (QuizData quiz in quizzes)
             {
                 lvwQuizzes.Items.Add(quiz.Name,0);
             }
         }
 
+        /// <summary>
+        /// returns the current selected quiz in the list view
+        /// </summary>
+        /// <returns>the quiz that was selected</returns>
         private QuizData GetSelectedQuiz()
         {
             //find the quiz weve selected from text
@@ -50,6 +60,9 @@ namespace JiTU_CS.UI.Views
             return null;
         }
 
+        /// <summary>
+        /// removes the current selected quiz from the current course
+        /// </summary>
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuizData quizToRemove;
@@ -73,6 +86,9 @@ namespace JiTU_CS.UI.Views
             }
         }
 
+        /// <summary>
+        /// allows you to add a quiz to the current selected course
+        /// </summary>
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string quizName = "";
@@ -84,28 +100,34 @@ namespace JiTU_CS.UI.Views
                 lvwQuizzes.Items.Add(quizName, 0);
 
                 //add to database
-                QuizData quizToAdd = new QuizData(0);
+                QuizData quizToAdd = new QuizData();
                 quizToAdd.Name = quizName;
                 QuizController.SaveQuiz(quizToAdd);
+                CourseController.AddQuiz(GlobalData.currentCourse, quizToAdd);
                 
                 //add to list 
                 quizzes.Add(quizToAdd);
             }
         }
 
+        /// <summary>
+        /// takes you to a editable version of the quiz currently selected
+        /// </summary>
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuizData selectedQuiz;
-            selectedQuiz = GetSelectedQuiz();
-            
-            
+            GlobalData.currentQuiz = GetSelectedQuiz();
+            this.Dispose();
+            GlobalData.currentScreen.DisplayView(new QuizView());
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // TODO add submit code here
         }
 
+        /// <summary>
+        /// changes available options based on what is selected
+        /// </summary>
         private void lvwQuizzes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvwQuizzes.SelectedItems.Count == 0)

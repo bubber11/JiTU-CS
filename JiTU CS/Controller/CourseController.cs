@@ -22,5 +22,11 @@ namespace JiTU_CS.Controller
         {
             return courseEntity.ReadCourse(courseName);
         }
+
+        public static void AddQuiz(CourseData course, QuizData quiz)
+        {
+            courseEntity.AddQuiz(course, quiz);
+        }
+
     }
 }

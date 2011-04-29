@@ -12,27 +12,37 @@ namespace JiTU_CS.Controller
     {
         static QuizEntity entity = new QuizEntity();
 
+        /// <summary>
+        /// gets a list of all the quizzes associated with a course from the database
+        /// through the quiz entity
+        /// </summary>
+        /// <param name="course">course to get quizzes in</param>
+        /// <returns></returns>
         public static List<QuizData> GetQuizzes(CourseData course)
         {
-            // TODO replace with entity retrieving
-
-            List<QuizData> quizzes = new List<QuizData>();
-            QuizData quiz = new QuizData(0);
-            quiz.Name = "My New Quiz";
-
-            quizzes.Add(quiz);
-            return quizzes;
+            return entity.ReadQuizzes(course);
         }
 
+        /// <summary>
+        /// deletes a quiz from the database using the quiz entity
+        /// </summary>
+        /// <param name="quiz">the quiz to be removed</param>
         public static void DeleteQuiz(QuizData quiz)
         {
-            // TODO add code to remove quiz from database
+            entity.DeleteQuiz(quiz);
             
         }
 
         public static void SaveQuiz(QuizData quiz)
         {
-            // TODO add code to add quiz to database
+            if (quiz.Id == 0)
+            {
+                entity.CreateQuiz(quiz);
+            }
+            else
+            {
+                entity.UpdateQuiz(quiz);
+            }
         }
 
         public static void GetQuestions(QuizData quiz)

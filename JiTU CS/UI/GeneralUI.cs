@@ -66,6 +66,7 @@ namespace JiTU_CS.UI
             if (GlobalData.currentUser.Role == UserData.Roles.Instructor)
             {
                 Screens.InstructorScreen newScreen = new Screens.InstructorScreen();
+                GlobalData.currentScreen = newScreen;
                 newScreen.Dock = DockStyle.Fill;
                 this.Controls.Add(newScreen);
                 newScreen.BringToFront();
@@ -74,6 +75,7 @@ namespace JiTU_CS.UI
             else
             {
                 Screens.StudentScreen newScreen = new Screens.StudentScreen();
+                GlobalData.currentScreen = newScreen;
                 newScreen.Dock = DockStyle.Fill;
                 this.Controls.Add(newScreen);
                 newScreen.BringToFront();

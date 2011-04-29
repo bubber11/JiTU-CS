@@ -14,18 +14,18 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizView : BaseView
     {
-        public QuizView(QuizData quiz)
+        public QuizView()
         {
             InitializeComponent();
             //set title
-            lblMessage.Text = quiz.Name;
+            lblMessage.Text = GlobalData.currentQuiz.Name;
 
             //get questions, and display them
-            QuizController.GetQuestions(quiz);
+            QuizController.GetQuestions(GlobalData.currentQuiz);
 
-            for (int i = quiz.Questions.Count - 1; i >= 0; i--)
+            for (int i = GlobalData.currentQuiz.Questions.Count - 1; i >= 0; i--)
             {
-                QuestionBox questionBox = new QuestionBox(quiz.Questions[i], i + 1);
+                QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1);
                 questionBox.Dock = DockStyle.Top;
                 pnlMain.Controls.Add(questionBox);
             }

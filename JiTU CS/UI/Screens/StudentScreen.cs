@@ -32,11 +32,7 @@ namespace JiTU_CS.UI.Screens
 
         private void gotoQuizesView(object sender, EventArgs e)
         {
-            //make sure a class was selected
-            if (((ClassesView)sender).SelectedCourse != null)
-            {
 
-            }
         }
 
         private void btnViewResults_Click(object sender, EventArgs e)
@@ -49,11 +45,7 @@ namespace JiTU_CS.UI.Screens
 
         private void gotoResultsView(object sender, EventArgs e)
         {
-            //make sure a class was selected
-            if (((ClassesView)sender).SelectedCourse != null)
-            {
 
-            }
         }
     }
 }

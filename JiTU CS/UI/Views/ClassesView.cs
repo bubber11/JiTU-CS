@@ -13,19 +13,12 @@ namespace JiTU_CS.UI.Views
 {
     public partial class ClassesView : BaseView
     {
-        private CourseData mySelectedCourse;
-
-        public CourseData SelectedCourse
-        {
-            get
-            {
-                return mySelectedCourse;
-            }
-        }
-
         public ClassesView()
         {
             InitializeComponent();
+
+            //clear global variable
+            GlobalData.currentCourse = null;
 
             //clear list
             lvwCourses.Items.Clear();
@@ -43,7 +36,7 @@ namespace JiTU_CS.UI.Views
 
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
         {
-            mySelectedCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
+            GlobalData.currentCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
 
             this.Dispose();
         }
