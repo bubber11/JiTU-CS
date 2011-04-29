@@ -13,10 +13,10 @@ namespace JiTU_CS.UI.Views
 {
     public partial class ClassesView : BaseView
     {        
-        private NextView myNextView;
+        private ViewTypes myNextView;
 
 
-        public ClassesView(NextView nextView)
+        public ClassesView(ViewTypes nextView)
         {
             InitializeComponent();
 
@@ -44,9 +44,13 @@ namespace JiTU_CS.UI.Views
         {
             GlobalData.currentCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
 
-            if (myNextView == NextView.Quizzes)
+            if (myNextView == ViewTypes.Quizzes)
             {
                 GlobalData.currentScreen.DisplayView(new QuizzesView());
+            }
+            if (myNextView == ViewTypes.Students)
+            {
+                GlobalData.currentScreen.DisplayView(new StudentsView());
             }
 
             this.Dispose();

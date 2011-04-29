@@ -41,6 +41,7 @@
             this.pnlMain.Padding = new System.Windows.Forms.Padding(10);
             this.pnlMain.Size = new System.Drawing.Size(674, 488);
             this.pnlMain.TabIndex = 2;
+            this.pnlMain.Resize += new System.EventHandler(this.pnlMain_Resize);
             // 
             // QuizView
             // 

@@ -17,7 +17,7 @@ namespace JiTU_CS.UI.Views
         List<UserData> studentsInCourse;
         List<UserData> studentsAll;
 
-        public StudentsView(CourseData course)
+        public StudentsView()
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace JiTU_CS.UI.Views
             lvwAllStudents.Items.Clear();
 
             //get the data from the controller
-            studentsInCourse = UserController.GetStudents(course);
+            studentsInCourse = UserController.GetStudents(GlobalData.currentCourse);
             studentsAll = UserController.GetStudents();
 
             //populate the lists

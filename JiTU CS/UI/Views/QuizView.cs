@@ -14,10 +14,12 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizView : BaseView
     {
+        public enum QuizViewType { edit, take };
+
         private List<QuestionBox> questionBoxes;
 
 
-        public QuizView()
+        public QuizView(QuizViewType type)
         {
             InitializeComponent();
 
@@ -32,24 +34,12 @@ namespace JiTU_CS.UI.Views
             for (int i = 0; i < GlobalData.currentQuiz.Questions.Count; i++)
             {
                 QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1);
-                questionBox.Left = 7;
-                questionBox.Width = this.Width - 35;
-                if (i == 0)
-                {
-                    questionBox.Top = 5;
-                }
-                else
-                {
-                    questionBox.Top = questionBoxes[i - 1].Bottom + 5;
-                }
-
-                questionBoxes.Add(questionBox);
-              
+                questionBoxes.Add(questionBox);   
             }
 
             pnlMain.Controls.AddRange(questionBoxes.ToArray());
-            
 
+            this.pnlMain_Resize(null, null);
             
         }
 
@@ -100,6 +90,24 @@ namespace JiTU_CS.UI.Views
                 this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
                 this.BackColor = Color.White;
                 this.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+
+        private void pnlMain_Resize(object sender, EventArgs e)
+        {
+            for (int i = 0; i < questionBoxes.Count; i++)
+            {
+                questionBoxes[i].Left = 7;
+                questionBoxes[i].Width = this.Width - 35;
+                if (i == 0)
+                {
+                    questionBoxes[i].Top = 5;
+                }
+                else
+                {
+                    questionBoxes[i].Top = questionBoxes[i - 1].Bottom + 5;
+                }
+
             }
         }
     }

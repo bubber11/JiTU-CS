@@ -23,14 +23,14 @@ namespace JiTU_CS.UI.Screens
 
         private void btnStudents_Click(object sender, EventArgs e)
         {
+            DisplayView(new ClassesView(ViewTypes.Students));
         }
 
 
         private void btnQuizes_Click(object sender, EventArgs e)
         {
             //create a new view, tell it where to return, then display it
-            ClassesView classesView = new ClassesView(NextView.Quizzes);
-            DisplayView(classesView);
+            DisplayView(new ClassesView(ViewTypes.Quizzes));
         }
 
         private void btnResults_Click(object sender, EventArgs e)

@@ -117,7 +117,7 @@ namespace JiTU_CS.UI.Views
         {
             GlobalData.currentQuiz = GetSelectedQuiz();
             this.Dispose();
-            GlobalData.currentScreen.DisplayView(new QuizView());
+            GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.edit));
         }
 
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
