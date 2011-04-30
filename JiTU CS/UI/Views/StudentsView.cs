@@ -12,8 +12,14 @@ using JiTU_CS.Controller;
 
 namespace JiTU_CS.UI.Views
 {
+    /// <summary>
+    /// Displays a view that allows the user to manage students in a specific course
+    /// </summary>
     public partial class StudentsView : BaseView
     {
+        /// <summary>
+        /// Default constructor, draws elements and populates the lsits
+        /// </summary>
         public StudentsView()
         {
             //create form components
@@ -68,6 +74,11 @@ namespace JiTU_CS.UI.Views
             
         }
 
+        /// <summary>
+        /// Handles panel resize event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StudentsView_Resize(object sender, EventArgs e)
         {
             lvwStudentsInCourse.Height = gbCourse.Height - 80;
@@ -80,6 +91,11 @@ namespace JiTU_CS.UI.Views
 
         }
 
+        /// <summary>
+        /// Handles click event for new student button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, EventArgs e)
         {
             UserData newUser = new UserData();
@@ -93,15 +109,24 @@ namespace JiTU_CS.UI.Views
                 //add user to user list
                 ListViewItem item = lvwStudentsNotInCourse.Items.Add(newUser.FullName, 0);
                 item.Tag = newUser;
-                // TODO test
             }
         }
 
+        /// <summary>
+        /// handles click event for delete student button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // TODO 
+            // TODO  add delete student code
         }
 
+        /// <summary>
+        /// Handles click event for remove student from course button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, EventArgs e)
         {
             while (lvwStudentsInCourse.SelectedItems.Count > 0)
@@ -116,6 +141,11 @@ namespace JiTU_CS.UI.Views
             }
         }
 
+        /// <summary>
+        /// Handles click event for add student to course button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             while (lvwStudentsNotInCourse.SelectedItems.Count > 0)

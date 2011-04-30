@@ -57,7 +57,6 @@ namespace JiTU_CS.Controller
 			try
 			{
 				if (theUser.Id == 0)
-					//how does user id change from 0? i dont see it in entity...
 					userEntity.addUser(theUser);
 				else
 					userEntity.updateUser(theUser);

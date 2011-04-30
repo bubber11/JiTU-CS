@@ -33,9 +33,5 @@ namespace JiTU_CS.UI.Screens
             DisplayView(new ClassesView(ViewTypes.Quizzes, "Manage quizzes for which class?"));
         }
 
-        private void btnResults_Click(object sender, EventArgs e)
-        {
-        }
-
     }
 }

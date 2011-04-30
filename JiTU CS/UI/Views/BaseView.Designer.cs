@@ -33,6 +33,7 @@
             // 
             // lblMessage
             // 
+            this.lblMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(108)))), ((int)(((byte)(78)))));
             this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMessage.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblMessage.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

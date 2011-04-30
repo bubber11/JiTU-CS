@@ -51,9 +51,9 @@
             this.lvwQuizzes.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwQuizzes.LargeImageList = this.imlquizzes;
-            this.lvwQuizzes.Location = new System.Drawing.Point(0, 95);
+            this.lvwQuizzes.Location = new System.Drawing.Point(0, 90);
             this.lvwQuizzes.Name = "lvwQuizzes";
-            this.lvwQuizzes.Size = new System.Drawing.Size(674, 467);
+            this.lvwQuizzes.Size = new System.Drawing.Size(674, 472);
             this.lvwQuizzes.TabIndex = 2;
             this.lvwQuizzes.UseCompatibleStateImageBehavior = false;
             this.lvwQuizzes.SelectedIndexChanged += new System.EventHandler(this.lvwQuizzes_SelectedIndexChanged);
@@ -72,7 +72,7 @@
             this.removeToolStripMenuItem,
             this.editToolStripMenuItem,
             this.submitToolStripMenuItem});
-            this.mnsMain.Location = new System.Drawing.Point(0, 55);
+            this.mnsMain.Location = new System.Drawing.Point(0, 50);
             this.mnsMain.Name = "mnsMain";
             this.mnsMain.Size = new System.Drawing.Size(674, 40);
             this.mnsMain.TabIndex = 3;

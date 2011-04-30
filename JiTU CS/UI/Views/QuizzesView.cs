@@ -18,7 +18,7 @@ namespace JiTU_CS.UI.Views
         List<QuizData> quizzes; //list of quizzes that show up in the list view
 
         /// <summary>
-        /// contstructor
+        /// constructor
         /// </summary>
         public QuizzesView()
         {
