@@ -14,12 +14,16 @@ namespace JiTU_CS.UI.Views
 {
     public partial class StudentsView : BaseView
     {
+        //contains our lists of users...
         List<UserData> studentsInCourse;
         List<UserData> studentsAll;
 
         public StudentsView()
         {
             InitializeComponent();
+
+            //lblInClass
+            gbCourse.Text = "Students currently enrolled in " + GlobalData.currentCourse.Name;
 
             //clear lists
             lvwStudentsInCourse.Items.Clear();
@@ -32,7 +36,7 @@ namespace JiTU_CS.UI.Views
             //populate the lists
             foreach (UserData student in studentsInCourse)
             {
-                lvwStudentsInCourse.Items.Add(student.FullName);
+                lvwStudentsInCourse.Items.Add(student.FullName,0);
             }
 
             bool alreadyExists;
@@ -50,8 +54,35 @@ namespace JiTU_CS.UI.Views
                 
                 if (!alreadyExists)
                 {
-                    lvwAllStudents.Items.Add(student.FullName);
+                    lvwAllStudents.Items.Add(student.FullName,0);
                 }
+            }
+        }
+
+        private void StudentsView_Resize(object sender, EventArgs e)
+        {
+            lvwStudentsInCourse.Height = gbCourse.Height - 80;
+            lvwAllStudents.Height = gbCourse.Height - 80;
+            btnRemove.Top = lvwStudentsInCourse.Bottom + 5;
+            btnRemove.Left = gbCourse.Right - btnRemove.Width - 10;
+            btnAdd.Top = btnRemove.Top;
+            btnNew.Top = btnRemove.Top;
+            btnDelete.Top = btnRemove.Top;
+
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            UserData newUser = new UserData();
+            newUser.Role = UserData.Roles.Student;
+            frmUser user = new frmUser(newUser);
+            user.ShowDialog();
+
+            //check to see if the user was added to database... if not then we probably cancelled
+            if (newUser.Id != 0)
+            {
+                lvwAllStudents.Items.Add(newUser.FullName);
+                studentsAll.Add(newUser);
             }
         }
     }

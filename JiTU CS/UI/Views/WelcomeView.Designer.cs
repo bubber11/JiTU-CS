@@ -32,7 +32,7 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.Size = new System.Drawing.Size(633, 74);
+            this.lblMessage.Size = new System.Drawing.Size(633, 50);
             // 
             // WelcomeView
             // 

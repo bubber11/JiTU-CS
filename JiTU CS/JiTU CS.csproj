@@ -70,6 +70,12 @@
     <Compile Include="Entity\QuizEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
+    <Compile Include="UI\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\GeneralUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GeneralUI.resx">
@@ -121,10 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Views\WelcomeView.resx">
       <DependentUpon>WelcomeView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserBoundary.resx">
-      <DependentUpon>UserBoundary.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Screens\BaseScreen.resx">
@@ -200,12 +206,6 @@
     <Compile Include="UI\Views\WelcomeView.Designer.cs">
       <DependentUpon>WelcomeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserBoundary.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserBoundary.Designer.cs">
-      <DependentUpon>UserBoundary.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Screens\BaseScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -227,6 +227,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

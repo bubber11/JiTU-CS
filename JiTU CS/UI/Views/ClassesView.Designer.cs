@@ -37,7 +37,7 @@
             // 
             // lblMessage
             // 
-            this.lblMessage.Size = new System.Drawing.Size(751, 74);
+            this.lblMessage.Size = new System.Drawing.Size(751, 50);
             this.lblMessage.Text = "Select a Course";
             // 
             // lvwCourses
@@ -47,10 +47,10 @@
             this.lvwCourses.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwCourses.LargeImageList = this.imlMain;
-            this.lvwCourses.Location = new System.Drawing.Point(0, 74);
+            this.lvwCourses.Location = new System.Drawing.Point(0, 50);
             this.lvwCourses.MultiSelect = false;
             this.lvwCourses.Name = "lvwCourses";
-            this.lvwCourses.Size = new System.Drawing.Size(751, 420);
+            this.lvwCourses.Size = new System.Drawing.Size(751, 444);
             this.lvwCourses.TabIndex = 2;
             this.lvwCourses.UseCompatibleStateImageBehavior = false;
             this.lvwCourses.ItemActivate += new System.EventHandler(this.lvwCourses_ItemActivate);
