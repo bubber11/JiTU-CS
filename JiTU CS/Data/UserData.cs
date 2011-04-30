@@ -28,6 +28,11 @@ namespace JiTU_CS.Data
             {
                 return myID;
             }
+			set
+			{
+				myID = value;
+			}
+
         }
 
         public string UserName

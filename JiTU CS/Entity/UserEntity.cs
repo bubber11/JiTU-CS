@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 
 using JiTU_CS.Data;
 
@@ -19,13 +20,36 @@ namespace JiTU_CS.Entity
         {
             try
             {
-                this.SQL = "INSERT INTO `users` (`user_name`, `full_name`, `role_id`, `password) " +
-                    "VALUES (\"" + userData.UserName + "\", \"" + userData.FullName + "\", " + userData.Role + ", \"" + userData.Password + "\");";
+				SHA1 MyHasher = new SHA1CryptoServiceProvider();
+				byte[] result = MyHasher.ComputeHash(Encoding.Default.GetBytes(userData.Password));
+
+				StringBuilder HexString = new StringBuilder();
+
+				for (int i = 0; i < result.Length; i++)
+					HexString.Append(result[i].ToString("x2"));
+
+
+                this.SQL = "INSERT INTO `users` (`user_name`, `full_name`, `role_id`, `password`) " +
+                    "VALUES (\"" + userData.UserName + "\", \"" + userData.FullName + "\", " + (int)userData.Role + ", \"" + HexString.ToString().ToUpper() + "\");";
                 this.InitializeCommand();
                 this.OpenConnection();
 
-                if (this.ExecuteStoredProcedure() == 0)
-                    throw new Exception("Unable to add the user to the database.");
+				if (this.ExecuteStoredProcedure() == 0)
+					throw new Exception("Unable to add the user to the database.");
+				else
+				{
+					this.SQL = "SELECT MAX(u.`user_id`) FROM `users` u;";
+					this.InitializeCommand();
+
+					this.DataReader = this.Command.ExecuteReader();
+
+					if (this.DataReader.HasRows)
+					{
+						this.DataReader.Read();
+
+						userData.Id = this.DataReader.GetInt32(0);
+					}
+				}
 
             }
             catch (System.Exception e)

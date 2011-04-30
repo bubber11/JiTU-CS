@@ -53,6 +53,8 @@ namespace JiTU_CS.UI.Views
         {
             GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
 
+			
+
             if (myNextView == ViewTypes.Quizzes)
             {
                 GlobalData.currentScreen.DisplayView(new QuizzesView());

@@ -54,11 +54,19 @@ namespace JiTU_CS.Controller
         /// <param name="theUser">User to be saved</param>
         public static void SaveUser(UserData theUser)
         {
-            if (theUser.Id == 0)
-                //how does user id change from 0? i dont see it in entity...
-                userEntity.addUser(theUser);
-            else
-                userEntity.updateUser(theUser);
+			try
+			{
+				if (theUser.Id == 0)
+					//how does user id change from 0? i dont see it in entity...
+					userEntity.addUser(theUser);
+				else
+					userEntity.updateUser(theUser);
+
+			}
+			catch (System.Exception e)
+			{
+				System.Windows.Forms.MessageBox.Show(e.Message);
+			}
         }
 
         /// <summary>

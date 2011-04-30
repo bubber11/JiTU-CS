@@ -47,6 +47,8 @@ namespace JiTU_CS.UI
                 Controller.UserController.SaveUser(externalUser);
 
             }
+
+			this.Close();
             
         }
 
