@@ -40,7 +40,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lvwAllStudents = new System.Windows.Forms.ListView();
+            this.lvwStudentsNotInCourse = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.gbCourse.SuspendLayout();
             this.gbAll.SuspendLayout();
@@ -49,7 +49,7 @@
             // lblMessage
             // 
             this.lblMessage.Size = new System.Drawing.Size(737, 50);
-            this.lblMessage.Text = "Students";
+            this.lblMessage.Text = "Manage Students";
             // 
             // imlMain
             // 
@@ -73,6 +73,7 @@
             // lvwStudentsInCourse
             // 
             this.lvwStudentsInCourse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lvwStudentsInCourse.HideSelection = false;
             this.lvwStudentsInCourse.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwStudentsInCourse.LargeImageList = this.imlMain;
@@ -91,13 +92,14 @@
             this.btnRemove.Size = new System.Drawing.Size(48, 48);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // gbAll
             // 
             this.gbAll.Controls.Add(this.btnDelete);
             this.gbAll.Controls.Add(this.btnNew);
             this.gbAll.Controls.Add(this.btnAdd);
-            this.gbAll.Controls.Add(this.lvwAllStudents);
+            this.gbAll.Controls.Add(this.lvwStudentsNotInCourse);
             this.gbAll.Dock = System.Windows.Forms.DockStyle.Right;
             this.gbAll.Location = new System.Drawing.Point(482, 63);
             this.gbAll.Name = "gbAll";
@@ -116,6 +118,7 @@
             this.btnDelete.Size = new System.Drawing.Size(48, 48);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnNew
             // 
@@ -137,18 +140,20 @@
             this.btnAdd.Size = new System.Drawing.Size(48, 48);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lvwAllStudents
+            // lvwStudentsNotInCourse
             // 
-            this.lvwAllStudents.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lvwAllStudents.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lvwStudentsNotInCourse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lvwStudentsNotInCourse.HideSelection = false;
+            this.lvwStudentsNotInCourse.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem2});
-            this.lvwAllStudents.Location = new System.Drawing.Point(10, 23);
-            this.lvwAllStudents.Name = "lvwAllStudents";
-            this.lvwAllStudents.Size = new System.Drawing.Size(235, 419);
-            this.lvwAllStudents.TabIndex = 4;
-            this.lvwAllStudents.UseCompatibleStateImageBehavior = false;
-            this.lvwAllStudents.View = System.Windows.Forms.View.List;
+            this.lvwStudentsNotInCourse.Location = new System.Drawing.Point(10, 23);
+            this.lvwStudentsNotInCourse.Name = "lvwStudentsNotInCourse";
+            this.lvwStudentsNotInCourse.Size = new System.Drawing.Size(235, 419);
+            this.lvwStudentsNotInCourse.TabIndex = 4;
+            this.lvwStudentsNotInCourse.UseCompatibleStateImageBehavior = false;
+            this.lvwStudentsNotInCourse.View = System.Windows.Forms.View.List;
             // 
             // label1
             // 
@@ -183,7 +188,7 @@
         private System.Windows.Forms.ImageList imlMain;
         private System.Windows.Forms.GroupBox gbCourse;
         private System.Windows.Forms.GroupBox gbAll;
-        private System.Windows.Forms.ListView lvwAllStudents;
+        private System.Windows.Forms.ListView lvwStudentsNotInCourse;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.ListView lvwStudentsInCourse;
         private System.Windows.Forms.Label label1;

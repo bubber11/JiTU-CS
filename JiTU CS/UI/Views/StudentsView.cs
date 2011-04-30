@@ -14,12 +14,9 @@ namespace JiTU_CS.UI.Views
 {
     public partial class StudentsView : BaseView
     {
-        //contains our lists of users...
-        List<UserData> studentsInCourse;
-        List<UserData> studentsAll;
-
         public StudentsView()
         {
+            //create form components
             InitializeComponent();
 
             //lblInClass
@@ -27,42 +24,54 @@ namespace JiTU_CS.UI.Views
 
             //clear lists
             lvwStudentsInCourse.Items.Clear();
-            lvwAllStudents.Items.Clear();
+            lvwStudentsNotInCourse.Items.Clear();
+
+            List<UserData> studentsInCourse;
+            List<UserData> studentsNotInCourse;
 
             //get the data from the controller
             studentsInCourse = UserController.GetStudents(GlobalData.currentCourse);
-            studentsAll = UserController.GetStudents();
+            studentsNotInCourse = UserController.GetStudents();
+
+            //remove students in course from students out of class list
+            //first find all the students to remove
+            List<UserData> studentsToRemove = new List<UserData>();
+            foreach (UserData studentNotInCourse in studentsNotInCourse)
+            {
+                foreach (UserData studentInCourse in studentsInCourse)
+                {
+                    if (studentInCourse.Id == studentNotInCourse.Id)
+                    {
+                        studentsToRemove.Add(studentNotInCourse); //we found student in the course so remove
+                        break; //goto next student in list not in class
+                    }
+                }
+            }
+            //now remove them
+            foreach (UserData student in studentsToRemove)
+            {
+                studentsNotInCourse.Remove(student);
+            }
 
             //populate the lists
             foreach (UserData student in studentsInCourse)
             {
-                lvwStudentsInCourse.Items.Add(student.FullName,0);
+                ListViewItem item = lvwStudentsInCourse.Items.Add(student.FullName, 0);
+                item.Tag = student;
+            }
+            foreach (UserData student in studentsNotInCourse)
+            {
+                ListViewItem item = lvwStudentsNotInCourse.Items.Add(student.FullName, 0);
+                item.Tag = student;
             }
 
-            bool alreadyExists;
-            foreach (UserData student in studentsAll)
-            {
-                alreadyExists = false;
-                foreach (UserData studentInCourse in studentsInCourse)
-                {
-                    if (studentInCourse.FullName == student.FullName)
-                    {
-                        alreadyExists = true;
-                        break;
-                    }
-                }
-                
-                if (!alreadyExists)
-                {
-                    lvwAllStudents.Items.Add(student.FullName,0);
-                }
-            }
+            
         }
 
         private void StudentsView_Resize(object sender, EventArgs e)
         {
             lvwStudentsInCourse.Height = gbCourse.Height - 80;
-            lvwAllStudents.Height = gbCourse.Height - 80;
+            lvwStudentsNotInCourse.Height = gbCourse.Height - 80;
             btnRemove.Top = lvwStudentsInCourse.Bottom + 5;
             btnRemove.Left = gbCourse.Right - btnRemove.Width - 10;
             btnAdd.Top = btnRemove.Top;
@@ -81,9 +90,46 @@ namespace JiTU_CS.UI.Views
             //check to see if the user was added to database... if not then we probably cancelled
             if (newUser.Id != 0)
             {
-                lvwAllStudents.Items.Add(newUser.FullName);
-                studentsAll.Add(newUser);
+                //add user to user list
+                ListViewItem item = lvwStudentsNotInCourse.Items.Add(newUser.FullName, 0);
+                item.Tag = newUser;
+                // TODO test
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // TODO 
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            while (lvwStudentsInCourse.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lvwStudentsInCourse.SelectedItems[0];
+                lvwStudentsInCourse.Items.Remove(item); //remove from list
+                lvwStudentsNotInCourse.Items.Add(item); //add to list
+
+                //make changes in database
+                UserData studentToRemove = (UserData)item.Tag;
+                CourseController.RemoveUser(GlobalData.currentCourse, studentToRemove);
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            while (lvwStudentsNotInCourse.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lvwStudentsNotInCourse.SelectedItems[0];
+                lvwStudentsNotInCourse.Items.Remove(item); //remove from list
+                lvwStudentsInCourse.Items.Add(item); //add to list
+
+                //make changes in database
+                UserData studentToAdd = (UserData)item.Tag;
+                CourseController.AddUser(GlobalData.currentCourse, studentToAdd);
+            }
+        }
+
+
     }
 }

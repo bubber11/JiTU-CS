@@ -15,10 +15,18 @@ namespace JiTU_CS.UI.Views
     {        
         private ViewTypes myNextView;
 
-
-        public ClassesView(ViewTypes nextView)
+        /// <summary>
+        /// Create a new view and specify the view to go to after a course is selected
+        /// and the text that displays in the message
+        /// </summary>
+        /// <param name="nextView">the next view to be displayed</param>
+        /// <param name="messageText">the text the message will display</param>
+        public ClassesView(ViewTypes nextView, string messageText)
         {
             InitializeComponent();
+
+            //change message text
+            lblMessage.Text = messageText;
 
             //copy nextview
             myNextView = nextView;
@@ -36,13 +44,14 @@ namespace JiTU_CS.UI.Views
             //add each class to the list
             foreach (CourseData course in myCourses)
             {
-                lvwCourses.Items.Add(course.Name, 0);
+                ListViewItem item = lvwCourses.Items.Add(course.Name, 0);
+                item.Tag = course;
             }
         }
 
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
         {
-            GlobalData.currentCourse = CourseController.GetCourse(lvwCourses.SelectedItems[0].Text);
+            GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
 
             if (myNextView == ViewTypes.Quizzes)
             {

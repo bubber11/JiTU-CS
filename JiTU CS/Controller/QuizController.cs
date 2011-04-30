@@ -33,6 +33,10 @@ namespace JiTU_CS.Controller
             
         }
 
+        /// <summary>
+        /// saves a quiz
+        /// </summary>
+        /// <param name="quiz"></param>
         public static void SaveQuiz(QuizData quiz)
         {
             if (quiz.Id == 0)
