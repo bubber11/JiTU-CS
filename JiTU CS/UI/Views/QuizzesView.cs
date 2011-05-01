@@ -85,6 +85,7 @@ namespace JiTU_CS.UI.Views
             if (result == DialogResult.OK)
             {
                 //go to edit this quiz
+                //create new quiz with specified name
                 QuizData quizToAdd = new QuizData();
                 quizToAdd.Name = quizName;
 
