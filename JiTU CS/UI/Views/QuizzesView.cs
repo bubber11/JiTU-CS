@@ -84,15 +84,16 @@ namespace JiTU_CS.UI.Views
             //if user selected ok
             if (result == DialogResult.OK)
             {
-                //add to database
+                //go to edit this quiz
                 QuizData quizToAdd = new QuizData();
                 quizToAdd.Name = quizName;
-                QuizController.SaveQuiz(quizToAdd);
-                CourseController.AddQuiz(GlobalData.currentCourse, quizToAdd);
-                
-                //add to list 
-                ListViewItem item = lvwQuizzes.Items.Add(quizToAdd.Name);
-                item.Tag = quizToAdd;
+
+                //set global variable
+                GlobalData.currentQuiz = quizToAdd;
+
+                //go to quiz view to edit quiz
+                GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.edit));
+                this.Dispose();
             }
         }
 
