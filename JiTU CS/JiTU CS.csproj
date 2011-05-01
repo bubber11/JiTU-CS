@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AnswerController.cs" />
     <Compile Include="Controller\CourseController.cs" />
     <Compile Include="Controller\QuizController.cs" />
     <Compile Include="Controller\UserController.cs" />

@@ -101,6 +101,12 @@ namespace JiTU_CS.Entity
             try
             {
                 this.SQL = "DELETE FROM `users` WHERE `user_id` = " + userData.Id + ";";
+				this.InitializeCommand();
+				this.OpenConnection();
+
+				if (this.ExecuteStoredProcedure() == 0)
+					throw new System.Exception("Unable to delete the user.");
+
             }
             catch (System.Exception e)
             {
