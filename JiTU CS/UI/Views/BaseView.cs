@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace JiTU_CS.UI.Views
 {
-    public enum Objective {ManageStudents, ManageCourses, ManageQuizzes, ViewAllResults, TakeQuiz, ViewSingleResults, Nothing};
+    public enum Objective {ManageStudents, ManageCourses, ManageQuizzes, ViewAllResults, TakeQuiz, ViewSingleResults};
 
     /// <summary>
     /// Creates a default view, other views inherit this one
@@ -18,6 +18,15 @@ namespace JiTU_CS.UI.Views
     public partial class BaseView : UserControl
     {
         protected Objective myObjective;
+
+        /// <summary>
+        /// default contructor, no objective
+        /// </summary>
+        public BaseView()
+        {
+            //draw components
+            InitializeComponent();
+        }
 
         /// <summary>
         /// draws default components
