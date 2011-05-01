@@ -39,12 +39,6 @@ namespace JiTU_CS.Controller
         /// <param name="quiz"></param>
         public static void SaveQuiz(QuizData quiz)
         {
-            foreach (QuestionData question in quiz.Questions)
-                if (!QuestionController.ValidateQuestion(question))
-                    break;
-
-
-
 			try
 			{
 				if (quiz.Id == 0)
@@ -62,5 +56,27 @@ namespace JiTU_CS.Controller
 			}
         }
 
+        /// <summary>
+        /// validates data and if good saves it
+        /// </summary>
+        /// <param name="quiz">quiz to submit</param>
+        /// <exception cref="Exception">data not correct.</exception>
+        public static void SubmitQuiz(QuizData quiz)
+        {
+            //Validate data
+            if (quiz.Open < DateTime.Now)
+                throw new Exception("The date when the quiz opens must be later than now.");
+
+            if (quiz.Due < quiz.Open)
+                throw new Exception("The due date must be after the open date.");
+
+            if (quiz.Questions.Count == 0)
+                throw new Exception("The quiz must contain at least one question.");
+
+            // TODO validate questions
+
+            //Now that we validated save the quiz
+            SaveQuiz(quiz);
+        }
     }
 }

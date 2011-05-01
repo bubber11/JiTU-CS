@@ -40,7 +40,7 @@ namespace JiTU_CS.UI.Screens
 
         private void btnResults_Click(object sender, EventArgs e)
         {
-
+            DisplayView(new ClassesView(Objective.ViewAllResults,"View Results for which class?"));
         }
 
     }
