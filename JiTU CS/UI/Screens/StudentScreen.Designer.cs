@@ -52,7 +52,7 @@
             this.btnTakeQuiz.Name = "btnTakeQuiz";
             this.btnTakeQuiz.Size = new System.Drawing.Size(163, 50);
             this.btnTakeQuiz.TabIndex = 1;
-            this.btnTakeQuiz.Text = "Take Quiz";
+            this.btnTakeQuiz.Text = "Quizzes";
             this.btnTakeQuiz.UseVisualStyleBackColor = true;
             this.btnTakeQuiz.Click += new System.EventHandler(this.btnTakeQuiz_Click);
             // 
