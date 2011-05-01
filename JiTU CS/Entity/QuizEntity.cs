@@ -146,7 +146,7 @@ namespace JiTU_CS.Entity {
 
             temp.Dispose();
 
-            SQL = "UPDATE `quizzes` q SET q.`name` = \"" + theQuiz.Name + "\", q.`open_date` = \"" + theQuiz.Open.ToString("yyyy-MM-dd") + "\", q.`due_date` = \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\";";
+            SQL = "UPDATE `quizzes` q SET q.`name` = \"" + theQuiz.Name + "\", q.`open_date` = \"" + theQuiz.Open.ToString("yyyy-MM-dd") + "\", q.`due_date` = \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\" WHERE q.`quiz_id` = \"" + theQuiz.Id + "\";";
             InitializeCommand();
             OpenConnection();
 
