@@ -119,7 +119,33 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // TODO  add delete student code
+            //prompt for user conformation
+            var result = MessageBox.Show("Are you sure you want to delete all this students? This will be permanent.", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //check students in course
+                while (lvwStudentsInCourse.SelectedItems.Count > 0)
+                {
+                    //get selected item
+                    ListViewItem item = lvwStudentsInCourse.SelectedItems[0];
+                    lvwStudentsInCourse.Items.Remove(item); //remove from list
+
+                    //make changes in database
+                    UserData studentToRemove = (UserData)item.Tag;
+                    UserController.DeleteUser(studentToRemove);
+                }
+                //check students not in course
+                while (lvwStudentsNotInCourse.SelectedItems.Count > 0)
+                {
+                    //get selected item
+                    ListViewItem item = lvwStudentsNotInCourse.SelectedItems[0];
+                    lvwStudentsNotInCourse.Items.Remove(item); //remove from list
+
+                    //make changes in database
+                    UserData studentToRemove = (UserData)item.Tag;
+                    UserController.DeleteUser(studentToRemove);
+                }
+            }
         }
 
         /// <summary>
