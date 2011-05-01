@@ -17,6 +17,7 @@ namespace JiTU_CS.UI.Views
     {
         List<QuizData> quizzes; //list of quizzes that show up in the list view
 
+
         /// <summary>
         /// constructor
         /// </summary>
@@ -147,5 +148,12 @@ namespace JiTU_CS.UI.Views
             }
         }
 
+        private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) {
+
+            GlobalData.currentQuiz = GetSelectedQuiz();
+            this.Dispose();
+            GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.take));
+
+        }
     }
 }
