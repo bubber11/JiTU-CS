@@ -32,6 +32,7 @@
             this.mnsMain = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             // 
             this.pnlMain.AutoScroll = true;
             this.pnlMain.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 90);
             this.pnlMain.Name = "pnlMain";
@@ -51,7 +53,8 @@
             this.mnsMain.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.discardToolStripMenuItem});
+            this.discardToolStripMenuItem,
+            this.BackToolStripMenuItem});
             this.mnsMain.Location = new System.Drawing.Point(0, 50);
             this.mnsMain.Name = "mnsMain";
             this.mnsMain.Size = new System.Drawing.Size(674, 40);
@@ -68,11 +71,19 @@
             // 
             // discardToolStripMenuItem
             // 
-            this.discardToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.remove;
+            this.discardToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.left;
             this.discardToolStripMenuItem.Name = "discardToolStripMenuItem";
             this.discardToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
             this.discardToolStripMenuItem.ToolTipText = "Save";
             this.discardToolStripMenuItem.Click += new System.EventHandler(this.discardToolStripMenuItem_Click);
+            // 
+            // BackToolStripMenuItem
+            // 
+            this.BackToolStripMenuItem.Image = global::JiTU_CS.Properties.Resources.left;
+            this.BackToolStripMenuItem.Name = "BackToolStripMenuItem";
+            this.BackToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
+            this.BackToolStripMenuItem.ToolTipText = "Save";
+            this.BackToolStripMenuItem.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
             // 
             // QuizView
             // 
@@ -98,6 +109,7 @@
         private System.Windows.Forms.MenuStrip mnsMain;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BackToolStripMenuItem;
 
     }
 }

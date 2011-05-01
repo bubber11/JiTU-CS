@@ -45,6 +45,7 @@ namespace JiTU_CS.UI.Views
             #region Edit Quiz
             if (myObjective == Objective.ManageQuizzes)
             {
+                BackToolStripMenuItem.Visible = false;
                 // 
                 // btnAddQuestion
                 // 
@@ -73,6 +74,14 @@ namespace JiTU_CS.UI.Views
                 this.btnSubmit.Text = "Submit";
                 this.btnSubmit.Width = 100;
                 pnlMain.Controls.Add(btnSubmit);
+            }
+            #endregion
+            #region View All Results
+            else if (myObjective == Objective.ViewAllResults)
+            {
+                saveToolStripMenuItem.Visible = false;
+                discardToolStripMenuItem.Visible = false;
+
             }
             #endregion
 
@@ -126,8 +135,8 @@ namespace JiTU_CS.UI.Views
             for (int i = 0; i < questionBoxes.Count; i++)
             {
                 questionBoxes[i].Number = i + 1;
-                questionBoxes[i].Width = this.Width - 35;
-                questionBoxes[i].Left = (Width - questionBoxes[i].Width) / 2;
+                questionBoxes[i].Width = this.Width - 40;
+                questionBoxes[i].Left =  (Width - questionBoxes[i].Width) / 2 - (5);
                 if (i == 0)
                 {
                     questionBoxes[i].Top = pnlMain.AutoScrollPosition.Y + 20;
@@ -160,6 +169,17 @@ namespace JiTU_CS.UI.Views
                 this.btnSubmit.Left = pnlMain.Width - btnSubmit.Width - 20;
             }
             #endregion
+        }
+
+        /// <summary>
+        /// handles back button click event.
+        /// Sends user back to the quizzes view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GoBackToQuizzesView();
         }
 
         /// <summary>
@@ -215,7 +235,7 @@ namespace JiTU_CS.UI.Views
         private void GoBackToQuizzesView()
         {
             GlobalData.currentQuiz = null;
-            GlobalData.currentScreen.DisplayView(new QuizzesView(Objective.ManageQuizzes));
+            GlobalData.currentScreen.DisplayView(new QuizzesView(myObjective));
             this.Dispose();
         }
 
@@ -230,6 +250,7 @@ namespace JiTU_CS.UI.Views
             private RadioButton[] rbtnAnswers;
             private Button btnEditQuestion;
             private Button btnDeleteQuestion;
+            private Label lblResults;
 
             private int myNumber;
 
@@ -288,12 +309,24 @@ namespace JiTU_CS.UI.Views
                 #region Edit Quiz
                 if (myObjective == Objective.ManageQuizzes)
                 {
-                    //edit radio buttons
+                    //
+                    // rbtnAnswers
+                    //
+                    rbtnAnswers = new RadioButton[myQuestion.Answers.Count];
                     for (int i = 0; i < myQuestion.Answers.Count; i++)
                     {
-                        if (myQuestion.Answers[i].Correct)
-                            rbtnAnswers[i].Checked = true;
+                        rbtnAnswers[i] = new RadioButton();
+
+                        rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
+                        if (i == 0)
+                            rbtnAnswers[i].Top = lblQuestion.Bottom + 5;
+                        else
+                            rbtnAnswers[i].Top = rbtnAnswers[i - 1].Bottom + 5;
+
+                        rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
+                        rbtnAnswers[i].Checked = myQuestion.Answers[i].Correct;
                         rbtnAnswers[i].Enabled = false;
+                        Controls.Add(rbtnAnswers[i]);
                     }
                     // 
                     // btnEditQuestion
@@ -323,11 +356,41 @@ namespace JiTU_CS.UI.Views
                     this.btnDeleteQuestion.Click += new EventHandler(btnDeleteQuestion_Click);
                 }
                 #endregion
+                #region Take Quiz
+                else if (myObjective == Objective.TakeQuiz)
+                {
+                    //
+                    // rbtnAnswers
+                    //
+                    rbtnAnswers = new RadioButton[myQuestion.Answers.Count];
+                    for (int i = 0; i < myQuestion.Answers.Count; i++)
+                    {
+                        rbtnAnswers[i] = new RadioButton();
+
+                        rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
+                        if (i == 0)
+                            rbtnAnswers[i].Top = lblQuestion.Bottom + 5;
+                        else
+                            rbtnAnswers[i].Top = rbtnAnswers[i - 1].Bottom + 5;
+
+                        rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
+                        Controls.Add(rbtnAnswers[i]);
+                    }
+                }
+                #endregion
+                #region View All Results
+                else if (myObjective == Objective.ViewAllResults)
+                {
+                    lblResults = new Label();
+                    lblResults.Text = "90% of students have gotten this question correct.";
+                    lblResults.TextAlign = ContentAlignment.MiddleCenter;
+                    this.Controls.Add(lblResults);
+                }
+                #endregion
 
                 //
                 // QuestionBox
                 //
-                this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
                 this.BackColor = Color.White;
                 this.BorderStyle = BorderStyle.FixedSingle;
                 this.Resize += new EventHandler(QuestionBox_Resize);
@@ -375,23 +438,6 @@ namespace JiTU_CS.UI.Views
                 lblQuestion.Left = 0;
                 lblQuestion.Padding = new Padding(10, 3, 3, 3);
                 Controls.Add(lblQuestion);
-                //
-                // rbtnAnswers
-                //
-                rbtnAnswers = new RadioButton[myQuestion.Answers.Count];
-                for (int i = 0; i < myQuestion.Answers.Count; i++)
-                {
-                    rbtnAnswers[i] = new RadioButton();
-
-                    rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
-                    if (i == 0)
-                        rbtnAnswers[i].Top = lblQuestion.Bottom + 5;
-                    else
-                        rbtnAnswers[i].Top = rbtnAnswers[i-1].Bottom + 5;
-
-                    rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
-                    Controls.Add(rbtnAnswers[i]);
-                }
                 
             }
 
@@ -421,12 +467,27 @@ namespace JiTU_CS.UI.Views
                     this.btnDeleteQuestion.Left = lblHeader.Width - btnDeleteQuestion.Width - 4;
                     this.btnEditQuestion.Top = 4;
                     this.btnEditQuestion.Left = btnDeleteQuestion.Left - btnEditQuestion.Width - 4;
+
+                    this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
+                }
+                #endregion
+                #region Take Quiz
+                if (myObjective == Objective.TakeQuiz)
+                {
+                    this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
+                }
+                #endregion
+                #region View All Results
+                if (myObjective == Objective.ViewAllResults)
+                {
+                    lblResults.Top = lblQuestion.Bottom + 5;
                 }
                 #endregion
 
             }
         }
         #endregion
+
 
     }
 }

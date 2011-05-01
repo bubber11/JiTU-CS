@@ -233,12 +233,6 @@
     <Compile Include="UI\Views\QuizzesView.Designer.cs">
       <DependentUpon>QuizzesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\ResultsView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Views\ResultsView.Designer.cs">
-      <DependentUpon>ResultsView.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\StudentsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -290,6 +284,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

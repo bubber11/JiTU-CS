@@ -41,6 +41,7 @@ namespace JiTU_CS.UI.Views
             {
                 case Objective.ViewAllResults:
                     {
+                        lblMessage.Text = "Select Quiz to View Results for";
                         //add submitted quizzes by teacher to the list
                         List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
                         foreach (QuizData quiz in quizzes)
@@ -56,6 +57,7 @@ namespace JiTU_CS.UI.Views
                     }
                 case Objective.ManageQuizzes:
                     {
+                        lblMessage.Text = "Manage Quizzes";
                         //add unsubmitted teacher quizzes to the list
                         List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
                         foreach (QuizData quiz in quizzes)
@@ -71,6 +73,7 @@ namespace JiTU_CS.UI.Views
                     }
                 case Objective.TakeQuiz:
                     {
+                        lblMessage.Text = "Select Quiz to Take";
                         //add all opened quizzes to list
                         List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
                         foreach (QuizData quiz in quizzes)
@@ -199,13 +202,20 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) 
         {
-            //if type is select then take the quiz
+            //decide what to do based on objective
             if (myObjective == Objective.TakeQuiz)
             {
                 GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
                 GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
                 this.Dispose();
             }
+            else if (myObjective == Objective.ViewAllResults)
+            {
+                GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
+                GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
+                this.Dispose();
+            }
+
 
         }
     }
