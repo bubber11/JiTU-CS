@@ -24,12 +24,7 @@ namespace JiTU_CS.UI.Screens
 
         private void btnTakeQuiz_Click(object sender, EventArgs e)
         {
-			DisplayView(new Views.ClassesView(ViewTypes.Quizzes,"Take a quiz for which class?"));
-        }
-
-        private void gotoQuizesView(object sender, EventArgs e)
-        {
-
+            DisplayView(new Views.ClassesView(ViewTypes.Quizzes, "Take a quiz for which class?", ClassesView.ClassesViewType.Select));
         }
 
         private void btnViewResults_Click(object sender, EventArgs e)

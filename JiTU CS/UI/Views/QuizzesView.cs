@@ -15,6 +15,7 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizzesView : BaseView
     {
+        // TODO add tag to list so we dont need this
         List<QuizData> quizzes; //list of quizzes that show up in the list view
 
         /// <summary>

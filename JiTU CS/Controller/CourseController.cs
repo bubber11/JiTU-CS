@@ -23,11 +23,21 @@ namespace JiTU_CS.Controller
 
         }
 
+        /// <summary>
+        /// Gets a course by name
+        /// </summary>
+        /// <param name="courseName">the name to look for</param>
+        /// <returns></returns>
         public static CourseData GetCourse(string courseName)
         {
             return courseEntity.ReadCourse(courseName);
         }
 
+        /// <summary>
+        /// adds a quiz to a course
+        /// </summary>
+        /// <param name="course">course to add quiz to</param>
+        /// <param name="quiz">quiz to add</param>
         public static void AddQuiz(CourseData course, QuizData quiz)
         {
             courseEntity.AddQuiz(course, quiz);
@@ -51,6 +61,27 @@ namespace JiTU_CS.Controller
         public static void AddUser(CourseData course, UserData user)
         {
             courseEntity.AddUser(course, user);
+        }
+
+        /// <summary>
+        /// saves a course
+        /// </summary>
+        /// <param name="course">course to save</param>
+        public static void SaveCourse(CourseData course)
+        {
+            if (course.Id == 0)
+                courseEntity.CreateCourse(course);
+            else
+                courseEntity.UpdateCourse(course);
+        }
+
+        /// <summary>
+        /// Deletes a specified course from the database
+        /// </summary>
+        /// <param name="course">course to delete</param>
+        public static void DeleteCourse(CourseData course)
+        {
+            courseEntity.DeleteCourse(course);
         }
 
     }
