@@ -45,8 +45,6 @@ namespace JiTU_CS.UI.Views
                 submitButton.ForeColor = Color.FromArgb(0xff, 0xff, 0xff);
                 pnlMain.Controls.Add(submitButton);
             }
-
-
             
             this.pnlMain_Resize(null, null);
         }
@@ -55,7 +53,7 @@ namespace JiTU_CS.UI.Views
         {
             Control lblQuestion;
             Label lblHeader;
-            RadioButton[] rbtnAnswers;
+            Control[] rbtnAnswers;
 
             Objective myObjective;
 
@@ -69,10 +67,16 @@ namespace JiTU_CS.UI.Views
                 rbtnAnswers = new RadioButton[question.Answers.Count];
                 for (int i = question.Answers.Count - 1; i >= 0; i--)
                 {
-                    rbtnAnswers[i] = new RadioButton();
+
+                    if (myObjective != Objective.ManageQuizzes)
+                        rbtnAnswers[i] = new RadioButton();
+                    else
+                        rbtnAnswers[i] = new TextBox();
+
                     rbtnAnswers[i].Text = question.Answers[i].Text;
                     rbtnAnswers[i].Dock = DockStyle.Top;
                     rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
+
                     Controls.Add(rbtnAnswers[i]);
 
                 }

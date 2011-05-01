@@ -138,6 +138,16 @@ namespace JiTU_CS.Entity {
 
         public void UpdateQuiz(QuizData theQuiz) {
 
+            QuestionEntity temp = new QuestionEntity();
+
+            for (int i = 0; i < theQuiz.Questions.Count; i++)
+                temp.UpdateQuestion(theQuiz.Questions[i]);
+
+
+            temp.Dispose();
+
+
+
         }
 
         #endregion
