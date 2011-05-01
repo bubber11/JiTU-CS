@@ -146,7 +146,16 @@ namespace JiTU_CS.Entity {
 
             temp.Dispose();
 
+            SQL = "UPDATE `quizzes` q SET q.`name` = \"" + theQuiz.Name + "\", q.`open_date` = \"" + theQuiz.Open.ToString("yyyy-MM-dd") + "\", q.`due_date` = \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\";";
+            InitializeCommand();
+            OpenConnection();
 
+            int result = ExecuteStoredProcedure();
+
+            CloseConnection();
+
+            if (result == 0)
+                throw new Exception("Unable to update the quiz on the database");
 
         }
 
