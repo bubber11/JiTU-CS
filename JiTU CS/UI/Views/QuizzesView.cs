@@ -30,6 +30,9 @@ namespace JiTU_CS.UI.Views
             //erase all items in list
             lvwQuizzes.Items.Clear();
 
+            if (GlobalData.currentUser.Role != UserData.Roles.Instructor)
+                mnsMain.Visible = false;
+
             //add items in the course to the list
             quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
             foreach (QuizData quiz in quizzes)
