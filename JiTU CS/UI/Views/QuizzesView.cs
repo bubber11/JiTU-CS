@@ -15,16 +15,26 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizzesView : BaseView
     {
-        // TODO add tag to list so we dont need this
-        List<QuizData> quizzes; //list of quizzes that show up in the list view
+        public enum QuizzesViewType { select, manage };
+        private QuizzesViewType myType;
 
 
         /// <summary>
-        /// constructor
+        /// Default constructor
         /// </summary>
-        public QuizzesView()
+        /// <param name="type">The type to show</param>
+        public QuizzesView(QuizzesViewType type)
         {
             InitializeComponent();
+
+            //copy type
+            myType = type;
+
+            //hide edit options base on type
+            if (myType == QuizzesViewType.select)
+            {
+                mnsMain.Visible = false;
+            }
 
             //clear global variable
             GlobalData.currentQuiz = null;
@@ -32,78 +42,48 @@ namespace JiTU_CS.UI.Views
             //erase all items in list
             lvwQuizzes.Items.Clear();
 
-            if (GlobalData.currentUser.Role != UserData.Roles.Instructor)
-                mnsMain.Visible = false;
-
             //add items in the course to the list
-            quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
+            List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
             foreach (QuizData quiz in quizzes)
             {
-                lvwQuizzes.Items.Add(quiz.Name,0);
+                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name,0);
+                item.Tag = quiz;
             }
         }
 
         /// <summary>
-        /// returns the current selected quiz in the list view
-        /// </summary>
-        /// <returns>the quiz that was selected</returns>
-        private QuizData GetSelectedQuiz()
-        {
-            //find the quiz weve selected from text
-            if (lvwQuizzes.SelectedItems.Count != 0)
-            {
-                foreach (QuizData quiz in quizzes)
-                {
-                    if (quiz.Name == lvwQuizzes.SelectedItems[0].Text)
-                    {
-                        return quiz;
-                    }
-                }
-            }
-
-            //no quiz is selected
-            return null;
-        }
-
-        /// <summary>
-        /// removes the current selected quiz from the current course
+        /// Handles remove button click event.
+        /// Removes the current selected quiz from the current course
         /// </summary>
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuizData quizToRemove;
-            quizToRemove = GetSelectedQuiz();
+            QuizData quizToRemove = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
 
-            if (quizToRemove != null)
+            //prompt user if they want to delete it
+            var result = MessageBox.Show("Are you sure you want to permanently delete " + quizToRemove.Name + "?", "Warning!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                //prompt user if they want to delete it
-                var result = MessageBox.Show("Are you sure you want to permanently delete " + quizToRemove.Name + "?", "", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    //remove quiz from list
-                    lvwQuizzes.Items.Remove(lvwQuizzes.SelectedItems[0]);
+                //remove quiz from list
+                lvwQuizzes.Items.Remove(lvwQuizzes.SelectedItems[0]);
 
-                    //remove quiz from database
-                    QuizController.DeleteQuiz(quizToRemove);
-
-                    //remove from quiz list
-                    quizzes.Remove(quizToRemove);
-                }
+                //remove quiz from database
+                QuizController.DeleteQuiz(quizToRemove);
             }
         }
 
         /// <summary>
-        /// allows you to add a quiz to the current selected course
+        /// Handles add button click event.
+        /// Allows user to add a quiz to the current selected course
         /// </summary>
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //prompt user for name
             string quizName = "";
             var result = HelperUI.InputBox("", "Enter name of quiz", ref quizName);
 
-            if (result != DialogResult.Cancel)
+            //if user selected ok
+            if (result == DialogResult.OK)
             {
-                //add to list
-                lvwQuizzes.Items.Add(quizName, 0);
-
                 //add to database
                 QuizData quizToAdd = new QuizData();
                 quizToAdd.Name = quizName;
@@ -111,37 +91,51 @@ namespace JiTU_CS.UI.Views
                 CourseController.AddQuiz(GlobalData.currentCourse, quizToAdd);
                 
                 //add to list 
-                quizzes.Add(quizToAdd);
+                ListViewItem item = lvwQuizzes.Items.Add(quizToAdd.Name);
+                item.Tag = quizToAdd;
             }
         }
 
         /// <summary>
-        /// takes you to a editable version of the quiz currently selected
+        /// Handles edit button click event.
+        /// Takes user to an editable version of the quiz currently selected
         /// </summary>
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GlobalData.currentQuiz = GetSelectedQuiz();
-            this.Dispose();
+            //set global variable
+            GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
+
+            //go to quiz view to edit quiz
             GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.edit));
+            this.Dispose();
         }
 
+        /// <summary>
+        ///  Handles submit button click event.
+        ///  Allows user to set open date and close date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // TODO add submit code here
         }
 
         /// <summary>
-        /// changes available options based on what is selected
+        /// Handles quizzes list change index event.
+        /// Changes available options based on what is selected.
         /// </summary>
         private void lvwQuizzes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if no items are selected
             if (lvwQuizzes.SelectedItems.Count == 0)
             {
                 submitToolStripMenuItem.Enabled = false;
                 editToolStripMenuItem.Enabled = false;
                 removeToolStripMenuItem.Enabled = false;
             }
-            else
+            //if a quiz is selected
+            else 
             {
                 submitToolStripMenuItem.Enabled = true;
                 editToolStripMenuItem.Enabled = true;
@@ -149,11 +143,21 @@ namespace JiTU_CS.UI.Views
             }
         }
 
-        private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) {
-
-            GlobalData.currentQuiz = GetSelectedQuiz();
-            this.Dispose();
-            GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.take));
+        /// <summary>
+        /// Handles quiz list double click event
+        /// If type is select then we take the quiz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) 
+        {
+            //if type is select then take the quiz
+            if (myType == QuizzesViewType.select)
+            {
+                GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
+                GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.take));
+                this.Dispose();
+            }
 
         }
     }
