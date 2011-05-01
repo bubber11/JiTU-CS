@@ -177,7 +177,7 @@ namespace JiTU_CS.Entity {
 
             SQL = "UPDATE `answers` a SET a.`text` = \"" +
                 theAnswer.Text +
-                "\", a.`correct` = \"" +
+                "\", a.`is_correct` = \"" +
                 theAnswer.Correct +
                 "\" WHERE a.`answer_id` = \"" +
                 theAnswer.Id +
