@@ -36,10 +36,10 @@
             this.pnlMain.AutoScroll = true;
             this.pnlMain.BackColor = System.Drawing.SystemColors.Control;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 74);
+            this.pnlMain.Location = new System.Drawing.Point(0, 50);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlMain.Size = new System.Drawing.Size(674, 488);
+            this.pnlMain.Size = new System.Drawing.Size(674, 512);
             this.pnlMain.TabIndex = 2;
             this.pnlMain.Resize += new System.EventHandler(this.pnlMain_Resize);
             // 
@@ -47,6 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.pnlMain);
             this.Name = "QuizView";
             this.Controls.SetChildIndex(this.lblMessage, 0);

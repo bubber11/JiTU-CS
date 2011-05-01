@@ -56,6 +56,7 @@
             this.lvwQuizzes.Size = new System.Drawing.Size(674, 472);
             this.lvwQuizzes.TabIndex = 2;
             this.lvwQuizzes.UseCompatibleStateImageBehavior = false;
+            this.lvwQuizzes.ItemActivate += new System.EventHandler(this.quizSelectedMenuItem_DoubleClick);
             this.lvwQuizzes.SelectedIndexChanged += new System.EventHandler(this.lvwQuizzes_SelectedIndexChanged);
             // 
             // imlquizzes

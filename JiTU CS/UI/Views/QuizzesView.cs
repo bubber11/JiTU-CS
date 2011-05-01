@@ -18,6 +18,7 @@ namespace JiTU_CS.UI.Views
         // TODO add tag to list so we dont need this
         List<QuizData> quizzes; //list of quizzes that show up in the list view
 
+
         /// <summary>
         /// constructor
         /// </summary>
@@ -30,6 +31,9 @@ namespace JiTU_CS.UI.Views
 
             //erase all items in list
             lvwQuizzes.Items.Clear();
+
+            if (GlobalData.currentUser.Role != UserData.Roles.Instructor)
+                mnsMain.Visible = false;
 
             //add items in the course to the list
             quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
@@ -145,5 +149,12 @@ namespace JiTU_CS.UI.Views
             }
         }
 
+        private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) {
+
+            GlobalData.currentQuiz = GetSelectedQuiz();
+            this.Dispose();
+            GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.take));
+
+        }
     }
 }

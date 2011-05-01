@@ -39,6 +39,12 @@ namespace JiTU_CS.Controller
         /// <param name="quiz"></param>
         public static void SaveQuiz(QuizData quiz)
         {
+            foreach (QuestionData question in quiz.Questions)
+                if (!QuestionController.ValidateQuestion(question))
+                    break;
+
+
+
 			try
 			{
 				if (quiz.Id == 0)

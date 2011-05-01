@@ -17,7 +17,9 @@ namespace JiTU_CS.UI.Views
         public enum QuizViewType { edit, take };
 
         private List<QuestionBox> questionBoxes;
+        private Button submitButton;
 
+        private QuizViewType __type;
 
         public QuizView(QuizViewType type)
         {
@@ -25,6 +27,8 @@ namespace JiTU_CS.UI.Views
 
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
+
+            __type = type;
 
             questionBoxes = new List<QuestionBox>();
 
@@ -36,8 +40,20 @@ namespace JiTU_CS.UI.Views
 
             pnlMain.Controls.AddRange(questionBoxes.ToArray());
 
-            this.pnlMain_Resize(null, null);
             
+
+            if (type == QuizViewType.take) {
+                submitButton = new Button();
+                submitButton.Text = "Submit";
+                submitButton.BackColor = Color.FromArgb(0x00, 0x00, 0x00);
+                submitButton.Font = new Font("Lucida Console", 14, FontStyle.Bold);
+                submitButton.TextAlign = ContentAlignment.MiddleCenter;
+                submitButton.FlatStyle = FlatStyle.Popup;
+                submitButton.ForeColor = Color.FromArgb(0xff, 0xff, 0xff);
+                pnlMain.Controls.Add(submitButton);
+            }
+            
+            this.pnlMain_Resize(null, null);
         }
 
         private class QuestionBox : Panel
@@ -78,7 +94,7 @@ namespace JiTU_CS.UI.Views
                 lblHeader.Font = new Font("Lucida Handwriting", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
                 lblHeader.Dock = DockStyle.Top;
                 lblHeader.Height = 32;
-                lblHeader.BackColor = Color.Maroon;
+                lblHeader.BackColor = Color.FromArgb(0x99, 0x00, 0x33);
                 lblHeader.ForeColor = Color.White;
                 Controls.Add(lblHeader);
                 //
@@ -94,17 +110,24 @@ namespace JiTU_CS.UI.Views
         {
             for (int i = 0; i < questionBoxes.Count; i++)
             {
-                questionBoxes[i].Left = 7;
+                
                 questionBoxes[i].Width = this.Width - 35;
+                questionBoxes[i].Left = (Width - questionBoxes[i].Width) / 2;
                 if (i == 0)
                 {
-                    questionBoxes[i].Top = 5;
+                    questionBoxes[i].Top = 20;
                 }
                 else
                 {
-                    questionBoxes[i].Top = questionBoxes[i - 1].Bottom + 5;
+                    questionBoxes[i].Top = questionBoxes[i - 1].Bottom + 20;
                 }
 
+            }
+
+            if (__type == QuizViewType.take) {
+                submitButton.Height = 50;
+                submitButton.Width = 100;
+                submitButton.Location = new Point((pnlMain.Right + pnlMain.AutoScrollPosition.X) - 120, (pnlMain.Bottom + pnlMain.AutoScrollPosition.Y) - 120);
             }
         }
     }
