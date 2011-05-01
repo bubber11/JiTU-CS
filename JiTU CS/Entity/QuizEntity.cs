@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using JiTU_CS.Data;
+using JiTU_CS.Controller;
 
 namespace JiTU_CS.Entity {
     class QuizEntity : BaseEntity {
@@ -141,7 +142,19 @@ namespace JiTU_CS.Entity {
             QuestionEntity temp = new QuestionEntity();
 
             for (int i = 0; i < theQuiz.Questions.Count; i++)
-                temp.UpdateQuestion(theQuiz.Questions[i]);
+            {
+                QuestionData questionToSave;
+                questionToSave = theQuiz.Questions[i];
+                if (questionToSave.Id == 0)
+                {
+                    temp.CreateQuestion(questionToSave);
+
+                }
+                else
+                    temp.UpdateQuestion(questionToSave);
+                
+
+            }
 
 
             temp.Dispose();

@@ -14,13 +14,18 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizView : BaseView
     {
+        #region Members
         private List<QuestionBox> questionBoxes;
+        private List<QuestionData> questionsToDeleteOnSave;
         private Button btnSubmit;
         private Button btnAddQuestion;
+        #endregion
 
+        #region Constructor
         public QuizView(Objective objective) : base(objective) {
 
             InitializeComponent();
+            questionsToDeleteOnSave = new List<QuestionData>();
 
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
@@ -74,31 +79,26 @@ namespace JiTU_CS.UI.Views
             //finish up by installing resize handler
             this.pnlMain.Resize += new System.EventHandler(this.pnlMain_Resize);
         }
+        #endregion
 
+        #region Methods
         void btnAddQuestion_Click(object sender, EventArgs e)
         {
-            ////dummy data
-            //QuestionData question = new QuestionData(0);
-            //question.Text = "This is a question.";
-            //AnswerData answer = new AnswerData(0);
-            //answer.Text =  "Answer";
-            //question.AddAnswer(answer);
-            //question.AddAnswer(answer);
-            //question.AddAnswer(answer);
-            //question.AddAnswer(answer);
-
-            QuestionData newQuestion = null;
+            QuestionData newQuestion = new QuestionData(0);
             frmQuestion questionForm = new frmQuestion(newQuestion);
             questionForm.ShowDialog();
 
-            //TODO fix this line
-            if (newQuestion != null)
+            //check to see the question is valid ie user didnt cancel
+            if (newQuestion.Id != -1)
             {
                 //add question to display
                 QuestionBox questionBox = new QuestionBox(newQuestion, questionBoxes.Count + 1, myObjective);
                 questionBox.Disposed += new EventHandler(questionBox_Disposed);
                 questionBoxes.Add(questionBox);
                 pnlMain.Controls.Add(questionBox);
+
+                //add question to currentQuiz we are editing
+                GlobalData.currentQuiz.addQuestion(newQuestion);
 
                 //set locations via resize
                 pnlMain_Resize(null, null);
@@ -111,7 +111,12 @@ namespace JiTU_CS.UI.Views
         void questionBox_Disposed(object sender, EventArgs e)
         {
             QuestionBox questionBoxDeleted = ((QuestionBox)sender);
+            //remove UI element
             questionBoxes.Remove(questionBoxDeleted);
+            //adding it to list to be deleted on save
+            if (questionBoxDeleted.Question.Id > 0)
+                questionsToDeleteOnSave.Add(questionBoxDeleted.Question);
+            //reposition objects on view
             pnlMain_Resize(null, null);
         }
 
@@ -157,6 +162,66 @@ namespace JiTU_CS.UI.Views
             #endregion
         }
 
+        /// <summary>
+        /// handles save click event.
+        /// Prompts user for conformation and then saves and goes back to quizzes vies
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to save changes to this quiz?", "Saving", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                //if first time were saving this quiz, we need to add it to the course as well
+                bool addToCourse = (GlobalData.currentQuiz.Id == 0);
+
+                //save it first
+                QuizController.SaveQuiz(GlobalData.currentQuiz);
+
+                //now add it to course if we determined it was first save
+                if (addToCourse)
+                    CourseController.AddQuiz(GlobalData.currentCourse, GlobalData.currentQuiz);
+
+                //now delete all questions that are no longer part of this quiz
+                foreach (QuestionData qDelete in questionsToDeleteOnSave)
+                {
+                    QuestionController.DeleteQuestion(qDelete);
+                }
+
+                //return to quizzes view
+                GoBackToQuizzesView();
+            }
+        }
+
+        /// <summary>
+        /// handles the discard changes click event.
+        /// prompt user for comformation and then discards changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void discardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to discard all changes to this quiz?", "Warning!", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GoBackToQuizzesView();
+            }
+        }
+
+        /// <summary>
+        /// returns the user to the quizzes view destroying this view
+        /// </summary>
+        private void GoBackToQuizzesView()
+        {
+            GlobalData.currentQuiz = null;
+            GlobalData.currentScreen.DisplayView(new QuizzesView(Objective.ManageQuizzes));
+            this.Dispose();
+        }
+
+        #endregion
+
+        #region Private Class
         private class QuestionBox : Panel
         {
             private QuestionData myQuestion;
@@ -167,6 +232,14 @@ namespace JiTU_CS.UI.Views
             private Button btnDeleteQuestion;
 
             private int myNumber;
+
+            public QuestionData Question
+            {
+                get
+                {
+                    return myQuestion;
+                }
+            }
 
             private Objective myObjective;
 
@@ -265,8 +338,17 @@ namespace JiTU_CS.UI.Views
 
             void btnEditQuestion_Click(object sender, EventArgs e)
             {
+                //display form
                 frmQuestion questionForm = new frmQuestion(myQuestion);
                 questionForm.ShowDialog();
+
+                //update question box
+                this.lblQuestion.Text = myQuestion.Text;
+                for (int i = 0; i < myQuestion.Answers.Count; i++)
+                {
+                    rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
+                    rbtnAnswers[i].Checked = myQuestion.Answers[i].Correct;
+                }
 
             }
 
@@ -344,5 +426,7 @@ namespace JiTU_CS.UI.Views
 
             }
         }
+        #endregion
+
     }
 }

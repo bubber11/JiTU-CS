@@ -70,7 +70,7 @@ namespace JiTU_CS.Controller
             if (quiz.Questions.Count == 0)
                 throw new Exception("The quiz must contain at least one question.");
 
-            // TODO validate questions
+            // Validation for questions takes place when creating the individual questions
 
             //Now that we validated save the quiz
             SaveQuiz(quiz);

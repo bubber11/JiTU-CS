@@ -20,6 +20,17 @@ namespace JiTU_CS.UI.Views
         protected Objective myObjective;
 
         /// <summary>
+        /// gets the objective of the view
+        /// </summary>
+        public Objective Objective
+        {
+            get
+            {
+                return myObjective;
+            }
+        }
+
+        /// <summary>
         /// default contructor, no objective
         /// </summary>
         public BaseView()

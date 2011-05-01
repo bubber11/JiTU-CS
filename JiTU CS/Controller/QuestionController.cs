@@ -39,5 +39,10 @@ namespace JiTU_CS.Controller {
             return is_valid;
         }
 
+        public static void DeleteQuestion(QuestionData theQuestion)
+        {
+            theEntity.DeleteQuestion(theQuestion);
+        }
+
     }
 }

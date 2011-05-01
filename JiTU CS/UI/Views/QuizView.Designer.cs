@@ -64,6 +64,7 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
             this.saveToolStripMenuItem.ToolTipText = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // discardToolStripMenuItem
             // 
@@ -71,6 +72,7 @@
             this.discardToolStripMenuItem.Name = "discardToolStripMenuItem";
             this.discardToolStripMenuItem.Size = new System.Drawing.Size(44, 36);
             this.discardToolStripMenuItem.ToolTipText = "Save";
+            this.discardToolStripMenuItem.Click += new System.EventHandler(this.discardToolStripMenuItem_Click);
             // 
             // QuizView
             // 
