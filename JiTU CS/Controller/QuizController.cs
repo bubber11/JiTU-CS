@@ -64,9 +64,6 @@ namespace JiTU_CS.Controller
         public static void SubmitQuiz(QuizData quiz)
         {
             //Validate data
-            if (quiz.Open < DateTime.Now)
-                throw new Exception("The date when the quiz opens must be later than now.");
-
             if (quiz.Due < quiz.Open)
                 throw new Exception("The due date must be after the open date.");
 

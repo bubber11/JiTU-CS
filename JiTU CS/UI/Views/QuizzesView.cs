@@ -69,6 +69,21 @@ namespace JiTU_CS.UI.Views
 
                         break;
                     }
+                case Objective.TakeQuiz:
+                    {
+                        //add all opened quizzes to list
+                        List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
+                        foreach (QuizData quiz in quizzes)
+                        {
+                            if (quiz.Open <= DateTime.Now) //determine if an open date is open
+                            {
+                                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name, 0);
+                                item.Tag = quiz;
+                            }
+                        }
+
+                        break;
+                    }
             }
 
         }
