@@ -150,7 +150,7 @@ namespace JiTU_CS.Entity
 				this.InitializeCommand();
 				this.OpenConnection();
 
-				if (this.ExecuteStoredProcedure == 0)
+				if (this.ExecuteStoredProcedure() == 0)
 					throw new System.Exception("Unable to save the user's answers.");
 
 			}
