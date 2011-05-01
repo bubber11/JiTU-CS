@@ -77,26 +77,34 @@ namespace JiTU_CS.UI.Views
 
         void btnAddQuestion_Click(object sender, EventArgs e)
         {
-            //dummy data
-            QuestionData question = new QuestionData(0);
-            question.Text = "This is a question.";
-            AnswerData answer = new AnswerData(0);
-            answer.Text =  "Answer";
-            question.AddAnswer(answer);
-            question.AddAnswer(answer);
-            question.AddAnswer(answer);
-            question.AddAnswer(answer);
+            ////dummy data
+            //QuestionData question = new QuestionData(0);
+            //question.Text = "This is a question.";
+            //AnswerData answer = new AnswerData(0);
+            //answer.Text =  "Answer";
+            //question.AddAnswer(answer);
+            //question.AddAnswer(answer);
+            //question.AddAnswer(answer);
+            //question.AddAnswer(answer);
 
-            //add question to display
-            QuestionBox questionBox = new QuestionBox(question, questionBoxes.Count + 1, myObjective);
-            questionBox.Disposed += new EventHandler(questionBox_Disposed);
-            questionBoxes.Add(questionBox);
-            pnlMain.Controls.Add(questionBox);
+            QuestionData newQuestion = null;
+            frmQuestion questionForm = new frmQuestion(newQuestion);
+            questionForm.ShowDialog();
 
-            //set locations via resize
-            pnlMain_Resize(null, null);
+            //TODO fix this line
+            if (newQuestion != null)
+            {
+                //add question to display
+                QuestionBox questionBox = new QuestionBox(newQuestion, questionBoxes.Count + 1, myObjective);
+                questionBox.Disposed += new EventHandler(questionBox_Disposed);
+                questionBoxes.Add(questionBox);
+                pnlMain.Controls.Add(questionBox);
 
-            pnlMain.ScrollControlIntoView(questionBox);
+                //set locations via resize
+                pnlMain_Resize(null, null);
+
+                pnlMain.ScrollControlIntoView(questionBox);
+            }
 
         }
 
@@ -162,6 +170,23 @@ namespace JiTU_CS.UI.Views
 
             private Objective myObjective;
 
+            public bool IsSomethingSelected
+            {
+                get
+                {
+                    bool selected = false;
+                    foreach (RadioButton rbtn in rbtnAnswers)
+                    {
+                        if (rbtn.Checked)
+                        {
+                            selected = true;
+                            break;
+                        }
+                    }
+                    return selected;
+                }
+            }
+
             public int Number
             {
                 get
@@ -196,9 +221,6 @@ namespace JiTU_CS.UI.Views
                         if (myQuestion.Answers[i].Correct)
                             rbtnAnswers[i].Checked = true;
                         rbtnAnswers[i].Enabled = false;
-
-                        rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
-                        Controls.Add(rbtnAnswers[i]);
                     }
                     // 
                     // btnEditQuestion
@@ -212,6 +234,7 @@ namespace JiTU_CS.UI.Views
                     this.btnEditQuestion.FlatAppearance.BorderSize = 0;
                     this.btnEditQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                     this.lblHeader.Controls.Add(btnEditQuestion);
+                    this.btnEditQuestion.Click += new EventHandler(btnEditQuestion_Click);
                     // 
                     // btnDeleteQuestion
                     // 
@@ -238,6 +261,13 @@ namespace JiTU_CS.UI.Views
 
                 //set the number
                 Number = number;
+            }
+
+            void btnEditQuestion_Click(object sender, EventArgs e)
+            {
+                frmQuestion questionForm = new frmQuestion(myQuestion);
+                questionForm.ShowDialog();
+
             }
 
             void InitializeComponent()
@@ -292,8 +322,6 @@ namespace JiTU_CS.UI.Views
 
             void QuestionBox_Resize(object sender, EventArgs e)
             {
-                SuspendLayout();
-
                 //resize default controls
                 foreach (Control control in this.Controls)
                 {
@@ -314,7 +342,6 @@ namespace JiTU_CS.UI.Views
                 }
                 #endregion
 
-                ResumeLayout();
             }
         }
     }

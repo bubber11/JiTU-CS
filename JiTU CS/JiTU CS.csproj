@@ -91,6 +91,12 @@
     <Compile Include="Entity\ResultsEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
+    <Compile Include="UI\frmQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmQuestion.Designer.cs">
+      <DependentUpon>frmQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmSubmit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmQuestion.resx">
+      <DependentUpon>frmQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmSubmit.resx">
       <DependentUpon>frmSubmit.cs</DependentUpon>
