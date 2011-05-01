@@ -11,7 +11,7 @@ namespace JiTU_CS.Controller
 	{
 		static AnswerEntity entity = new AnswerEntity();
 
-		public static void ValidateAnswer(AnswerData theAnswer)
+		public static bool ValidateAnswer(AnswerData theAnswer)
 		{
 			return string.IsNullOrEmpty(theAnswer.Text);
 		}
