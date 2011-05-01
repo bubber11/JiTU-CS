@@ -33,7 +33,7 @@ namespace JiTU_CS.Entity
 				if (this.DataReader.HasRows)
 				{
 					this.DataReader.Read();
-					return this.DataReader[0];
+					return (int)this.DataReader[0];
 				}
 				else
 					return 0;
@@ -41,7 +41,6 @@ namespace JiTU_CS.Entity
 			catch (System.Exception e)
 			{
 				throw new System.Exception(e.Message, e.InnerException);
-				return 0;
 			}
 		}
 
@@ -91,7 +90,7 @@ namespace JiTU_CS.Entity
 				if (this.DataReader.HasRows)
 				{
 					this.DataReader.Read();
-					return this.DataReader[0];
+					return (int)this.DataReader[0];
 				}
 				else
 					return 0;
@@ -99,7 +98,6 @@ namespace JiTU_CS.Entity
 			catch (System.Exception e)
 			{
 				throw new System.Exception(e.Message, e.InnerException);
-				return 0;
 			}
 		}
 
