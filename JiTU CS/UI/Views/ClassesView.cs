@@ -84,7 +84,7 @@ namespace JiTU_CS.UI.Views
                 //decide which view to go to next
                 if (myNextView == ViewTypes.Quizzes)
                 {
-                    GlobalData.currentScreen.DisplayView(new QuizzesView());
+                    GlobalData.currentScreen.DisplayView(new QuizzesView(QuizzesView.QuizzesViewType.select));
                 }
                 if (myNextView == ViewTypes.Students)
                 {

@@ -65,6 +65,7 @@
     <Compile Include="Data\CourseData.cs" />
     <Compile Include="Data\QuestionData.cs" />
     <Compile Include="Data\QuizData.cs" />
+    <Compile Include="Data\ResultData.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Entity\AnswerEntity.cs" />
     <Compile Include="Entity\BaseEntity.cs" />

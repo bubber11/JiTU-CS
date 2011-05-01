@@ -21,8 +21,8 @@ namespace JiTU_CS.UI.Views
 
         private QuizViewType __type;
 
-        public QuizView(QuizViewType type)
-        {
+        public QuizView(QuizViewType type) {
+
             InitializeComponent();
 
             //set title
@@ -34,13 +34,11 @@ namespace JiTU_CS.UI.Views
 
             for (int i = 0; i < GlobalData.currentQuiz.Questions.Count; i++)
             {
-                QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1);
+                QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1, __type);
                 questionBoxes.Add(questionBox);   
             }
 
             pnlMain.Controls.AddRange(questionBoxes.ToArray());
-
-            
 
             if (type == QuizViewType.take) {
                 submitButton = new Button();
@@ -52,21 +50,27 @@ namespace JiTU_CS.UI.Views
                 submitButton.ForeColor = Color.FromArgb(0xff, 0xff, 0xff);
                 pnlMain.Controls.Add(submitButton);
             }
+
+
             
             this.pnlMain_Resize(null, null);
         }
 
         private class QuestionBox : Panel
         {
-            Label lblQuestion;
+            Control lblQuestion;
             Label lblHeader;
             RadioButton[] rbtnAnswers;
 
-            public QuestionBox(QuestionData question, int number)
-            {
+            QuizViewType __type;
+
+            public QuestionBox(QuestionData question, int number, QuizViewType type)  {
+                
                 //
                 // rbtnAnswers
                 //
+                __type = type;
+
                 rbtnAnswers = new RadioButton[question.Answers.Count];
                 for (int i = question.Answers.Count - 1; i >= 0; i--)
                 {
@@ -77,10 +81,17 @@ namespace JiTU_CS.UI.Views
                     Controls.Add(rbtnAnswers[i]);
 
                 }
+
+                if (__type == QuizViewType.take) {
+                    lblQuestion = new Label();
+                }
+                else {
+                    lblQuestion = new TextBox();
+                }
                 //
                 // lblQuestion
                 //
-                lblQuestion = new Label();
+                
                 lblQuestion.Text = question.Text;
                 lblQuestion.Dock = DockStyle.Top;
                 lblQuestion.Padding = new Padding(10, 3, 3, 3);
@@ -127,7 +138,7 @@ namespace JiTU_CS.UI.Views
             if (__type == QuizViewType.take) {
                 submitButton.Height = 50;
                 submitButton.Width = 100;
-                submitButton.Location = new Point((pnlMain.Right + pnlMain.AutoScrollPosition.X) - 120, (pnlMain.Bottom + pnlMain.AutoScrollPosition.Y) - 120);
+                submitButton.Location = new Point((pnlMain.Right + pnlMain.AutoScrollOffset.X) - 120, (pnlMain.Bottom + pnlMain.AutoScrollOffset.Y) - 120);
             }
         }
     }
