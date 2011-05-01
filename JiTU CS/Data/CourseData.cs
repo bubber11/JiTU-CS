@@ -6,6 +6,11 @@ namespace JiTU_CS.Data
 {
     public class CourseData {
 
+        public CourseData() {
+            id_internal = 0;
+            name_internal = String.Empty;
+        }
+
         public CourseData(int idIn) {
             id_internal = idIn;
             name_internal = String.Empty;

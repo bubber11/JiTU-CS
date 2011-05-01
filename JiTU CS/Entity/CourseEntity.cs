@@ -201,7 +201,7 @@ namespace JiTU_CS.Entity {
             if (DataReader != null)
                 DataReader.Close();
 
-            SQL = "UPDATE `courses` c SET c.'name' = \"" + theCourse.Name + "\" WHERE c.`course_id` = \"" + theCourse.Id + "\";";
+            SQL = "UPDATE `courses` c SET c.`name` = \"" + theCourse.Name + "\" WHERE c.`course_id` = \"" + theCourse.Id + "\";";
 
             InitializeCommand();
             OpenConnection();

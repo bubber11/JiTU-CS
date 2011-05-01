@@ -23,9 +23,10 @@ namespace JiTU_CS.UI.Screens
         public void DisplayView(Views.BaseView view)
         {
             //remove all user controls
-            foreach (Control oControl in this.scMain.Panel2.Controls)
-                if (oControl is UserControl)
-                    oControl.Dispose();
+            for (int i = this.scMain.Panel2.Controls.Count - 1; i >= 0; i--)
+            {
+                this.scMain.Panel2.Controls[i].Dispose() ;
+            }
 
             //show the view
             view.Dock = DockStyle.Fill;
