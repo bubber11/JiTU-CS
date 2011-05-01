@@ -87,6 +87,15 @@ namespace JiTU_CS.Controller
             return userEntity.GetStudentsByCourse(course.Id);
         }
 
+        /// <summary>
+        /// deletes a specified user from the database
+        /// </summary>
+        /// <param name="theUser">user to delete</param>
+        public static void DeleteUser(UserData theUser)
+        {
+            userEntity.deleteUser(theUser);
+        }
+
         #endregion
     }
 }
