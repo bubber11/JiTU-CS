@@ -36,13 +36,41 @@ namespace JiTU_CS.UI.Views
             //erase all items in list
             lvwQuizzes.Items.Clear();
 
-            //add items in the course to the list
-            List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
-            foreach (QuizData quiz in quizzes)
+            //decide which quizzes to add based on objective
+            switch(myObjective)
             {
-                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name,0);
-                item.Tag = quiz;
+                case Objective.ViewAllResults:
+                    {
+                        //add submitted quizzes by teacher to the list
+                        List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
+                        foreach (QuizData quiz in quizzes)
+                        {
+                            if (quiz.Open != DateTime.MinValue) //determine if an open date has been set
+                            {
+                                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name, 0);
+                                item.Tag = quiz;
+                            }
+                        }
+
+                        break;
+                    }
+                case Objective.ManageQuizzes:
+                    {
+                        //add unsubmitted teacher quizzes to the list
+                        List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
+                        foreach (QuizData quiz in quizzes)
+                        {
+                            if (quiz.Open == DateTime.MinValue) //determine if an open date has been set
+                            {
+                                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name, 0);
+                                item.Tag = quiz;
+                            }
+                        }
+
+                        break;
+                    }
             }
+
         }
 
         /// <summary>
@@ -114,7 +142,16 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         private void submitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO add submit code here
+            //show the form
+            QuizData selectedQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
+            frmSubmit submitForm = new frmSubmit(selectedQuiz);
+            submitForm.ShowDialog();
+
+            //check to see if the date time was changed, if it was remove it from the list
+            if (selectedQuiz.Open != DateTime.MinValue) //determine if an open date has been set
+            {
+                lvwQuizzes.Items.Remove(lvwQuizzes.SelectedItems[0]);
+            }
         }
 
         /// <summary>

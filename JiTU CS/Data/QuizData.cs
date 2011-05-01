@@ -25,12 +25,12 @@ namespace JiTU_CS.Data {
             }
         }
 
-        public DateTime Added {
+        public DateTime Open {
             get {
-                return added_internal;
+                return open_internal;
             }
             set {
-                added_internal = value;
+                open_internal = value;
             }
         }
 
@@ -63,7 +63,7 @@ namespace JiTU_CS.Data {
         public QuizData(int id) {
             id_internal = id;
             questions_internal = new List<QuestionData>();
-            added_internal = new DateTime();
+            open_internal = new DateTime();
             due_internal = new DateTime();
         }
 
@@ -73,7 +73,7 @@ namespace JiTU_CS.Data {
         public QuizData() {
             id_internal = 0;
             questions_internal = new List<QuestionData>();
-            added_internal = new DateTime();
+            open_internal = new DateTime();
             due_internal = new DateTime();
         }
 
@@ -87,7 +87,7 @@ namespace JiTU_CS.Data {
         private string name_internal;
         private List<QuestionData> questions_internal;
 
-        private DateTime added_internal;
+        private DateTime open_internal;
         private DateTime due_internal;
         #endregion
 

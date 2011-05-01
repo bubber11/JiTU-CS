@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -75,6 +75,12 @@
     <Compile Include="Entity\ResultsEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
+    <Compile Include="UI\frmSubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmSubmit.Designer.cs">
+      <DependentUpon>frmSubmit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmSubmit.resx">
+      <DependentUpon>frmSubmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>

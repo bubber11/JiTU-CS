@@ -28,7 +28,7 @@ namespace JiTU_CS.Entity {
                 DataReader.Close();
 
             SQL = "INSERT INTO `quizzes` (`quiz_id`, `name`, `open_date`, `due_date`) VALUES " +
-                "(\"" + theQuiz.Id + "\", \"" + theQuiz.Name + "\", \"" + theQuiz.Added.ToString("yyyy-MM-dd") +
+                "(\"" + theQuiz.Id + "\", \"" + theQuiz.Name + "\", \"" + theQuiz.Open.ToString("yyyy-MM-dd") +
                 "\", \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\");";
 
             InitializeCommand();
@@ -85,7 +85,7 @@ namespace JiTU_CS.Entity {
                 DataReader.Read();
                 return_value = new QuizData(DataReader.GetUInt16("quiz_id"));
                 return_value.Name = DataReader.GetString("name");
-                return_value.Added = DataReader.GetDateTime("open_date");
+                return_value.Open = DataReader.GetDateTime("open_date");
                 return_value.Due = DataReader.GetDateTime("due_date");
             }
 
