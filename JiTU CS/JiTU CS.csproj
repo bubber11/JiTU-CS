@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C48A11F3-5FC1-45BF-B71D-DE95CFA29BDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -59,6 +59,7 @@
     <Compile Include="Controller\CourseController.cs" />
     <Compile Include="Controller\QuestionController.cs" />
     <Compile Include="Controller\QuizController.cs" />
+    <Compile Include="Controller\ResultsController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Data\AnswerData.cs" />
     <Compile Include="Data\CourseData.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Entity\CourseEntity.cs" />
     <Compile Include="Entity\QuestionEntity.cs" />
     <Compile Include="Entity\QuizEntity.cs" />
+    <Compile Include="Entity\ResultsEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="UI\frmUser.cs">
