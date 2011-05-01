@@ -175,7 +175,7 @@ namespace JiTU_CS.Entity {
             if (DataReader != null)
                 DataReader.Close();
 
-            SQL = "UPDATE `answer` a SET a.`text` = \"" +
+            SQL = "UPDATE `answers` a SET a.`text` = \"" +
                 theAnswer.Text +
                 "\", a.`correct` = \"" +
                 theAnswer.Correct +
