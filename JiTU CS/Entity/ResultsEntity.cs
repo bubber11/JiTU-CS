@@ -42,6 +42,10 @@ namespace JiTU_CS.Entity
 			{
 				throw new System.Exception(e.Message, e.InnerException);
 			}
+			finally
+			{
+				this.CloseConnection();
+			}
 		}
 
 		/// <summary>
@@ -99,6 +103,10 @@ namespace JiTU_CS.Entity
 			{
 				throw new System.Exception(e.Message, e.InnerException);
 			}
+			finally
+			{
+				this.CloseConnection();
+			}
 		}
 
 		/// <summary>
@@ -124,5 +132,37 @@ namespace JiTU_CS.Entity
 			return myTable;
 		}
 
+		/// <summary>
+		/// Writes the result of the quiz to the database
+		/// </summary>
+		/// <param name="theResults"></param>
+		public void AddResult(ResultData theResults)
+		{
+			try
+			{
+				this.SQL = "INSERT INTO `rel_answers_users` (`answer_id`, `user_id`) VALUES ";
+
+				this.SQL += "(" + theResults.StudentId + ", " + theResults.AnswerId[0] + ")";
+
+				for (int index = 1; index < theResults.AnswerId.Count; index++)
+					this.SQL += ", (" + theResults.StudentId + ", " + theResults.AnswerId[index] + ")";
+
+				this.InitializeCommand();
+				this.OpenConnection();
+
+				if (this.ExecuteStoredProcedure() == 0)
+					throw new System.Exception("Unable to save the user's answers.");
+
+			}
+			catch (System.Exception e)
+			{
+				throw new System.Exception(e.Message, e.InnerException);
+			}
+			finally
+			{
+				this.CloseConnection();
+			}
+		}
+	
 	}
 }
