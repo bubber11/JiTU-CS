@@ -15,23 +15,17 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizzesView : BaseView
     {
-        public enum QuizzesViewType { select, manage };
-        private QuizzesViewType myType;
-
 
         /// <summary>
-        /// Default constructor
+        /// Constructor
         /// </summary>
-        /// <param name="type">The type to show</param>
-        public QuizzesView(QuizzesViewType type)
+        /// <param name="objective"></param>
+        public QuizzesView(Objective objective) : base(objective)
         {
             InitializeComponent();
 
-            //copy type
-            myType = type;
-
             //hide edit options base on type
-            if (myType == QuizzesViewType.select)
+            if (myObjective != Objective.ManageQuizzes)
             {
                 mnsMain.Visible = false;
             }
@@ -93,7 +87,7 @@ namespace JiTU_CS.UI.Views
                 GlobalData.currentQuiz = quizToAdd;
 
                 //go to quiz view to edit quiz
-                GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.edit));
+                GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
                 this.Dispose();
             }
         }
@@ -108,7 +102,7 @@ namespace JiTU_CS.UI.Views
             GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
 
             //go to quiz view to edit quiz
-            GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.edit));
+            GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
             this.Dispose();
         }
 
@@ -154,10 +148,10 @@ namespace JiTU_CS.UI.Views
         private void quizSelectedMenuItem_DoubleClick(object sender, EventArgs e) 
         {
             //if type is select then take the quiz
-            if (myType == QuizzesViewType.select)
+            if (myObjective == Objective.TakeQuiz)
             {
                 GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
-                GlobalData.currentScreen.DisplayView(new QuizView(QuizView.QuizViewType.take));
+                GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
                 this.Dispose();
             }
 

@@ -11,7 +11,7 @@ namespace JiTU_CS.UI.Views
 {
     public partial class WelcomeView : BaseView
     {
-        public WelcomeView()
+        public WelcomeView() : base(Objective.Nothing)
         {
             InitializeComponent();
         }

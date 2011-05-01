@@ -101,6 +101,7 @@
             this.btnResults.TabIndex = 7;
             this.btnResults.Text = "Results";
             this.btnResults.UseVisualStyleBackColor = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // InstructorScreen
             // 

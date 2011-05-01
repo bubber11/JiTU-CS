@@ -20,7 +20,7 @@ namespace JiTU_CS.UI.Views
         /// <summary>
         /// Default constructor, draws elements and populates the lsits
         /// </summary>
-        public StudentsView()
+        public StudentsView() : base(Objective.ManageStudents)
         {
             //create form components
             InitializeComponent();

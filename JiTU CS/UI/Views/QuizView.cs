@@ -14,33 +14,28 @@ namespace JiTU_CS.UI.Views
 {
     public partial class QuizView : BaseView
     {
-        public enum QuizViewType { edit, take };
-
         private List<QuestionBox> questionBoxes;
         private Button submitButton;
 
-        private QuizViewType __type;
-
-        public QuizView(QuizViewType type) {
+        public QuizView(Objective objective) : base(objective) {
 
             InitializeComponent();
 
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
 
-            __type = type;
 
             questionBoxes = new List<QuestionBox>();
 
             for (int i = 0; i < GlobalData.currentQuiz.Questions.Count; i++)
             {
-                QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1, __type);
+                QuestionBox questionBox = new QuestionBox(GlobalData.currentQuiz.Questions[i], i + 1, myObjective);
                 questionBoxes.Add(questionBox);   
             }
 
             pnlMain.Controls.AddRange(questionBoxes.ToArray());
 
-            if (type == QuizViewType.take) {
+            if (myObjective == Objective.TakeQuiz) {
                 submitButton = new Button();
                 submitButton.Text = "Submit";
                 submitButton.BackColor = Color.FromArgb(0x00, 0x00, 0x00);
@@ -62,14 +57,14 @@ namespace JiTU_CS.UI.Views
             Label lblHeader;
             RadioButton[] rbtnAnswers;
 
-            QuizViewType __type;
+            Objective myObjective;
 
-            public QuestionBox(QuestionData question, int number, QuizViewType type)  {
+            public QuestionBox(QuestionData question, int number, Objective objective)  {
                 
                 //
                 // rbtnAnswers
                 //
-                __type = type;
+                myObjective = objective;
 
                 rbtnAnswers = new RadioButton[question.Answers.Count];
                 for (int i = question.Answers.Count - 1; i >= 0; i--)
@@ -82,7 +77,7 @@ namespace JiTU_CS.UI.Views
 
                 }
 
-                if (__type == QuizViewType.take) {
+                if (myObjective == Objective.TakeQuiz) {
                     lblQuestion = new Label();
                 }
                 else {
@@ -135,7 +130,7 @@ namespace JiTU_CS.UI.Views
 
             }
 
-            if (__type == QuizViewType.take) {
+            if (myObjective == Objective.TakeQuiz) {
                 submitButton.Height = 50;
                 submitButton.Width = 100;
                 submitButton.Location = new Point((pnlMain.Right + pnlMain.AutoScrollOffset.X) - 120, (pnlMain.Bottom + pnlMain.AutoScrollOffset.Y) - 120);

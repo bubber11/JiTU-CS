@@ -16,30 +16,20 @@ namespace JiTU_CS.UI.Views
     /// </summary>
     public partial class ClassesView : BaseView
     {
-        #region Members
-        public enum ClassesViewType { Manage, Select };
-        private ViewTypes myNextView;
-        private ClassesViewType myViewType;
-        #endregion
-
         /// <summary>
-        /// Create the view
+        /// Constructor
         /// </summary>
-        /// <param name="nextView">what view to go to next</param>
-        /// <param name="messageText">the text to display</param>
-        /// <param name="type">what type of course view</param>
-        public ClassesView(ViewTypes nextView, string messageText, ClassesViewType type)
+        /// <param name="objective">whats the objective?</param>
+        /// <param name="messageText">text to display</param>
+        public ClassesView(Objective objective, string messageText) : base(objective)
         {
             InitializeComponent();
-
-            //copy view type
-            myViewType = type;
 
             //change message text
             lblMessage.Text = messageText;
 
-            //copy nextview
-            myNextView = nextView;
+            //copy objective
+            myObjective = objective;
 
             //clear global variable
             GlobalData.currentCourse = null;
@@ -59,12 +49,13 @@ namespace JiTU_CS.UI.Views
             }
 
             //change visibility based on view type
-            if (type == ClassesViewType.Select)
+            if (myObjective == Objective.ManageCourses)
             {
-                mnsMain.Visible = false;
+                mnsMain.Visible = true;
             }
             else
             {
+                mnsMain.Visible = false;
             }
         }
 
@@ -75,28 +66,32 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         private void lvwCourses_ItemActivate(object sender, EventArgs e)
         {
-            //if we are in select mode go to the next specified screen
-            if (myViewType == ClassesViewType.Select)
+            //decide which view to go to next
+            switch (myObjective)
             {
-                //tell global varable which course we selected
-                GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
-
-                //decide which view to go to next
-                if (myNextView == ViewTypes.Quizzes)
-                {
-                    if (GlobalData.currentUser.Role == UserData.Roles.Student)  
-                        GlobalData.currentScreen.DisplayView(new QuizzesView(QuizzesView.QuizzesViewType.select));
-                    else
-                        GlobalData.currentScreen.DisplayView(new QuizzesView(QuizzesView.QuizzesViewType.manage));
-                }
-                if (myNextView == ViewTypes.Students)
-                {
-                    GlobalData.currentScreen.DisplayView(new StudentsView());
-                }
-
-                //were done selecting course so delete this
-                this.Dispose();
+                case Objective.ManageQuizzes:
+                    {
+                        GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
+                        GlobalData.currentScreen.DisplayView(new QuizzesView(myObjective));
+                        this.Dispose();
+                        break;
+                    }
+                case Objective.ManageStudents:
+                    {
+                        GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
+                        GlobalData.currentScreen.DisplayView(new StudentsView());
+                        this.Dispose();
+                        break;
+                    }
+                case Objective.TakeQuiz:
+                    {
+                        GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
+                        GlobalData.currentScreen.DisplayView(new QuizzesView(myObjective));
+                        this.Dispose();
+                        break;
+                    }
             }
+            
         }
 
         /// <summary>
@@ -106,7 +101,7 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         private void lvwCourses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (myViewType == ClassesViewType.Manage)
+            if (myObjective == Objective.ManageCourses)
             {
                 //control button enables
                 if (lvwCourses.SelectedItems.Count > 0)
