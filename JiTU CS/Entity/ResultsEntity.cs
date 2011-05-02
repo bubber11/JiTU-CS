@@ -190,6 +190,53 @@ namespace JiTU_CS.Entity
 
 			}
 		}
-	
+
+
+        public double StudentResults(UserData theUser, QuizData theQuiz) {
+            double return_val = 100.00;
+
+            int quest_count;
+            int correct_count;
+
+            if (DataReader != null)
+                DataReader.Close();
+
+            SQL = "SELECT IFNULL(COUNT(`question_id`), 0) FROM `rel_quizzes_questions` WHERE `rel_quizzes_questions`.`quiz_id` = \"" + theQuiz.Id + "\";";
+
+            InitializeCommand();
+            OpenConnection();
+            DataReader = Command.ExecuteReader();
+            DataReader.Read();
+            quest_count = DataReader.GetUInt16("IFNULL(COUNT(`question_id`), 0)");
+            
+            if (DataReader != null)
+                DataReader.Close();
+
+            SQL = "SELECT IFNULL(COUNT(r.`question_id`), 0) FROM `rel_quizzes_questions` r INNER JOIN `questions` q on q.`question_id` = r.`question_id` INNER JOIN `rel_questions_answers` s ON s.`question_id` = q.`question_id` INNER JOIN `answers` a ON a.`answer_id` = s.`answer_id` INNER JOIN `rel_answers_users` t ON t.`answer_id` = a.`answer_id` WHERE r.`quiz_id` = \"" + theQuiz.Id + "\" and a.`is_correct` = \"1\" and t.`user_id` = \"" + theUser.Id + "\";";
+
+            InitializeCommand();
+
+            DataReader = Command.ExecuteReader();
+            DataReader.Read();
+
+            correct_count = DataReader.GetUInt16("IFNULL(COUNT(r.`question_id`), 0)");
+
+            if (DataReader != null)
+                DataReader.Close();
+
+            if (correct_count == 0)
+                return_val = 0;
+
+            else {
+                if (quest_count == 0)
+                    return_val = 0;
+                else
+                    return_val = ((double)correct_count / (double)quest_count) * 100.00;
+            }
+            CloseConnection();
+
+            return return_val;
+        }
+
 	}
 }
