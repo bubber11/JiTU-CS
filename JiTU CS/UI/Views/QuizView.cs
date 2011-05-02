@@ -73,10 +73,11 @@ namespace JiTU_CS.UI.Views
                 // btnSubmit
                 //
                 this.btnSubmit = new Button();
-                this.btnSubmit.Name = "btnAddQuestion";
+                this.btnSubmit.Name = "btnSubmit";
                 this.btnSubmit.UseVisualStyleBackColor = true;
                 this.btnSubmit.Text = "Submit";
                 this.btnSubmit.Width = 100;
+                this.btnSubmit.Click += new EventHandler(btnSubmit_Click);
                 pnlMain.Controls.Add(btnSubmit);
             }
             #endregion
@@ -95,6 +96,17 @@ namespace JiTU_CS.UI.Views
         #endregion
 
         #region Methods
+        /// <summary>
+        /// handles submit buttons click event.
+        /// Allows student to submit a quiz they are taking.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void btnSubmit_Click(object sender, EventArgs e)
+        {
+            // TODO create submit quiz procedure
+        }
+
         void btnAddQuestion_Click(object sender, EventArgs e)
         {
             QuestionData newQuestion = new QuestionData(0);
