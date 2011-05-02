@@ -202,6 +202,33 @@ namespace JiTU_CS.Entity
             return newUser;
         }
 
+
+        /// <summary>
+        /// Checks to see if the user has taken the given test
+        /// </summary>
+        /// <param name="theUser"></param>
+        /// <param name="theQuiz"></param>
+        /// <returns></returns>
+        public bool TestTaken(UserData theUser, QuizData theQuiz) {
+            bool return_val = false;
+
+            if (DataReader != null)
+                DataReader.Close();
+
+            SQL = "select IFNULL(COUNT(`user_id`), 0) FROM `rel_quizzes_users` r WHERE r.`user_id` = \"" + theUser.Id + "\" and r.`quiz_id` = \"" + theQuiz.Id + "\";";
+            InitializeCommand();
+            OpenConnection();
+
+            DataReader = Command.ExecuteReader();
+
+            DataReader.Read();
+            return_val = DataReader.GetUInt16("IFNULL(COUNT(`user_id`), 0)") == 1;
+            CloseConnection();
+
+            return return_val;
+        }
+
+
         /// <summary>
         /// Gets a list of UserData objects representing all students currently in the database
         /// </summary>

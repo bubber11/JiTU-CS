@@ -176,7 +176,7 @@ namespace JiTU_CS.Entity {
 
             SQL = "UPDATE `quizzes` q SET q.`name` = \"" + theQuiz.Name + "\", q.`open_date` = \"" + theQuiz.Open.ToString("yyyy-MM-dd") + "\", q.`due_date` = \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\" WHERE q.`quiz_id` = \"" + theQuiz.Id + "\";";
             InitializeCommand();
-
+            OpenConnection();
 
             int result = ExecuteStoredProcedure();
             CloseConnection();
@@ -204,6 +204,7 @@ namespace JiTU_CS.Entity {
 
             SQL = "DELETE `quizzes`, `rel_courses_quizzes` FROM `quizzes` INNER JOIN `rel_courses_quizzes` ON `quizzes`.`quiz_id` = `rel_courses_quizzes`.`quiz_id` WHERE `quizzes`.`quiz_id` = \"" + theQuiz.Id + "\";";
             InitializeCommand();
+            OpenConnection();
 
             int result = ExecuteStoredProcedure();
             CloseConnection();

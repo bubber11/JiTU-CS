@@ -105,6 +105,23 @@ namespace JiTU_CS.UI.Views
         void btnSubmit_Click(object sender, EventArgs e)
         {
             // TODO create submit quiz procedure
+
+            if (MessageBox.Show("Are you sure you want to save changes to this quiz?", "Saving", MessageBoxButtons.OKCancel) == DialogResult.OK) {
+                ResultData temp = new ResultData(GlobalData.currentUser, GlobalData.currentQuiz);
+                foreach (QuestionBox ind in questionBoxes) {
+                    for (int i = 0; i < ind.rbtnAnswers.Length; i++) {
+                        if (ind.rbtnAnswers[i].Checked)
+                            temp.Answers.Add((AnswerData)ind.rbtnAnswers[i].Tag);
+                    }
+                }
+                ResultsEntity res = new ResultsEntity();
+                res.AddResult(temp);
+                res.Dispose();
+                this.Dispose();
+            }
+
+
+
         }
 
         void btnAddQuestion_Click(object sender, EventArgs e)
@@ -269,7 +286,7 @@ namespace JiTU_CS.UI.Views
             private QuestionData myQuestion;
             private Control lblQuestion;
             private Label lblHeader;
-            private RadioButton[] rbtnAnswers;
+            public  RadioButton[] rbtnAnswers;
             private Button btnEditQuestion;
             private Button btnDeleteQuestion;
             private Label lblResults;
@@ -388,7 +405,7 @@ namespace JiTU_CS.UI.Views
                     for (int i = 0; i < myQuestion.Answers.Count; i++)
                     {
                         rbtnAnswers[i] = new RadioButton();
-
+                        rbtnAnswers[i].Tag = myQuestion.Answers[i];
                         rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
                         if (i == 0)
                             rbtnAnswers[i].Top = lblQuestion.Bottom + 5;

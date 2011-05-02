@@ -45,6 +45,7 @@ namespace JiTU_CS.Entity {
 
             SQL = "INSERT INTO `questions` (`question_id`, `question`) VALUES (\"" + theQuestion.Id + "\", \"" + theQuestion.Text + "\");";
 
+            OpenConnection();
             InitializeCommand();
 
 
@@ -108,6 +109,8 @@ namespace JiTU_CS.Entity {
                     return_data.AddAnswer(temp1[i]);
                 temp.Dispose();
             }
+
+            CloseConnection();
             
             return return_data;
         }
@@ -159,7 +162,9 @@ namespace JiTU_CS.Entity {
 
             SQL = "UPDATE `questions` q SET q.`question` = \"" + theQuestion.Text + "\" WHERE q.`question_id` = \"" + theQuestion.Id + "\";";
 
+            OpenConnection();
             InitializeCommand();
+            
 
 
             int result = ExecuteStoredProcedure();

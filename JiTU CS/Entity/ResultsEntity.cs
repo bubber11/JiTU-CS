@@ -146,21 +146,37 @@ namespace JiTU_CS.Entity
 		{
 			try
 			{
-				this.SQL = "INSERT INTO `rel_answers_users` (`answer_id`, `user_id`) VALUES ";
+				this.SQL = "INSERT INTO `rel_answers_users` (`user_id`, `answer_id`) VALUES ";
 
-				this.SQL += "(" + theResults.Student.Id + ", " + theResults.Answers[0].Id + ")";
+				this.SQL += "(\"" + theResults.Student.Id + "\", \"" + theResults.Answers[0].Id + "\")";
 
-                for (int index = 1; index < theResults.Answers.Count;  index++)
-                    this.SQL += ", (" + theResults.Student.Id + ", " + theResults.Answers[index].Id + ")";
+                for (int index = 1; index < theResults.Answers.Count - 1;  index++)
+                    this.SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[index].Id + "\")";
+
+                SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[theResults.Answers.Count - 1].Id + "\");";
 
 				this.InitializeCommand();
+                OpenConnection();
 
                 int result = ExecuteStoredProcedure();
 
 				if (result == 0)
 					throw new System.Exception("Unable to save the user's answers.");
 
-                SQL = "INSERT INTO `rel_quizzes_users` (`quiz_id`, `user_id`) VALUES (\"";
+                if (DataReader != null)
+                    DataReader.Close();
+
+                SQL = "INSERT INTO `rel_quizzes_users` (`quiz_id`, `user_id`) VALUES (\"" + theResults.Quiz.Id + "\", \"" + theResults.Student.Id + "\");";
+                InitializeCommand();
+
+                result = ExecuteStoredProcedure();
+
+                CloseConnection();
+
+                if (result == 0)
+                    throw new Exception("Unable to save the user\'s answers");
+
+
 
 
 
