@@ -58,6 +58,10 @@ namespace JiTU_CS.Controller
         /// <exception cref="Exception">data not correct.</exception>
         public static void SubmitQuiz(QuizData quiz)
         {
+
+            QuestionEntity temp = new QuestionEntity();
+            quiz.Questions.AddRange(temp.ReadQuestions(quiz));
+            temp.Dispose();
             //Validate data
             if (quiz.Due < quiz.Open)
                 throw new Exception("The due date must be after the open date.");
