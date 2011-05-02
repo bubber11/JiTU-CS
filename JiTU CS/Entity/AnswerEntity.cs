@@ -10,8 +10,10 @@ namespace JiTU_CS.Entity {
 
         #region constructors_destructors
 
-        public AnswerEntity() {
+        public AnswerEntity() : base() {
 
+            if (Connection == null)
+                OpenConnection();
 
         }
 
@@ -40,16 +42,16 @@ namespace JiTU_CS.Entity {
                 theAnswer.Id +
                 "\", \"" +
                 theAnswer.Text +
-                "\", \"" +
-                theAnswer.Correct +
-                "\");";
+                "\", " +
+                theAnswer.Correct.ToString() +
+                ");";
 
             InitializeCommand();
-            OpenConnection();
+
 
             int result = ExecuteStoredProcedure();
 
-            CloseConnection();
+
 
             if (result == 0)
                 throw new Exception("Could not add the answer to the database");
@@ -122,7 +124,7 @@ namespace JiTU_CS.Entity {
                 return_value.Correct = DataReader.GetBoolean("is_correct");
             }
 
-            CloseConnection();
+
 
             if (return_value == null)
                 throw new Exception("The Answer did not exist on the database");
@@ -156,7 +158,7 @@ namespace JiTU_CS.Entity {
                     return_data.Add(temp);
                 }
             }
-            CloseConnection();
+
 
             return return_data;
         }
@@ -172,14 +174,15 @@ namespace JiTU_CS.Entity {
         /// </summary>
         /// <param name="theAnswer"></param>
         public void UpdateAnswer(AnswerData theAnswer) {
+
             if (DataReader != null)
                 DataReader.Close();
 
             SQL = "UPDATE `answers` a SET a.`text` = \"" +
                 theAnswer.Text +
-                "\", a.`is_correct` = \"" +
-                theAnswer.Correct +
-                "\" WHERE a.`answer_id` = \"" +
+                "\", a.`is_correct` = " +
+                theAnswer.Correct.ToString() +
+                " WHERE a.`answer_id` = \"" +
                 theAnswer.Id +
                 "\";";
 
@@ -188,7 +191,6 @@ namespace JiTU_CS.Entity {
 
             int result = ExecuteStoredProcedure();
 
-            CloseConnection();
 
             if (result == 0)
                 throw new Exception("The Answer Could Not Be Updated");
@@ -241,7 +243,6 @@ namespace JiTU_CS.Entity {
 
             result = ExecuteStoredProcedure();
 
-            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Could not clear the results for that answer");

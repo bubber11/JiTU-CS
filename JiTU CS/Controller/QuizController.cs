@@ -37,23 +37,18 @@ namespace JiTU_CS.Controller
         /// saves a quiz
         /// </summary>
         /// <param name="quiz"></param>
-        public static void SaveQuiz(QuizData quiz)
-        {
-			try
-			{
-				if (quiz.Id == 0)
-				{
-					entity.CreateQuiz(quiz);
-				}
-				else
-				{
-					entity.UpdateQuiz(quiz);
-				}
-			}
-			catch (System.Exception e)
-			{
-				System.Windows.Forms.MessageBox.Show(e.Message);
-			}
+        public static void SaveQuiz(QuizData quiz)  {
+
+            try {
+                if (quiz.Id == 0) {
+                    entity.CreateQuiz(quiz);
+                } else {
+                    entity.UpdateQuiz(quiz);
+                }
+            } catch (System.Exception e) {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+            }
+
         }
 
         /// <summary>

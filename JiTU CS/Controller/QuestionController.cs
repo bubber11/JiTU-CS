@@ -10,6 +10,22 @@ namespace JiTU_CS.Controller {
 
         static QuestionEntity theEntity = new QuestionEntity();
 
+        public static void SaveQuestion(QuestionData theQuestion) {
+
+            if (theQuestion.Id == 0) {
+
+                if (ValidateQuestion(theQuestion))
+                    theEntity.UpdateQuestion(theQuestion);
+
+            } else {
+
+                if (ValidateQuestion(theQuestion))
+                    theEntity.UpdateQuestion(theQuestion);
+
+            }
+
+        }
+
         public static bool ValidateQuestion(QuestionData theQuestion) {
             bool is_valid = true;
 

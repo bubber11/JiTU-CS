@@ -34,7 +34,7 @@ namespace JiTU_CS.Entity {
 
             InitializeCommand();
 
-            OpenConnection();
+
             int result = ExecuteStoredProcedure();
 
             if (result == 0)
@@ -52,7 +52,7 @@ namespace JiTU_CS.Entity {
                     theQuiz.Id + "\", \"" + theQuiz.Questions[i].Id + "\");";
 
                 InitializeCommand();
-                OpenConnection();
+
 
                 result = ExecuteStoredProcedure();
 
@@ -61,7 +61,24 @@ namespace JiTU_CS.Entity {
 
             }
 
-            CloseConnection();
+
+
+        }
+
+        public void AddQuestion(QuizData theQuiz, QuestionData theQuestion) {
+
+            if (DataReader != null)
+                DataReader.Close();
+
+            SQL = "INSERT INTO `rel_quizzes_questions` (`quiz_id`, `question_id`) VALUES (\"" + theQuiz.Id + "\", \"" + theQuestion.Id + "\");";
+
+            InitializeCommand();
+
+            int result = ExecuteStoredProcedure();
+
+            if (result == 0)
+                throw new Exception("Unable to add question to quiz");
+
 
         }
 
@@ -90,18 +107,13 @@ namespace JiTU_CS.Entity {
                 return_value.Due = DataReader.GetDateTime("due_date");
             }
 
-
-            CloseConnection();
-
             QuestionEntity temp = new QuestionEntity();
 
             return_value.Questions.AddRange(temp.ReadQuestions(return_value));
 
             if (return_value == null)
                 throw new Exception("Could not find specified Quiz");
-
             
-
             return return_value;
         }
 
@@ -125,8 +137,6 @@ namespace JiTU_CS.Entity {
                 while (DataReader.Read())
                     temp.Add(DataReader.GetInt16("quiz_id"));
 
-            CloseConnection();
-
             for (int i = 0; i < temp.Count; i++)
                 return_data.Add(ReadQuiz(temp[i]));
 
@@ -148,6 +158,7 @@ namespace JiTU_CS.Entity {
                 if (questionToSave.Id == 0)
                 {
                     temp.CreateQuestion(questionToSave);
+                    AddQuestion(theQuiz, questionToSave);
 
                 }
                 else
@@ -161,11 +172,10 @@ namespace JiTU_CS.Entity {
 
             SQL = "UPDATE `quizzes` q SET q.`name` = \"" + theQuiz.Name + "\", q.`open_date` = \"" + theQuiz.Open.ToString("yyyy-MM-dd") + "\", q.`due_date` = \"" + theQuiz.Due.ToString("yyyy-MM-dd") + "\" WHERE q.`quiz_id` = \"" + theQuiz.Id + "\";";
             InitializeCommand();
-            OpenConnection();
+
 
             int result = ExecuteStoredProcedure();
 
-            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Unable to update the quiz on the database");
@@ -190,10 +200,9 @@ namespace JiTU_CS.Entity {
 
             SQL = "DELETE `quizzes`, `rel_courses_quizzes` FROM `quizzes` INNER JOIN `rel_courses_quizzes` ON `quizzes`.`quiz_id` = `rel_courses_quizzes`.`quiz_id` WHERE `quizzes`.`quiz_id` = \"" + theQuiz.Id + "\";";
             InitializeCommand();
-            OpenConnection();
 
             int result = ExecuteStoredProcedure();
-            CloseConnection();
+ 
 
             if (result == 0)
                 throw new Exception("Could not delete the Quiz from Database");
@@ -216,7 +225,6 @@ namespace JiTU_CS.Entity {
                 SQL = "SELECT IFNULL(MAX(quiz_id), 0) FROM quizzes;";
 
                 InitializeCommand();
-                OpenConnection();
 
                 DataReader = Command.ExecuteReader();
 
@@ -224,7 +232,7 @@ namespace JiTU_CS.Entity {
                     DataReader.Read();
                     return_data = DataReader.GetUInt16("IFNULL(MAX(quiz_id), 0)");
                 }
-                CloseConnection();
+
                 return_data++;
 
                 return return_data;

@@ -10,6 +10,12 @@ namespace JiTU_CS.Entity
 	class ResultsEntity : BaseEntity
 	{
 
+        public ResultsEntity() {
+            if (Connection == null)
+                OpenConnection();
+
+        }
+
 		/// <summary>
 		/// Gets the number of correct answers for a question
 		/// </summary>
@@ -26,7 +32,7 @@ namespace JiTU_CS.Entity
 					"WHERE a.`is_correct` = 1 AND q.`question_id` = " + theQuestion.Id + " " +
 					"GROUP BY q.`question_id`;";
 				this.InitializeCommand();
-				this.OpenConnection();
+                OpenConnection();
 
 				this.DataReader = this.Command.ExecuteReader();
 
@@ -44,7 +50,7 @@ namespace JiTU_CS.Entity
 			}
 			finally
 			{
-				this.CloseConnection();
+
 			}
 		}
 
@@ -87,7 +93,7 @@ namespace JiTU_CS.Entity
 					"WHERE a.`is_correct` = 0 AND q.`question_id` = " + theQuestion.Id + " " +
 					"GROUP BY q.`question_id`;";
 				this.InitializeCommand();
-				this.OpenConnection();
+
 
 				this.DataReader = this.Command.ExecuteReader();
 
@@ -105,7 +111,7 @@ namespace JiTU_CS.Entity
 			}
 			finally
 			{
-				this.CloseConnection();
+
 			}
 		}
 
@@ -148,7 +154,7 @@ namespace JiTU_CS.Entity
 					this.SQL += ", (" + theResults.StudentId + ", " + theResults.AnswerId[index] + ")";
 
 				this.InitializeCommand();
-				this.OpenConnection();
+
 
 				if (this.ExecuteStoredProcedure() == 0)
 					throw new System.Exception("Unable to save the user's answers.");
@@ -160,7 +166,7 @@ namespace JiTU_CS.Entity
 			}
 			finally
 			{
-				this.CloseConnection();
+
 			}
 		}
 	

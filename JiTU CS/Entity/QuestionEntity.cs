@@ -46,7 +46,7 @@ namespace JiTU_CS.Entity {
             SQL = "INSERT INTO `questions` (`question_id`, `question`) VALUES (\"" + theQuestion.Id + "\", \"" + theQuestion.Text + "\");";
 
             InitializeCommand();
-            OpenConnection();
+
 
             int result = ExecuteStoredProcedure();
 
@@ -66,14 +66,14 @@ namespace JiTU_CS.Entity {
                     theQuestion.Answers[i].Id +
                     "\");";
                 InitializeCommand();
-                OpenConnection();
+
 
                 result = ExecuteStoredProcedure();
                 if (result == 0)
                     throw new Exception("One or more of the answers could not be added to the database");
 
             }
-            CloseConnection();     
+  
 
         }
 
@@ -147,8 +147,10 @@ namespace JiTU_CS.Entity {
         public void UpdateQuestion(QuestionData theQuestion) {
 
             AnswerEntity temp = new AnswerEntity();
+
             for (int i = 0; i < theQuestion.Answers.Count; i++)
                 temp.UpdateAnswer(theQuestion.Answers[i]);
+
             temp.Dispose();
 
             if (DataReader != null)
@@ -158,11 +160,10 @@ namespace JiTU_CS.Entity {
             SQL = "UPDATE `questions` q SET q.`question` = \"" + theQuestion.Text + "\" WHERE q.`question_id` = \"" + theQuestion.Id + "\";";
 
             InitializeCommand();
-            OpenConnection();
+
 
             int result = ExecuteStoredProcedure();
 
-            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Unable to edit the question on database");

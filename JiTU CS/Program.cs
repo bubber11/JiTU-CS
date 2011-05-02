@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using JiTU_CS.Data;
+using JiTU_CS.Controller;
 
 namespace JiTU_CS
 {

@@ -228,10 +228,12 @@ namespace JiTU_CS.Entity
                 "Pwd=eap3THui;" +
                 "database=jituasu;" +
                 "Pooling=False");
+            OpenConnection();
         }
 
         ~BaseEntity()
         {
+            CloseConnection();
             Dispose(false);
         }
 
@@ -251,11 +253,11 @@ namespace JiTU_CS.Entity
                 Command.Dispose();
                 Command = null;
             }
-            if (this.Connection != null)
+            if (Connection != null)
             {
-                this.Connection.Close();
-                this.Connection.Dispose();
-                this.Connection = null;
+                Connection.Close();
+                Connection.Dispose();
+                Connection = null;
             }
             Dispose(true);
             GC.SuppressFinalize(this);
