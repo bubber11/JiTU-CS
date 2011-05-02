@@ -107,9 +107,9 @@ namespace JiTU_CS.Entity {
                 return_value.Due = DataReader.GetDateTime("due_date");
             }
 
-            QuestionEntity temp = new QuestionEntity();
+            //QuestionEntity temp = new QuestionEntity();
 
-            return_value.Questions.AddRange(temp.ReadQuestions(return_value));
+            //return_value.Questions.AddRange(temp.ReadQuestions(return_value));
 
             if (return_value == null)
                 throw new Exception("Could not find specified Quiz");

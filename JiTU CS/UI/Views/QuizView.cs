@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using JiTU_CS.Entity;
 
 using JiTU_CS.Data;
 using JiTU_CS.Controller;
@@ -29,6 +30,9 @@ namespace JiTU_CS.UI.Views
 
             //set title
             lblMessage.Text = GlobalData.currentQuiz.Name;
+
+            QuestionEntity temp = new QuestionEntity();
+            GlobalData.currentQuiz.Questions.AddRange(temp.ReadQuestions(GlobalData.currentQuiz));
 
             //create our questions and add them
             questionBoxes = new List<QuestionBox>();
@@ -153,10 +157,13 @@ namespace JiTU_CS.UI.Views
             if (myObjective == Objective.ManageQuizzes)
             {
                 if (questionBoxes.Count != 0)
-                    this.btnAddQuestion.Top = questionBoxes[questionBoxes.Count - 1].Bottom + 10;
+                    this.btnAddQuestion.Top = questionBoxes[questionBoxes.Count - 1].Bottom + 20;
                 else
                     this.btnAddQuestion.Top = 15;
                 this.btnAddQuestion.Left = pnlMain.Width - btnAddQuestion.Width - 20;
+
+                pnlMain.AutoScrollMargin = new Size(0, 20);
+                pnlMain.AutoScroll = true;
             }
             #endregion
             #region Take Quiz
@@ -167,6 +174,9 @@ namespace JiTU_CS.UI.Views
                 else
                     this.btnSubmit.Top = 15;
                 this.btnSubmit.Left = pnlMain.Width - btnSubmit.Width - 20;
+
+                pnlMain.AutoScroll = true;
+                pnlMain.AutoScrollMargin = new Size(0, 20);
             }
             #endregion
         }
