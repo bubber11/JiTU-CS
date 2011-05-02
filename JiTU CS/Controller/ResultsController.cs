@@ -33,10 +33,10 @@ namespace JiTU_CS.Controller
 
 		public static void SaveResults(ResultData theResults)
 		{
-			if (theResults.AnswerId.Count == 0)
+			if (theResults.Answers.Count == 0)
 				System.Windows.Forms.MessageBox.Show("There are no answers to save.", "JiTU", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 			else
-				if (theResults.StudentId == 0)
+				if (theResults.Student.Id == 0)
 					System.Windows.Forms.MessageBox.Show("The user id is invalid.", "JiTU", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
 				else
 					theEntity.AddResult(theResults);

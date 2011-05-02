@@ -148,16 +148,21 @@ namespace JiTU_CS.Entity
 			{
 				this.SQL = "INSERT INTO `rel_answers_users` (`answer_id`, `user_id`) VALUES ";
 
-				this.SQL += "(" + theResults.StudentId + ", " + theResults.AnswerId[0] + ")";
+				this.SQL += "(" + theResults.Student.Id + ", " + theResults.Answers[0].Id + ")";
 
-				for (int index = 1; index < theResults.AnswerId.Count; index++)
-					this.SQL += ", (" + theResults.StudentId + ", " + theResults.AnswerId[index] + ")";
+                for (int index = 1; index < theResults.Answers.Count;  index++)
+                    this.SQL += ", (" + theResults.Student.Id + ", " + theResults.Answers[index].Id + ")";
 
 				this.InitializeCommand();
 
+                int result = ExecuteStoredProcedure();
 
-				if (this.ExecuteStoredProcedure() == 0)
+				if (result == 0)
 					throw new System.Exception("Unable to save the user's answers.");
+
+                SQL = "INSERT INTO `rel_quizzes_users` (`quiz_id`, `user_id`) VALUES (\"";
+
+
 
 			}
 			catch (System.Exception e)

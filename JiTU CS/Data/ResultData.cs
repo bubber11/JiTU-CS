@@ -7,23 +7,33 @@ namespace JiTU_CS.Data {
 
     class ResultData {
 
-        public List<int> AnswerId {
+        public ResultData(UserData theUser, QuizData theQuiz) {
+            __Answers = new List<AnswerData>();
+            __Student = theUser;
+            __Quiz = theQuiz;
+        }
+
+        public List<AnswerData> Answers {
             get {
-                return __AnswerId;
+                return __Answers;
             }
         }
 
-        public int StudentId {
+        public UserData Student {
             get {
-                return __StudentId;
-            }
-            set {
-                __StudentId = value;
+                return __Student;
             }
         }
 
-        private List<int> __AnswerId;
-        private int __StudentId;
+        public QuizData Quiz {
+            get {
+                return __Quiz;
+            }
+        }
+
+        private List<AnswerData> __Answers;
+        private UserData __Student;
+        private QuizData __Quiz;
 
     }
 
