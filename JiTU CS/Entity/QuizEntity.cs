@@ -111,6 +111,8 @@ namespace JiTU_CS.Entity {
 
             //return_value.Questions.AddRange(temp.ReadQuestions(return_value));
 
+            CloseConnection();
+
             if (return_value == null)
                 throw new Exception("Could not find specified Quiz");
             
@@ -139,6 +141,8 @@ namespace JiTU_CS.Entity {
 
             for (int i = 0; i < temp.Count; i++)
                 return_data.Add(ReadQuiz(temp[i]));
+            
+            CloseConnection();
 
             return return_data;
         }
@@ -175,7 +179,7 @@ namespace JiTU_CS.Entity {
 
 
             int result = ExecuteStoredProcedure();
-
+            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Unable to update the quiz on the database");
@@ -202,7 +206,7 @@ namespace JiTU_CS.Entity {
             InitializeCommand();
 
             int result = ExecuteStoredProcedure();
- 
+            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Could not delete the Quiz from Database");
@@ -232,6 +236,8 @@ namespace JiTU_CS.Entity {
                     DataReader.Read();
                     return_data = DataReader.GetUInt16("IFNULL(MAX(quiz_id), 0)");
                 }
+
+                CloseConnection();
 
                 return_data++;
 

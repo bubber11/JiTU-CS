@@ -51,7 +51,7 @@ namespace JiTU_CS.Entity {
 
             int result = ExecuteStoredProcedure();
 
-
+            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Could not add the answer to the database");
@@ -124,7 +124,7 @@ namespace JiTU_CS.Entity {
                 return_value.Correct = DataReader.GetBoolean("is_correct");
             }
 
-
+            CloseConnection();
 
             if (return_value == null)
                 throw new Exception("The Answer did not exist on the database");
@@ -158,7 +158,7 @@ namespace JiTU_CS.Entity {
                     return_data.Add(temp);
                 }
             }
-
+            CloseConnection();
 
             return return_data;
         }
@@ -190,7 +190,7 @@ namespace JiTU_CS.Entity {
             OpenConnection();
 
             int result = ExecuteStoredProcedure();
-
+            CloseConnection();
 
             if (result == 0)
                 throw new Exception("The Answer Could Not Be Updated");
@@ -242,7 +242,7 @@ namespace JiTU_CS.Entity {
             InitializeCommand();
 
             result = ExecuteStoredProcedure();
-
+            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Could not clear the results for that answer");
