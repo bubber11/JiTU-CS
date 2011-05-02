@@ -104,13 +104,7 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         void btnSubmit_Click(object sender, EventArgs e)
         {
-            //foreach (QuestionBox q in questionBoxes)
-            //{
-            //    if (q.IsSelectedCorrect)
-            //        //q is correct
-            //    else
-            //        //q is wrong
-            //}
+            // TODO create submit quiz procedure
         }
 
         void btnAddQuestion_Click(object sender, EventArgs e)
@@ -292,18 +286,6 @@ namespace JiTU_CS.UI.Views
 
             private Objective myObjective;
 
-            public bool IsSelectedCorrect()
-            {
-                //TODO Test that this works correctly
-                bool correct = false;
-                foreach (RadioButton r in rbtnAnswers)
-                {
-                    if ((((AnswerData)r.Tag).Correct) && (r.Checked))
-                        correct = true;
-                }
-                return correct;
-            }
-
             public bool IsSomethingSelected
             {
                 get
@@ -412,7 +394,7 @@ namespace JiTU_CS.UI.Views
                             rbtnAnswers[i].Top = lblQuestion.Bottom + 5;
                         else
                             rbtnAnswers[i].Top = rbtnAnswers[i - 1].Bottom + 5;
-                        rbtnAnswers[i].Tag = myQuestion.Answers[i];
+
                         rbtnAnswers[i].Padding = new Padding(15, 3, 3, 3);
                         Controls.Add(rbtnAnswers[i]);
                     }
