@@ -25,7 +25,9 @@ namespace JiTU_CS.Entity
 		{
 			try
 			{
-       
+                if (DataReader != null)
+                    DataReader.Close();
+
 				this.SQL = "SELECT COUNT(ra.`user_id`) AS `CountCorrect` FROM `questions` q " +
 					"JOIN `rel_questions_answers` qa ON q.`question_id` = qa.`question_id` " +
 					"JOIN `answers` a ON qa.`answer_id` = a.`answer_id` " +
@@ -40,7 +42,7 @@ namespace JiTU_CS.Entity
 				if (this.DataReader.HasRows)
 				{
 					this.DataReader.Read();
-					return (int)this.DataReader[0];
+					return DataReader.GetUInt16("CountCorrect");
 				}
 				else
 					return 0;
@@ -87,6 +89,10 @@ namespace JiTU_CS.Entity
 		{
 			try
 			{
+
+                if (DataReader != null)
+                    DataReader.Close();
+
 				this.SQL = "SELECT COUNT(ra.`user_id`) AS `CountCorrect` FROM `questions` q " +
 					"JOIN `rel_questions_answers` qa ON q.`question_id` = qa.`question_id` " +
 					"JOIN `answers` a ON qa.`answer_id` = a.`answer_id` " +
@@ -101,7 +107,7 @@ namespace JiTU_CS.Entity
 				if (this.DataReader.HasRows)
 				{
 					this.DataReader.Read();
-					return (int)this.DataReader[0];
+                    return DataReader.GetUInt16("CountCorrect");
 				}
 				else
 					return 0;
