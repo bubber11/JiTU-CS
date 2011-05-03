@@ -97,6 +97,13 @@ namespace JiTU_CS.UI.Views
                         this.Dispose();
                         break;
                     }
+                case Objective.ViewSingleResults:
+                    {
+                        GlobalData.currentCourse = (CourseData)lvwCourses.SelectedItems[0].Tag;
+                        GlobalData.currentScreen.DisplayView(new QuizzesView(myObjective));
+                        this.Dispose();
+                        break;
+                    }
             }
             
         }

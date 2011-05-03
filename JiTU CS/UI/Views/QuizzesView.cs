@@ -88,6 +88,12 @@ namespace JiTU_CS.UI.Views
 
                         break;
                     }
+                case Objective.ViewSingleResults:
+                    {
+                        lblMessage.Text = "View results for which quiz?";
+                        //todo add quizzes that contain results
+                        break;
+                    }
             }
 
         }
@@ -215,6 +221,13 @@ namespace JiTU_CS.UI.Views
                 GlobalData.currentQuiz = (QuizData)lvwQuizzes.SelectedItems[0].Tag;
                 GlobalData.currentScreen.DisplayView(new QuizView(myObjective));
                 this.Dispose();
+            }
+            else if (myObjective == Objective.ViewSingleResults)
+            {
+                //display students percentage on this quiz
+                MessageBox.Show( "You scored " +
+                    ResultsController.GetStudentPercentage(GlobalData.currentUser,(QuizData)lvwQuizzes.SelectedItems[0].Tag)
+                    + "% on this quiz");
             }
 
 
