@@ -506,7 +506,15 @@ namespace JiTU_CS.UI.Views
 
                     //display statistics
                     lblResults = new Label();
-                    lblResults.Text = percent.ToString("0.0%") + " of " + total.ToString() + " have gotten this question correct.";
+                    lblResults.Text = percent.ToString("0.0%") + " of " + total.ToString() + " students have gotten this question correct.";
+
+                    if (percent < .75)
+                        lblResults.BackColor = Color.Red;
+                    else if (percent < .90)
+                        lblResults.BackColor = Color.Yellow;
+                    else
+                        lblResults.BackColor = Color.Green;
+
                     lblResults.TextAlign = ContentAlignment.MiddleCenter;
                     this.Controls.Add(lblResults);
                 }
