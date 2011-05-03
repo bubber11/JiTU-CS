@@ -211,7 +211,7 @@ namespace JiTU_CS.Entity
             if (DataReader != null)
                 DataReader.Close();
 
-            SQL = "SELECT IFNULL(COUNT(`question_id`), 0) FROM `rel_quizzes_questions` WHERE `rel_quizzes_questions`.`quiz_id` = \"" + theQuiz.Id + "\";";
+            SQL = "SELECT IFNULL(COUNT(`question_id`), 0) FROM `rel_quizzes_questions` WHERE `rel_quizzes_questions`.`quiz_id` = " + theQuiz.Id + ";";
 
             InitializeCommand();
             OpenConnection();

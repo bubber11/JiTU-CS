@@ -28,27 +28,40 @@ namespace JiTU_CS.UI
         {
             if (txtPassword.Text != txtPasswordConfirm.Text)
             {
-                MessageBox.Show("Passwords do not match!");
-            }
+				MessageBox.Show("Passwords do not match!", "JiTU", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
             else
             {
-                //if we arent updating, create
-                if (externalUser == null)
-                {
-                    externalUser = new JiTU_CS.Data.UserData();
-                }
+				if (string.IsNullOrEmpty(txtPassword.Text))
+				{
+					MessageBox.Show("You must enter a new password.", "JiTU", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else
+				{
+					if (string.IsNullOrEmpty(txtFullName.Text) || string.IsNullOrEmpty(txtUserName.Text))
+					{
+						MessageBox.Show("You must enter your full name and a user name.", "JiTU", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					else
+					{
+						//if we arent updating, create
+						if (externalUser == null)
+						{
+							externalUser = new JiTU_CS.Data.UserData();
+						}
 
-                //copy values
-                externalUser.FullName = txtFullName.Text;
-                externalUser.UserName = txtUserName.Text;
-                externalUser.Password = txtPassword.Text;
-                
-                //save user to database
-                Controller.UserController.SaveUser(externalUser);
+						//copy values
+						externalUser.FullName = txtFullName.Text;
+						externalUser.UserName = txtUserName.Text;
+						externalUser.Password = txtPassword.Text;
 
+						//save user to database
+						Controller.UserController.SaveUser(externalUser);
+
+						this.Close();
+					}
+				}
             }
-
-			this.Close();
             
         }
 
@@ -58,8 +71,8 @@ namespace JiTU_CS.UI
             {
                 txtFullName.Text = externalUser.FullName;
                 txtUserName.Text = externalUser.UserName;
-                txtPassword.Text = externalUser.Password;
-                txtPasswordConfirm.Text = externalUser.Password;
+                //txtPassword.Text = externalUser.Password;
+                //txtPasswordConfirm.Text = externalUser.Password;
             }
         }
 

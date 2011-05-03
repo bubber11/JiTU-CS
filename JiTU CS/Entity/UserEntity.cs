@@ -68,28 +68,33 @@ namespace JiTU_CS.Entity
         /// <param name="userData"></param>
         public void updateUser(UserData userData)
         {
-            
+			SHA1 MyHasher = new SHA1CryptoServiceProvider();
+			byte[] result = MyHasher.ComputeHash(Encoding.Default.GetBytes(userData.Password));
+
+			StringBuilder HexString = new StringBuilder();
+
+			for (int i = 0; i < result.Length; i++)
+				HexString.Append(result[i].ToString("X2"));
+ 
            
             DataReader.Close();
             this.SQL = "UPDATE `users` u SET " +
                 "u.`user_name` = \"" + userData.UserName + "\", " +
                 "u.`full_name` = \"" + userData.FullName + "\", " +
-                "u.`role_id` = \"" + userData.Role + "\", " +
-                "u.`password` = \"" + userData.Password + "\" " +
+                "u.`role_id` = \"" + (int)userData.Role + "\", " +
+                "u.`password` = \"" + HexString.ToString() + "\" " +
                 "WHERE u.`user_id` = " + userData.Id + ";";
 
             InitializeCommand();
             OpenConnection();
 
-            int result = ExecuteStoredProcedure();
-
-            CloseConnection();
-            DataReader.Close();
-
-            if (result == 0)
+			if (ExecuteStoredProcedure() == 0)
                 throw new Exception("Unable to update User Data");
 
-  
+
+			CloseConnection();
+			DataReader.Close();
+
         }
 
         /// <summary>
