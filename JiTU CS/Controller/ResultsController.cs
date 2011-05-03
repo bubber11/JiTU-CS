@@ -31,6 +31,11 @@ namespace JiTU_CS.Controller
 			return theEntity.CountWrong(theQuiz);
 		}
 
+        public static double GetStudentPercentage(UserData student, QuizData quiz)
+        {
+            return theEntity.StudentResults(student, quiz);
+        }
+
 		public static void SaveResults(ResultData theResults)
 		{
 			if (theResults.Answers.Count == 0)

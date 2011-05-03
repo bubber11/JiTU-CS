@@ -101,6 +101,7 @@
             this.Controls.Add(this.dtpOpen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmSubmit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "submit";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -67,55 +67,75 @@ namespace JiTU_CS.UI
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
-            //TODO validate question is good
-
-            //are we creating a new question or updating an old one?
-            if (isNewQuestion) //new question
+            //validate question
+            if (txtQuestion.Text == "")
             {
-
-                externalQuestion.Text = txtQuestion.Text;
-                AnswerData answer;
-
-                answer = new AnswerData(0);
-                answer.Text = txtAnswer1.Text;
-                answer.Correct = rbtn1.Checked;
-                externalQuestion.AddAnswer(answer);
-
-                answer = new AnswerData(0);
-                answer.Text = txtAnswer2.Text;
-                answer.Correct = rbtn2.Checked;
-                externalQuestion.AddAnswer(answer);
-
-                answer = new AnswerData(0);
-                answer.Text = txtAnswer3.Text;
-                answer.Correct = rbtn3.Checked;
-                externalQuestion.AddAnswer(answer);
-
-                answer = new AnswerData(0);
-                answer.Text = txtAnswer4.Text;
-                answer.Correct = rbtn4.Checked;
-                externalQuestion.AddAnswer(answer);
-
-                this.Disposed -= frmQuestion_Disposed;
-                this.Dispose();
+                MessageBox.Show("Question does not have text!", "Invalid Question");
             }
-            //change the old question
+            //validate answers
+            else if ( (txtAnswer1.Text == "") ||
+                 (txtAnswer2.Text == "") ||
+                 (txtAnswer3.Text == "") ||
+                 (txtAnswer4.Text == "") )
+            {
+                MessageBox.Show("All answers must have text!", "Invalid Question");
+            }
+            else if ((rbtn1.Checked == false) &&
+                      (rbtn1.Checked == false) &&
+                      (rbtn1.Checked == false) &&
+                      (rbtn1.Checked == false))
+            {
+                MessageBox.Show("No correct answer has been selected!", "Invalid Question");
+            }
             else
             {
-                externalQuestion.Text = txtQuestion.Text;
-                externalQuestion.Answers[0].Text = txtAnswer1.Text;
-                externalQuestion.Answers[0].Correct = rbtn1.Checked;
-                externalQuestion.Answers[1].Text = txtAnswer2.Text;
-                externalQuestion.Answers[1].Correct = rbtn2.Checked;
-                externalQuestion.Answers[2].Text = txtAnswer3.Text;
-                externalQuestion.Answers[2].Correct = rbtn3.Checked;
-                externalQuestion.Answers[3].Text = txtAnswer4.Text;
-                externalQuestion.Answers[3].Correct = rbtn4.Checked;
+                //are we creating a new question or updating an old one?
+                if (isNewQuestion) //new question
+                {
 
-                this.Disposed -= frmQuestion_Disposed;
-                this.Dispose();
+                    externalQuestion.Text = txtQuestion.Text;
+                    AnswerData answer;
+
+                    answer = new AnswerData(0);
+                    answer.Text = txtAnswer1.Text;
+                    answer.Correct = rbtn1.Checked;
+                    externalQuestion.AddAnswer(answer);
+
+                    answer = new AnswerData(0);
+                    answer.Text = txtAnswer2.Text;
+                    answer.Correct = rbtn2.Checked;
+                    externalQuestion.AddAnswer(answer);
+
+                    answer = new AnswerData(0);
+                    answer.Text = txtAnswer3.Text;
+                    answer.Correct = rbtn3.Checked;
+                    externalQuestion.AddAnswer(answer);
+
+                    answer = new AnswerData(0);
+                    answer.Text = txtAnswer4.Text;
+                    answer.Correct = rbtn4.Checked;
+                    externalQuestion.AddAnswer(answer);
+
+                    this.Disposed -= frmQuestion_Disposed;
+                    this.Dispose();
+                }
+                //change the old question
+                else
+                {
+                    externalQuestion.Text = txtQuestion.Text;
+                    externalQuestion.Answers[0].Text = txtAnswer1.Text;
+                    externalQuestion.Answers[0].Correct = rbtn1.Checked;
+                    externalQuestion.Answers[1].Text = txtAnswer2.Text;
+                    externalQuestion.Answers[1].Correct = rbtn2.Checked;
+                    externalQuestion.Answers[2].Text = txtAnswer3.Text;
+                    externalQuestion.Answers[2].Correct = rbtn3.Checked;
+                    externalQuestion.Answers[3].Text = txtAnswer4.Text;
+                    externalQuestion.Answers[3].Correct = rbtn4.Checked;
+
+                    this.Disposed -= frmQuestion_Disposed;
+                    this.Dispose();
+                }
             }
-
 
         }
 

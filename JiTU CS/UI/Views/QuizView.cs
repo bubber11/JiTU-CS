@@ -104,12 +104,12 @@ namespace JiTU_CS.UI.Views
         /// <param name="e"></param>
         void btnSubmit_Click(object sender, EventArgs e)
         {
-            // TODO create submit quiz procedure
-
-            if (MessageBox.Show("Are you sure you want to save changes to this quiz?", "Saving", MessageBoxButtons.OKCancel) == DialogResult.OK) {
-                ResultData temp = new ResultData(GlobalData.currentUser, GlobalData.currentQuiz);
-                foreach (QuestionBox ind in questionBoxes) {
-                    for (int i = 0; i < ind.rbtnAnswers.Length; i++) {
+            if (MessageBox.Show("Are you sure you want to submit this quiz?", "Submit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    ResultData temp = new ResultData(GlobalData.currentUser, GlobalData.currentQuiz);
+                    foreach (QuestionBox ind in questionBoxes) {
+                    for (int i = 0; i < ind.rbtnAnswers.Length; i++) 
+                    {
                         if (ind.rbtnAnswers[i].Checked)
                             temp.Answers.Add((AnswerData)ind.rbtnAnswers[i].Tag);
                     }
@@ -117,7 +117,9 @@ namespace JiTU_CS.UI.Views
                 ResultsEntity res = new ResultsEntity();
                 res.AddResult(temp);
                 res.Dispose();
-                this.Dispose();
+
+                MessageBox.Show ("You scored " + ResultsController.GetStudentPercentage(GlobalData.currentUser, GlobalData.currentQuiz) + "%");
+                GoBackToQuizzesView();
             }
 
 
