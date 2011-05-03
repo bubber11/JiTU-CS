@@ -208,8 +208,13 @@ namespace JiTU_CS.Entity
             int quest_count;
             int correct_count;
 
-            if (DataReader != null)
-                DataReader.Close();
+			if (DataReader != null)
+			{
+				DataReader.Close();
+				DataReader.Dispose();
+				Command.Dispose();
+				Command = null;
+			}
 
             SQL = "SELECT IFNULL(COUNT(`question_id`), 0) FROM `rel_quizzes_questions` WHERE `rel_quizzes_questions`.`quiz_id` = " + theQuiz.Id + ";";
 
