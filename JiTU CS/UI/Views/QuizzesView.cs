@@ -91,7 +91,17 @@ namespace JiTU_CS.UI.Views
                 case Objective.ViewSingleResults:
                     {
                         lblMessage.Text = "View results for which quiz?";
-                        //todo add quizzes that contain results
+                        //get all opened student has taken quizzes
+                        Entity.UserEntity temp = new JiTU_CS.Entity.UserEntity();
+                        List<QuizData> quizzes = QuizController.GetQuizzes(GlobalData.currentCourse);
+                        foreach (QuizData quiz in quizzes)
+                        {
+                            if (quiz.Open <= DateTime.Now && temp.TestTaken(GlobalData.currentUser, quiz)) //determine if an open date is open and theyve taken it
+                            {
+                                ListViewItem item = lvwQuizzes.Items.Add(quiz.Name, 0);
+                                item.Tag = quiz;
+                            }
+                        }
                         break;
                     }
             }

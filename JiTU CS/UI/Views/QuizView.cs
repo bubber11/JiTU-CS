@@ -13,6 +13,9 @@ using JiTU_CS.Controller;
 
 namespace JiTU_CS.UI.Views
 {
+    /// <summary>
+    /// allows the user to view a quiz in different formats specified by objective
+    /// </summary>
     public partial class QuizView : BaseView
     {
         #region Members
@@ -282,9 +285,10 @@ namespace JiTU_CS.UI.Views
 
         #endregion
 
-        #region Private Class
+        #region Private Classes
         private class QuestionBox : Panel
         {
+            #region Members
             private QuestionData myQuestion;
             private Control lblQuestion;
             private Label lblHeader;
@@ -292,9 +296,7 @@ namespace JiTU_CS.UI.Views
             private Button btnEditQuestion;
             private Button btnDeleteQuestion;
             private Label lblResults;
-
             private int myNumber;
-
             public QuestionData Question
             {
                 get
@@ -302,9 +304,10 @@ namespace JiTU_CS.UI.Views
                     return myQuestion;
                 }
             }
-
             private Objective myObjective;
+            #endregion
 
+            #region Properties
             public bool IsSomethingSelected
             {
                 get
@@ -334,7 +337,9 @@ namespace JiTU_CS.UI.Views
                     lblHeader.Text = "#" + myNumber;
                 }
             }
+            #endregion
 
+            #region Constructor
             public QuestionBox(QuestionData question, int number, Objective objective)
             {
                 //copy question
@@ -347,6 +352,77 @@ namespace JiTU_CS.UI.Views
                 InitializeComponent();
 
                 //Create objective specific controls
+                InitializeObjectiveComponent();
+
+                //
+                // QuestionBox
+                //
+                this.BackColor = Color.White;
+                this.BorderStyle = BorderStyle.FixedSingle;
+                this.Resize += new EventHandler(QuestionBox_Resize);
+
+                //set the number
+                Number = number;
+            }
+            #endregion
+
+            #region Methods
+
+            /// <summary>
+            /// Handles Edit Question Button Click event
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            void btnEditQuestion_Click(object sender, EventArgs e)
+            {
+                //display form
+                frmQuestion questionForm = new frmQuestion(myQuestion);
+                questionForm.ShowDialog();
+
+                //update question box
+                this.lblQuestion.Text = myQuestion.Text;
+                for (int i = 0; i < myQuestion.Answers.Count; i++)
+                {
+                    rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
+                    rbtnAnswers[i].Checked = myQuestion.Answers[i].Correct;
+                }
+
+            }
+
+            /// <summary>
+            /// draws default components
+            /// </summary>
+            void InitializeComponent()
+            {
+                //
+                // lblHeader
+                //
+                lblHeader = new Label();
+                lblHeader.TextAlign = ContentAlignment.MiddleLeft;
+                lblHeader.Font = new Font("Lucida Handwriting", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+                lblHeader.Top = 0;
+                lblHeader.Left = 0;
+                lblHeader.Height = 32;
+                lblHeader.BackColor = Color.FromArgb(0x99, 0x00, 0x33);
+                lblHeader.ForeColor = Color.White;
+                Controls.Add(lblHeader);
+                //
+                // lblQuestion
+                //
+                lblQuestion = new Label();
+                lblQuestion.Text = myQuestion.Text;
+                lblQuestion.Top = lblHeader.Bottom + 5;
+                lblQuestion.Left = 0;
+                lblQuestion.Padding = new Padding(10, 3, 3, 3);
+                Controls.Add(lblQuestion);
+                
+            }
+
+            /// <summary>
+            /// draws application specific components
+            /// </summary>
+            void InitializeObjectiveComponent()
+            {
                 #region Edit Quiz
                 if (myObjective == Objective.ManageQuizzes)
                 {
@@ -422,66 +498,26 @@ namespace JiTU_CS.UI.Views
                 #region View All Results
                 else if (myObjective == Objective.ViewAllResults)
                 {
+                    //get statistics
+                    int numCorrect = ResultsController.GetCorrectCount(myQuestion);
+                    int numWrong =  ResultsController.GetWrongCount(myQuestion);
+                    int total = numCorrect + numWrong;
+                    double percent = numCorrect / total;
+
+                    //display statistics
                     lblResults = new Label();
-                    lblResults.Text = "90% of students have gotten this question correct.";
+                    lblResults.Text = percent.ToString("0.0%") + " of " + total.ToString() + " have gotten this question correct.";
                     lblResults.TextAlign = ContentAlignment.MiddleCenter;
                     this.Controls.Add(lblResults);
                 }
                 #endregion
-
-                //
-                // QuestionBox
-                //
-                this.BackColor = Color.White;
-                this.BorderStyle = BorderStyle.FixedSingle;
-                this.Resize += new EventHandler(QuestionBox_Resize);
-
-                //set the number
-                Number = number;
             }
 
-            void btnEditQuestion_Click(object sender, EventArgs e)
-            {
-                //display form
-                frmQuestion questionForm = new frmQuestion(myQuestion);
-                questionForm.ShowDialog();
-
-                //update question box
-                this.lblQuestion.Text = myQuestion.Text;
-                for (int i = 0; i < myQuestion.Answers.Count; i++)
-                {
-                    rbtnAnswers[i].Text = myQuestion.Answers[i].Text;
-                    rbtnAnswers[i].Checked = myQuestion.Answers[i].Correct;
-                }
-
-            }
-
-            void InitializeComponent()
-            {
-                //
-                // lblHeader
-                //
-                lblHeader = new Label();
-                lblHeader.TextAlign = ContentAlignment.MiddleLeft;
-                lblHeader.Font = new Font("Lucida Handwriting", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-                lblHeader.Top = 0;
-                lblHeader.Left = 0;
-                lblHeader.Height = 32;
-                lblHeader.BackColor = Color.FromArgb(0x99, 0x00, 0x33);
-                lblHeader.ForeColor = Color.White;
-                Controls.Add(lblHeader);
-                //
-                // lblQuestion
-                //
-                lblQuestion = new Label();
-                lblQuestion.Text = myQuestion.Text;
-                lblQuestion.Top = lblHeader.Bottom + 5;
-                lblQuestion.Left = 0;
-                lblQuestion.Padding = new Padding(10, 3, 3, 3);
-                Controls.Add(lblQuestion);
-                
-            }
-
+            /// <summary>
+            /// Handles delete button click event.
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
             void btnDeleteQuestion_Click(object sender, EventArgs e)
             {
                 QuestionBox questionBoxToDelete = (QuestionBox)((((Button)sender).Parent.Parent));
@@ -489,6 +525,11 @@ namespace JiTU_CS.UI.Views
 
             }
 
+            /// <summary>
+            /// Handles resize event of the questionbox
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
             void QuestionBox_Resize(object sender, EventArgs e)
             {
                 //resize default controls
@@ -527,6 +568,7 @@ namespace JiTU_CS.UI.Views
                 #endregion
 
             }
+            #endregion
         }
         #endregion
 

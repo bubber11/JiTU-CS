@@ -36,6 +36,8 @@
             this.tss_0 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginPanel = new JiTU_CS.UI.LoginPanel();
             tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
@@ -55,6 +57,7 @@
             this.mnuMain.BackColor = System.Drawing.SystemColors.Control;
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.accountToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
@@ -102,6 +105,22 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // accountToolStripMenuItem
+            // 
+            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeInformationToolStripMenuItem});
+            this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.accountToolStripMenuItem.Text = "Account";
+            // 
+            // changeInformationToolStripMenuItem
+            // 
+            this.changeInformationToolStripMenuItem.Name = "changeInformationToolStripMenuItem";
+            this.changeInformationToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.changeInformationToolStripMenuItem.Text = "Change Information";
+            this.changeInformationToolStripMenuItem.Click += new System.EventHandler(this.changeInformationToolStripMenuItem_Click);
             // 
             // loginPanel
             // 
@@ -139,6 +158,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator tss_0;
         public System.Windows.Forms.ToolStripMenuItem tsmLogout;
+        private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeInformationToolStripMenuItem;
 
     }
 }

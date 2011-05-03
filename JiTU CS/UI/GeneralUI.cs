@@ -17,6 +17,7 @@ namespace JiTU_CS.UI
         public GeneralUI()
         {
             InitializeComponent();
+            accountToolStripMenuItem.Visible = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace JiTU_CS.UI
 
             //hide logout button
             this.tsmLogout.Visible = false;
-            
+            accountToolStripMenuItem.Visible = false;
 
             
         }
@@ -51,6 +52,7 @@ namespace JiTU_CS.UI
         private void tsmLogout_VisibleChanged(object sender, EventArgs e)
         {
             this.tss_0.Visible = this.tsmLogout.Visible;
+
         }
 
         void loginPanel_Disposed(object sender, System.EventArgs e)
@@ -70,7 +72,6 @@ namespace JiTU_CS.UI
                 newScreen.Dock = DockStyle.Fill;
                 this.Controls.Add(newScreen);
                 newScreen.BringToFront();
-                this.tsmLogout.Visible = true;
             }
             else
             {
@@ -79,8 +80,22 @@ namespace JiTU_CS.UI
                 newScreen.Dock = DockStyle.Fill;
                 this.Controls.Add(newScreen);
                 newScreen.BringToFront();
-                this.tsmLogout.Visible = true;
             }
+
+            this.tsmLogout.Visible = true;
+            accountToolStripMenuItem.Visible = true;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout newForm = new frmAbout();
+            newForm.ShowDialog();
+        }
+
+        private void changeInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUser userForm = new frmUser(GlobalData.currentUser);
+            userForm.ShowDialog();
         }
 
     }

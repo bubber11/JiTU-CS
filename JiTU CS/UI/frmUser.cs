@@ -58,6 +58,8 @@ namespace JiTU_CS.UI
             {
                 txtFullName.Text = externalUser.FullName;
                 txtUserName.Text = externalUser.UserName;
+                txtPassword.Text = externalUser.Password;
+                txtPasswordConfirm.Text = externalUser.Password;
             }
         }
 
