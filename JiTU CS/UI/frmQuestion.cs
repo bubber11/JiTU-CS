@@ -81,9 +81,9 @@ namespace JiTU_CS.UI
                 MessageBox.Show("All answers must have text!", "Invalid Question");
             }
             else if ((rbtn1.Checked == false) &&
-                      (rbtn1.Checked == false) &&
-                      (rbtn1.Checked == false) &&
-                      (rbtn1.Checked == false))
+                      (rbtn2.Checked == false) &&
+                      (rbtn3.Checked == false) &&
+                      (rbtn4.Checked == false))
             {
                 MessageBox.Show("No correct answer has been selected!", "Invalid Question");
             }

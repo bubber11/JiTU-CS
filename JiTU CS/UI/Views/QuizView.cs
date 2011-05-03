@@ -133,7 +133,7 @@ namespace JiTU_CS.UI.Views
             questionForm.ShowDialog();
 
             //check to see the question is valid ie user didnt cancel
-            if (newQuestion.Id != -1)
+            if (newQuestion.Answers.Count > 0)
             {
                 //add question to display
                 QuestionBox questionBox = new QuestionBox(newQuestion, questionBoxes.Count + 1, myObjective);
@@ -509,7 +509,8 @@ namespace JiTU_CS.UI.Views
                     this.btnEditQuestion.Top = 4;
                     this.btnEditQuestion.Left = btnDeleteQuestion.Left - btnEditQuestion.Width - 4;
 
-                    this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
+                    if (rbtnAnswers.GetLength(0) > 0)
+                        this.Height = rbtnAnswers[rbtnAnswers.GetLength(0) - 1].Bottom;
                 }
                 #endregion
                 #region Take Quiz
