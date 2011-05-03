@@ -230,6 +230,7 @@ namespace JiTU_CS.Entity {
                 SQL = "SELECT IFNULL(MAX(quiz_id), 0) FROM quizzes;";
 
                 InitializeCommand();
+                OpenConnection();
 
                 DataReader = Command.ExecuteReader();
 

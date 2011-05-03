@@ -9,7 +9,7 @@ namespace JiTU_CS.Entity {
     class CourseEntity : BaseEntity {
 
         #region Constructor/Destructor
-        public CourseEntity() {
+        public CourseEntity() : base() {
 
         }
 
@@ -39,8 +39,6 @@ namespace JiTU_CS.Entity {
             OpenConnection();
 
             int result = ExecuteStoredProcedure();
-
-            CloseConnection();
 
             if (result == 0)
                 throw new Exception("Unable to add Course to Database");

@@ -11,6 +11,7 @@ namespace JiTU_CS.Controller
     static class QuizController
     {
         static QuizEntity entity = new QuizEntity();
+       
 
         /// <summary>
         /// gets a list of all the quizzes associated with a course from the database
