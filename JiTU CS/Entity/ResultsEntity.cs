@@ -25,6 +25,7 @@ namespace JiTU_CS.Entity
 		{
 			try
 			{
+       
 				this.SQL = "SELECT COUNT(ra.`user_id`) AS `CountCorrect` FROM `questions` q " +
 					"JOIN `rel_questions_answers` qa ON q.`question_id` = qa.`question_id` " +
 					"JOIN `answers` a ON qa.`answer_id` = a.`answer_id` " +
@@ -146,28 +147,31 @@ namespace JiTU_CS.Entity
 		{
 			try
 			{
-				this.SQL = "INSERT INTO `rel_answers_users` (`user_id`, `answer_id`) VALUES ";
+                int result;
+                if (theResults.Answers.Count > 0) {
+                    this.SQL = "INSERT INTO `rel_answers_users` (`user_id`, `answer_id`) VALUES ";
 
-				this.SQL += "(\"" + theResults.Student.Id + "\", \"" + theResults.Answers[0].Id + "\")";
+                    this.SQL += "(\"" + theResults.Student.Id + "\", \"" + theResults.Answers[0].Id + "\")";
 
-                for (int index = 1; index < theResults.Answers.Count - 1;  index++)
-                    this.SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[index].Id + "\")";
+                    for (int index = 1; index < theResults.Answers.Count - 1; index++)
+                        this.SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[index].Id + "\")";
 
-                SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[theResults.Answers.Count - 1].Id + "\");";
+                    SQL += ", (\"" + theResults.Student.Id + "\", \"" + theResults.Answers[theResults.Answers.Count - 1].Id + "\");";
 
-				this.InitializeCommand();
-                OpenConnection();
+                    this.InitializeCommand();
+                    OpenConnection();
 
-                int result = ExecuteStoredProcedure();
+                    result = ExecuteStoredProcedure();
 
-				if (result == 0)
-					throw new System.Exception("Unable to save the user's answers.");
-
+                    if (result == 0)
+                        throw new System.Exception("Unable to save the user's answers.");
+                }
                 if (DataReader != null)
                     DataReader.Close();
 
                 SQL = "INSERT INTO `rel_quizzes_users` (`quiz_id`, `user_id`) VALUES (\"" + theResults.Quiz.Id + "\", \"" + theResults.Student.Id + "\");";
                 InitializeCommand();
+                OpenConnection();
 
                 result = ExecuteStoredProcedure();
 
